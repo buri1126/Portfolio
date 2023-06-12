@@ -33,16 +33,11 @@
                     @foreach($teams as $team)
                         <option value="{{ $team->id }}">{{ $team->name }}</option>
                     @endforeach
-                </select>
-                <select name="teams_array[]">
-                    @foreach($teams as $team)
-                        <option value="{{ $team->id }}">{{ $team->name }}</option>
-                    @endforeach
-                </select>
+                </select>s
             </div>
             <input type="submit" value="保存"/>
         </form>
-        <div class="back">[<a href="/">back</a>]</div>
+        <div class="back"><a href="/">back</a></div>
     </body>
     </x-app-layout>
 </html>
