@@ -35,4 +35,21 @@ class PostController extends Controller
         $post->teams()->attach($input_teams);
         return redirect('/posts/' . $post->id);
     }
+    
+    public function edit(Post $post,Category $category,Team $team)
+    {
+        return view('posts.edit')->with(['post' => $post,'categories' => $category->get(),'teams' => $team->get()]);
+    }
+    
+    public function update(PostRequest $request, Post $post)
+    {
+        $input_post = $request['post'];
+        $input_teams= $request->teams_array;
+        $post->fill($input_post)->save();
+        $post->fill($input_teams)->save();
+        // 中間テーブルのデータ更新の仕方わからず
+        $post->teams()->attach($input_teams);
+
+        return redirect('/posts/' . $post->id);
+    }
 }
