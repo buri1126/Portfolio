@@ -12,6 +12,7 @@
             {{ $post->title }}
         </h1>
         <a href="">{{ $post->category->name }}</a>
+        <small>{{ $post->user->name }}</small>
         <small>{{ $post->created_at}}</small>
         
         
