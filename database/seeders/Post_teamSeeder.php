@@ -15,10 +15,10 @@ class Post_teamSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('post_team')->insert([
-              'post_id' => 1,
-              'team_id' => 2,
-         ]);
+        // DB::table('post_team')->insert([
+        //       'post_id' => 1,
+        //       'team_id' => 2,
+        //  ]);
         // DB::table('post_team')->insert([
         //      'post_id' => 2,
         //      'team_id' => 1,
@@ -55,5 +55,10 @@ class Post_teamSeeder extends Seeder
         //      'post_id' => 10,
         //      'team_id' => 1,
         // ]);
+        
+        DB::table('post_team')->insert([
+              'post_id' => 1,
+              'team_id' => 5,
+         ]);
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('post_team', function (Blueprint $table) {
            $table->foreignId('post_id')->constrained('posts');
             $table->foreignId('team_id')->constrained('teams');
-           
+           $table->primary(['post_id', 'team_id']);
         });
     }
 

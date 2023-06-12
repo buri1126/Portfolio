@@ -7,15 +7,17 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+    <x-app-layout>
     <body>
         <h1 class="title">
             {{ $post->title }}
         </h1>
         <a href="">{{ $post->category->name }}</a>
+        @foreach($post->teams as $team)   
+            <a href="">{{ $team->name }}</a>
+        @endforeach
         <small>{{ $post->user->name }}</small>
         <small>{{ $post->created_at}}</small>
-        
-        
         
         <div class="content">
             <div class="content__post">
@@ -27,4 +29,5 @@
             <a href="/">戻る</a>
         </div>
     </body>
+    </x-app-layout>
 </html>

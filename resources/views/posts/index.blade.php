@@ -6,6 +6,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
+    <x-app-layout>
     <body>
         <a href='/posts/create'>create</a>
         <div class='posts'>
@@ -14,6 +15,9 @@
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         <p class='body'>{{ $post->body }}</p>
                         <a href="">{{ $post->category->name }}</a>
+                        @foreach($post->teams as $team)   
+                            <a href="">{{ $team->name }}</a>
+                        @endforeach
                         <small>{{ $post->user->name }}</small>
                         <small>{{ $post->created_at}}</small>
                     </div>
@@ -23,4 +27,5 @@
             {{ $posts->links() }}
         </div>
     </body>
+    </x-app-layout>
 </html>
