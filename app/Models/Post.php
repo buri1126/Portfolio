@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Category;
+use  App\Models\Team;
 
 class Post extends Model
 {
@@ -33,7 +34,7 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function team()
+    public function teams()
     {
        return $this->belongsToMany(Team::class);
     }
