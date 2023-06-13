@@ -48,8 +48,15 @@ class PostController extends Controller
         $post->fill($input_post)->save();
         $post->fill($input_teams)->save();
         // 中間テーブルのデータ更新の仕方わからず
+        // updateExistingPivotかsyncが使えそう
         $post->teams()->attach($input_teams);
 
         return redirect('/posts/' . $post->id);
+    }
+    
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
     }
 }
