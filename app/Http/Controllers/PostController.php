@@ -43,13 +43,15 @@ class PostController extends Controller
     
     public function update(PostRequest $request, Post $post)
     {
+    
         $input_post = $request['post'];
         $input_teams= $request->teams_array;
+        //DD($input_teams);
         $post->fill($input_post)->save();
         $post->fill($input_teams)->save();
         // 中間テーブルのデータ更新の仕方わからず
         // updateExistingPivotかsyncが使えそう
-        $post->teams()->attach($input_teams);
+        $post->teams()->sync($input_teams);
 
         return redirect('/posts/' . $post->id);
     }
