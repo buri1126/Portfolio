@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,9 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::get('/posts/{post}/edit', 'edit')->name('edit');
 });
 
+Route::get('/categories/{category}', [CategoryController::class,'index']);
+
+Route::get('/teams/{team}', [TeamController::class,'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -12,9 +12,9 @@
         <h1 class="title">
             {{ $post->title }}
         </h1>
-        <a href="">{{ $post->category->name }}</a>
+        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
         @foreach($post->teams as $team)   
-            <a href="">{{ $team->name }}</a>
+            <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
         @endforeach
         <small>{{ $post->user->name }}</small>
         <small>{{ $post->created_at}}</small>
