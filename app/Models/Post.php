@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Category;
 use  App\Models\Team;
 
+
 class Post extends Model
 {
     use SoftDeletes;
@@ -17,6 +18,8 @@ class Post extends Model
     'title',
     'body',
     'category_id',
+    'user_id',
+    'image_url'
 ];
     public function getPaginateByLimit(int $limit_count=5)
     {
@@ -37,4 +40,6 @@ class Post extends Model
     {
        return $this->belongsToMany(Team::class);
     }
+    
+   
 }

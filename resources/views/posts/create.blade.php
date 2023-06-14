@@ -33,8 +33,9 @@
                     @foreach($teams as $team)
                         <option value="{{ $team->id }}">{{ $team->name }}</option>
                     @endforeach
-                </select>s
+                </select>
             </div>
+            
             <input type="submit" value="保存"/>
         </form>
         <div class="back"><a href="/">back</a></div>
