@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Team;
 use App\Models\User;
 use App\Http\Requests\PostRequest;
+use Cloudinary;
+
 
 class PostController extends Controller
 {
@@ -46,11 +48,8 @@ class PostController extends Controller
     
         $input_post = $request['post'];
         $input_teams= $request->teams_array;
-        //DD($input_teams);
         $post->fill($input_post)->save();
         $post->fill($input_teams)->save();
-        // 中間テーブルのデータ更新の仕方わからず
-        // updateExistingPivotかsyncが使えそう
         $post->teams()->sync($input_teams);
 
         return redirect('/posts/' . $post->id);
