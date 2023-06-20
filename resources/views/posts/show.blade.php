@@ -24,6 +24,11 @@
                 <h3>本文</h3>
                 <p>{{ $post->body }}</p>    
             </div>
+           @foreach($images as $image)
+                <div class="image">
+                    <img src="{{$image->image_url}}" alt="画像が読み込めません"/>
+                </div>
+            @endforeach
         </div>
         <div class="edit"><a href="/posts/{{ $post->id }}/edit">edit</a></div>
         <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">

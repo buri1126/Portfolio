@@ -15,12 +15,12 @@ class Post extends Model
     use SoftDeletes;
     use HasFactory;
     protected $fillable = [
-    'title',
-    'body',
-    'category_id',
-    'user_id',
-    'image_url'
-];
+        'title',
+        'body',
+        'category_id',
+        'user_id',
+        'image_url'
+    ];
     public function getPaginateByLimit(int $limit_count=5)
     {
         return $this::with(['category','user'])->orderBy('updated_at', 'DESC')->paginate($limit_count);
@@ -41,5 +41,8 @@ class Post extends Model
        return $this->belongsToMany(Team::class);
     }
     
-   
+   public function images()
+   {
+       return $this->belongsToMany(Image::class);
+   }
 }

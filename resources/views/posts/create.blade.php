@@ -7,7 +7,7 @@
     <x-app-layout>
     <body>
         <h1>Blog Name</h1>
-        <form action="/posts" method="POST">
+        <form action="/posts" method="POST" name="post" id="post" enctype="multipart/form-data">
             @csrf
             <div class="title">
                 <h2>Title</h2>
@@ -35,10 +35,24 @@
                     @endforeach
                 </select>
             </div>
+            <div class="image">
+                <input type="file" name="files[]" onchange=elementClone() multiple>
+            </div>
             
             <input type="submit" value="保存"/>
         </form>
         <div class="back"><a href="/">back</a></div>
     </body>
     </x-app-layout>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+    </script>
+    <script>
+        function elementClone() {
+            
+            let cloneObj = $($('input[name="files[]"]')[0]).clone();
+            cloneObj.attr('name', `files[]`);
+            cloneObj.appendTo('#xx');
+           console.log(cloneObj);
+        }
+    </script>
 </html>
