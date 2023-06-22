@@ -25,6 +25,7 @@ class User extends Authenticatable
         'image_url',
         'info',
         'team_id',
+        'favoriteplayer',
     ];
     
 

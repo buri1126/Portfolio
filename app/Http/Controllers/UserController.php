@@ -30,6 +30,7 @@ class UserController extends Controller
         //     $input += ['image_url' => $image_url];
         // }
         $user->fill($input)->save();
+        // DD($user);
         $user->teams()->sync($input_teams);
         return redirect('/users/' . $user->id);
     }

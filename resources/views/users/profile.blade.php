@@ -14,7 +14,7 @@
                 @foreach ($posts as $post)
                     <h2>{{$post->user->name}}</h2>
                     <a href="/profile">edit name email</a>
-                    <p>{{$post->user->favoriteplayer}}</p>
+                    <p>{{$user->favoriteplayer}}</p>
                     @foreach($user->teams as $team)   
                         <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
                     @endforeach
