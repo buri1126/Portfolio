@@ -33,9 +33,12 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
 
 Route::get('/categories/{category}', [CategoryController::class,'index']);
 
-Route::get('/users/{user}/edit', [UserController::class, 'edit']);  
-Route::get('/users/{user}',[UserController::class,'profile']);
-Route::put('/users/{user}', [UserController::class, 'update']);
+Route::controller(UserController::class)->middleware(['auth'])->group(function(){
+    Route::get('/users/{user}/edit','edit')->name('edit');  
+    Route::get('/users/{user}','profile')->name('profile');
+    Route::put('/users/{user}','update')->name('update');
+});
+
 
 Route::get('/teams/{team}', [TeamController::class,'index']);
 
