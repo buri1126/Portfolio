@@ -22,7 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image_url',
+        'info',
+        'team_id',
     ];
+    
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,5 +49,14 @@ class User extends Authenticatable
     public function posts()   
     {
         return $this->hasMany(Post::class);  
+    }
+     public function teams()
+    {
+       return $this->belongsToMany(Team::class);
+    }
+    
+     public function getByUser(int $limit_count = 5)
+    {
+         return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }

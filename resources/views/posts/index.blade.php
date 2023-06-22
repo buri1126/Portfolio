@@ -18,7 +18,7 @@
                         @foreach($post->teams as $team)   
                             <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
                         @endforeach
-                        <small>{{ $post->user->name }}</small>
+                        <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
                         <small>{{ $post->created_at}}</small>
                     </div>
                 @endforeach
