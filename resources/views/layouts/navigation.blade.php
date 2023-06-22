@@ -18,6 +18,7 @@
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                         {{ __('Index') }}
                     </x-nav-link>
+                    <!--マイページ用のリンク　user_idの受け渡し-->
                 </div>
             </div>
 

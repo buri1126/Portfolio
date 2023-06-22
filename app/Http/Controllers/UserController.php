@@ -13,6 +13,7 @@ class UserController extends Controller
 {
    public function profile(User $user)
     {
+        
         return view('users.profile')->with(['posts' => $user->getByUser(),'user'=>$user]);
     }
     
