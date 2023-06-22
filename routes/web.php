@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TeamController;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +32,10 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
 });
 
 Route::get('/categories/{category}', [CategoryController::class,'index']);
+
+Route::get('/users/{user}/edit', [UserController::class, 'edit']);  
+Route::get('/users/{user}',[UserController::class,'profile']);
+Route::put('/users/{user}', [UserController::class, 'update']);
 
 Route::get('/teams/{team}', [TeamController::class,'index']);
 

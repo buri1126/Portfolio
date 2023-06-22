@@ -94,6 +94,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('20021126kh'),
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
+            'favoriteplayer' => 'ソニー',
+            'info' => '眠い'
         ]);
 
     }

@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class,
                 PostSeeder::class,
                 TeamSeeder::class,
+                Favorite_teamSeeder::class,
                 Post_teamSeeder::class,
                 
         ]);
