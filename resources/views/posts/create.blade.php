@@ -36,7 +36,7 @@
                 </select>
             </div>
             <div class="image">
-                <input type="file" name="files[]" onchange=elementClone() multiple>
+                <input type="file" name="files[]"  multiple>
             </div>
             
             <input type="submit" value="保存"/>
@@ -51,7 +51,7 @@
             
             let cloneObj = $($('input[name="files[]"]')[0]).clone();
             cloneObj.attr('name', `files[]`);
-            cloneObj.appendTo('#xx');
+            cloneObj.appendTo('#post');
            console.log(cloneObj);
         }
     </script>

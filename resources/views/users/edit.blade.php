@@ -28,9 +28,9 @@
             <div class="info">
                 <textarea name="user[info]">{{ $user->info }}</textarea>
             </div>
-            <!--<div class="image">-->
-            <!--    <input type="file" name="image">-->
-            <!--</div>-->
+            <div class="image">
+                <input type="file" name="image">
+            </div>
             
             <input type="submit" value="保存"/>
         </form>
