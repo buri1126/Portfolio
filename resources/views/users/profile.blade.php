@@ -9,6 +9,8 @@
     <x-app-layout>
         <body>
             <div class="profile">
+                <img src="{{$user->image_url}}">
+                <!--あとでサイズ設定-->
                 <h2>{{$user->name}}</h2>
                 <a href="/profile">edit name email</a>
                 <p>{{$user->favoriteplayer}}</p>

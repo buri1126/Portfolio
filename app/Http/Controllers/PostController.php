@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Comment;
 use App\Http\Requests\PostRequest;
 use Cloudinary;
 
@@ -19,10 +20,11 @@ class PostController extends Controller
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);  
     }
     
-    public function show(Post $post ,Image $image)
+    public function show(Post $post ,Image $image,Comment $comment)
     {
         $image_get=Image::where('post_id','=',$post->id)->get();
-        return view('posts.show')->with(['post' => $post,'images'=>$image_get]);
+        $comment=Comment::Where('post_id','=',$post->id)->get();
+        return view('posts.show')->with(['post' => $post,'images'=>$image_get,'comments'=>$comment]);
     }
     
    public function create(Category $category,Team $team)
@@ -32,14 +34,16 @@ class PostController extends Controller
     
     public function store(PostRequest $request, Post $post)
     {
-       $post_images=$request->files;
+       $post_images=$request->file('files');
         $input = $request['post'];
         $input += ['user_id' => $request->user()->id]; 
         $input_teams = $request->teams_array;
         $post->fill($input)->save();
         $post->teams()->attach($input_teams);
         // ここから写真の処理
+        // DD($post_images);
         foreach($post_images as $post_image){
+            // DD($post_image);
             $image_url=Cloudinary::upload($post_image->getRealPath())->getSecurePath();
             $image=New Image();
             $image->post_id=$post->id;
@@ -47,6 +51,7 @@ class PostController extends Controller
             // DD($request);
             $image->save();
         }
+        // DD($post);
         return redirect('/posts/' . $post->id);
     }
     
@@ -57,13 +62,12 @@ class PostController extends Controller
     
     public function update(PostRequest $request, Post $post)
     {
-    
+        $post_images=$request->files;
         $input_post = $request['post'];
         $input_teams= $request->teams_array;
         $post->fill($input_post)->save();
         $post->fill($input_teams)->save();
         $post->teams()->sync($input_teams);
-
         return redirect('/posts/' . $post->id);
     }
     

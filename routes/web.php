@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,8 +40,11 @@ Route::controller(UserController::class)->middleware(['auth'])->group(function()
     Route::put('/users/{user}','update')->name('update');
 });
 
-
 Route::get('/teams/{team}', [TeamController::class,'index']);
+
+Route::get('/posts/{post}/comment',[CommentController::class,'comment']);
+Route::post('/posts/{post}/comment',[CommentController::class,'comment']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

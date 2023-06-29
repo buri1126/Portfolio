@@ -36,6 +36,28 @@
             @method('DELETE')
             <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
         </form>
+        <br>
+        <hr>
+        @foreach($comments as $comment)
+            <a href="/users/{{$post->user->id}}">{{$comment->user->name}}より</a>
+            <small>{{$comment->created_at}}</small>
+            <p>{{$comment->body}}</p>
+            <hr>
+        @endforeach
+        
+        <hr>
+        <form action="/posts/{{$post->id}}/comment" method="POST" >
+            @csrf
+            <div class="comment">
+                <div class="body">
+                    <h2>comment</h2>
+                    <textarea name="comment[body]"></textarea>
+                    <br>
+                    <input type="submit" value="保存"/>
+                </div>
+            </div>
+        </form>
+        
         <div class="footer">
             <a href="/">戻る</a>
         </div>

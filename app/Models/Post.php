@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 use App\Models\Category;
-use  App\Models\Team;
+use App\Models\Team;
+use App\Models\Comment;
 
 
 class Post extends Model
@@ -39,6 +40,11 @@ class Post extends Model
     public function teams()
     {
        return $this->belongsToMany(Team::class);
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
     }
     
    public function images()

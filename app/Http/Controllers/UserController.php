@@ -26,10 +26,10 @@ class UserController extends Controller
     {
         $input = $request['user'];
         $input_teams = $request->teams_array;
-        // if($request->file('image')){ //画像ファイルが送られた時だけ処理が実行される
-        //     $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
-        //     $input += ['image_url' => $image_url];
-        // }
+        if($request->file('image')){ //画像ファイルが送られた時だけ処理が実行される
+            $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+            $input += ['image_url' => $image_url];
+        }
         $user->fill($input)->save();
         // DD($user);
         $user->teams()->sync($input_teams);
