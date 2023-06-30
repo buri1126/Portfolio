@@ -15,9 +15,17 @@ use Cloudinary;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Post $post,Request $request)
     {
-        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);  
+        $keyword = $request->input('keyword');
+        $query =Post::query();
+        if(!empty($keyword))
+        {
+            // DD($keyword);
+            $query->where('body','like','%'.$keyword.'%');
+        }
+        $post=$query->orderBy('created_at','desc')->paginate(5);
+        return view('posts.index')->with(['posts' => $post,'keyword',$keyword]);  
     }
     
     public function show(Post $post ,Image $image,Comment $comment)
@@ -34,7 +42,7 @@ class PostController extends Controller
     
     public function store(PostRequest $request, Post $post)
     {
-       $post_images=$request->file('files');
+       
         $input = $request['post'];
         $input += ['user_id' => $request->user()->id]; 
         $input_teams = $request->teams_array;
@@ -42,15 +50,19 @@ class PostController extends Controller
         $post->teams()->attach($input_teams);
         // ここから写真の処理
         // DD($post_images);
-        foreach($post_images as $post_image){
-            // DD($post_image);
-            $image_url=Cloudinary::upload($post_image->getRealPath())->getSecurePath();
-            $image=New Image();
-            $image->post_id=$post->id;
-            $image->image_url=$image_url;
-            // DD($request);
-            $image->save();
+        if($request->file('files')){
+            $post_images=$request->file('files');
+            foreach($post_images as $post_image){
+                // DD($post_image);
+                $image_url=Cloudinary::upload($post_image->getRealPath())->getSecurePath();
+                $image=New Image();
+                $image->post_id=$post->id;
+                $image->image_url=$image_url;
+                // DD($request);
+                $image->save();
+            }
         }
+        
         // DD($post);
         return redirect('/posts/' . $post->id);
     }
@@ -62,7 +74,7 @@ class PostController extends Controller
     
     public function update(PostRequest $request, Post $post)
     {
-        $post_images=$request->files;
+        // $post_images=$request->file('files');
         $input_post = $request['post'];
         $input_teams= $request->teams_array;
         $post->fill($input_post)->save();

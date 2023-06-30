@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Post;
 use App\Models\User;
 
+
 class Comment extends Model
 {
     use HasFactory;
