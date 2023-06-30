@@ -14,7 +14,8 @@ class CommentController extends Controller
     //
     public function index(Comment $comment,Post $post)
     {
-        return redirect('/posts/' . $post->id)->with(['comment'=>$comment]);
+         $Auth=Auth::id();
+        return redirect('/posts/' . $post->id)->with(['comment'=>$comment,'Auth'=>$Auth]);
     }
     
     public function comment(CommentRequest $request,Post $post,User $user )
@@ -25,7 +26,7 @@ class CommentController extends Controller
         $comment ->user_id=Auth::id();
         $input=$request['comment'];
         $comment->fill($input)->save();
-        DD($comment);
+        //DD($comment);
       return redirect('/posts/' . $post->id);
     }
     
