@@ -42,6 +42,7 @@
             <a href="/users/{{$post->user->id}}">{{$comment->user->name}}より</a>
             <small>{{$comment->created_at}}</small>
             <p>{{$comment->body}}</p>
+            
             <hr>
         @endforeach
         

@@ -2,12 +2,21 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <title>Blog</title>
+        <title>Review_blog</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <x-app-layout>
     <body>
+        <div class="serch">
+            <form action="/">
+                <input type="text" name="keyword" >
+                <input type="submit" value="検索">
+            </form>
+            <form action="/">
+                <input type="submit" value="クリア">
+            </form>
+        </div>
         <a href='/posts/create'>create</a>
         <div class='posts'>
                 @foreach ($posts as $post)
