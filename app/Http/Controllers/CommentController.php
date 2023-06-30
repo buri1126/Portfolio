@@ -12,6 +12,11 @@ use App\Http\Requests\CommentRequest;
 class CommentController extends Controller
 {
     //
+    public function index(Comment $comment,Post $post)
+    {
+        return redirect('/posts/' . $post->id)->with(['comment'=>$comment]);
+    }
+    
     public function comment(CommentRequest $request,Post $post,User $user )
     {
         $comment = new Comment();
@@ -20,10 +25,17 @@ class CommentController extends Controller
         $comment ->user_id=Auth::id();
         $input=$request['comment'];
         $comment->fill($input)->save();
-        
+        DD($comment);
       return redirect('/posts/' . $post->id);
     }
     
+    public function delete(Comment $comment)
+    {
+        $post_id=$comment->post->id;
+        // DD($comment);
+        $comment->delete();
+        return redirect('/posts/'.$post_id);
+    }
     
     
 }
