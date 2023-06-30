@@ -36,6 +36,10 @@ class TeamSeeder extends Seeder
              'name' => 'Brighton',
              
              ]);
+         DB::table('teams')->insert([
+         'name' => 'Burnley',
+         
+         ]);
         DB::table('teams')->insert([
              'name' => 'Chelsea',
              
@@ -52,18 +56,16 @@ class TeamSeeder extends Seeder
             'name' => 'Fulham',
              
              ]);
-       DB::table('teams')->insert([
-             'name' => 'Leeds United',
-             
-             ]);
-       DB::table('teams')->insert([
-             'name' => 'Leicester City',
-             
-             ]);
+      
+       
         DB::table('teams')->insert([
              'name' => 'Liverpool',
              
              ]);
+          DB::table('teams')->insert([
+         'name' => 'Luton',
+         
+         ]);
         DB::table('teams')->insert([
              'name' => 'Manchester City',
              
@@ -81,7 +83,7 @@ class TeamSeeder extends Seeder
              
              ]);
         DB::table('teams')->insert([
-              'name' => 'Southampton',
+              'name' => 'Sheffield United',
              
              ]);
         DB::table('teams')->insert([
