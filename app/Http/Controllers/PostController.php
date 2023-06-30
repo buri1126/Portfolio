@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Team;
@@ -30,9 +31,11 @@ class PostController extends Controller
     
     public function show(Post $post ,Image $image,Comment $comment)
     {
+        $Auth=Auth::id();
+        //DD($Auth);
         $image_get=Image::where('post_id','=',$post->id)->get();
         $comment=Comment::Where('post_id','=',$post->id)->get();
-        return view('posts.show')->with(['post' => $post,'images'=>$image_get,'comments'=>$comment]);
+        return view('posts.show')->with(['post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth]);
     }
     
    public function create(Category $category,Team $team)

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\User;
 use App\Models\Team;
 use App\Models\Post;
@@ -13,8 +15,8 @@ class UserController extends Controller
 {
    public function profile(User $user)
     {
-        
-        return view('users.profile')->with(['posts' => $user->getByUser(),'user'=>$user]);
+        $Auth=Auth::id();
+        return view('users.profile')->with(['posts' => $user->getByUser(),'user'=>$user,'Auth'=>$Auth]);
     }
     
    public function edit(Team $team,Post $post,User $user) 

@@ -12,13 +12,17 @@
                 <img src="{{$user->image_url}}">
                 <!--あとでサイズ設定-->
                 <h2>{{$user->name}}</h2>
+                @if($user->id===$Auth)
                 <a href="/profile">edit name email</a>
+                @endif
                 <p>{{$user->favoriteplayer}}</p>
                 @foreach($user->teams as $team)   
                     <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
                 @endforeach
                 <p>{{$user->info}}</p>
+                @if($user->id===$Auth)
                 <a href="/users/{{$user->id}}/edit">edit info</a>
+                @endif
             </div>
             <hr>
             @foreach($posts as $post)
