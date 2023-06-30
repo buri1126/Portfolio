@@ -38,26 +38,32 @@
         </form>
         <br>
         <hr>
-        @foreach($comments as $comment)
-            <a href="/users/{{$post->user->id}}">{{$comment->user->name}}より</a>
-            <small>{{$comment->created_at}}</small>
-            <p>{{$comment->body}}</p>
+        <div class="comment">
+            @foreach($comments as $comment)
+                <a href="/users/{{$post->user->id}}">{{$comment->user->name}}より</a>
+                <small>{{$comment->created_at}}</small>
+                <p>{{$comment->body}}</p>
+                <form action="/posts/comments/{{$comment->id}}" id="form_{{ $comment->id }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" onclick="deleteComment({{ $comment->id }})">delete</button> 
+                </form>
+                <hr>
+            @endforeach
             
             <hr>
-        @endforeach
-        
-        <hr>
-        <form action="/posts/{{$post->id}}/comment" method="POST" >
-            @csrf
-            <div class="comment">
-                <div class="body">
-                    <h2>comment</h2>
-                    <textarea name="comment[body]"></textarea>
-                    <br>
-                    <input type="submit" value="保存"/>
+            <form action="/posts/{{$post->id}}/comments" method="POST" >
+                @csrf
+                <div class="comment">
+                    <div class="body">
+                        <h2>comment</h2>
+                        <textarea name="comment[body]"></textarea>
+                        <br>
+                        <input type="submit" value="保存"/>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
         
         <div class="footer">
             <a href="/">戻る</a>
@@ -67,11 +73,21 @@
     <script>
         function deletePost(id) {
             'use strict'
-    
+           console.log(id);
+       console.log(document.getElementById(`form_${id}`));
             if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
                 document.getElementById(`form_${id}`).submit();
             }
         }
-    </script>
+    
+    function deleteComment(id) {
+        'use strict'
+       console.log(id);
+       console.log(document.getElementById(`comment_${id}`));
+        if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+            document.getElementById(`form_${id}`).submit();
+        }
+    }
+</script>
     </x-app-layout>
 </html>

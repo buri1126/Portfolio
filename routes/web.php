@@ -22,6 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
     Route::post('/posts', 'store')->name('store');
@@ -42,8 +44,10 @@ Route::controller(UserController::class)->middleware(['auth'])->group(function()
 
 Route::get('/teams/{team}', [TeamController::class,'index']);
 
-Route::get('/posts/{post}/comment',[CommentController::class,'comment']);
-Route::post('/posts/{post}/comment',[CommentController::class,'comment']);
+Route::delete('/posts/comments/{comment}', [CommentController::class,'delete']);
+Route::get('/posts/{post}/comments',[CommentController::class,'index']);
+Route::post('/posts/{post}/comments',[CommentController::class,'comment']);
+
 
 
 Route::get('/dashboard', function () {
