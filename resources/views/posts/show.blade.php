@@ -16,7 +16,7 @@
         @foreach($post->teams as $team)   
             <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
         @endforeach
-        <small>{{ $post->user->name }}</small>
+        <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
         <small>{{ $post->created_at}}</small>
         
         <div class="content">
@@ -78,7 +78,7 @@
     <script>
         function deletePost(id) {
             'use strict'
-           console.log(id);
+           
        console.log(document.getElementById(`form_${id}`));
             if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
                 document.getElementById(`form_${id}`).submit();
@@ -87,8 +87,7 @@
     
     function deleteComment(id) {
         'use strict'
-       console.log(id);
-       console.log(document.getElementById(`comment_${id}`));
+      
         if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
             document.getElementById(`form_${id}`).submit();
         }

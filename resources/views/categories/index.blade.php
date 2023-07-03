@@ -8,6 +8,16 @@
     </head>
     <x-app-layout>
     <body>
+         
+         <div class="serch">
+            <form action="/categories/{{$category->id}}">
+                <input type="text" name="keyword" >
+                <input type="submit" value="検索">
+            </form>
+            <form action="/categories/{{$category->id}}">
+                <input type="submit" value="クリア">
+            </form>
+        </div>
         <a href='/posts/create'>create</a>
         <div class='posts'>
                 @foreach ($posts as $post)
