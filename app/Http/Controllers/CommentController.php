@@ -14,12 +14,14 @@ class CommentController extends Controller
     //
     public function index(Comment $comment,Post $post)
     {
+         $post_id=$comment->post->id;
          $Auth=Auth::id();
-        return redirect('/posts/' . $post->id)->with(['comment'=>$comment,'Auth'=>$Auth]);
+        return redirect('/posts/' . $post_id)->with(['comment'=>$comment,'Auth'=>$Auth]);
     }
     
     public function comment(CommentRequest $request,Post $post,User $user )
     {
+        
         $comment = new Comment();
         
         $comment ->post_id=$post->id;

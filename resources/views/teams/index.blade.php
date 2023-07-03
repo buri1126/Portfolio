@@ -8,6 +8,7 @@
     </head>
     <x-app-layout>
     <body>
+        
         <a href='/posts/create'>create</a>
         <div class='posts'>
                 @foreach ($posts as $post)
