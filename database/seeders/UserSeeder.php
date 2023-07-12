@@ -97,6 +97,12 @@ class UserSeeder extends Seeder
             'favoriteplayer' => 'ソニー',
             'info' => '眠い'
         ]);
-
+        DB::table('users')->insert([
+            'name' => 'koutaro_sub',
+            'email' => 'koutaroh1126@docomo.ne.jp',
+            'password' => Hash::make('20021126kh'),
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+        ]);
     }
 }

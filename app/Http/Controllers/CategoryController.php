@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Team;
 
 class CategoryController extends Controller
 {
-    public function index(Category $category,Request $request,Post $post)
+    public function index(Category $category,Request $request,Post $post,Team $team)
     {
          $keyword = $request->input('keyword');
          
@@ -21,6 +22,6 @@ class CategoryController extends Controller
         }
 
         $category_data=$query->orderBy('created_at','desc')->paginate(5);
-        return view('categories.index')->with(['posts' => $category_data,'category'=>$category]);
+        return view('categories.index')->with(['posts' => $category_data,'category'=>$category,'categories'=>$category->get(),'teams'=>$team->get()]);
     }
 }

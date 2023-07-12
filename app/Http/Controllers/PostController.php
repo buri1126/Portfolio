@@ -10,13 +10,14 @@ use App\Models\Team;
 use App\Models\User;
 use App\Models\Image;
 use App\Models\Comment;
+use App\Models\Like;
 use App\Http\Requests\PostRequest;
 use Cloudinary;
 
 
 class PostController extends Controller
 {
-    public function index(Post $post,Request $request)
+    public function index(Post $post,Request $request,Team $team,Category $category)
     {
         $keyword = $request->input('keyword');
         $query =Post::query();
@@ -26,7 +27,8 @@ class PostController extends Controller
             $query->where('body','like','%'.$keyword.'%');
         }
         $post=$query->orderBy('created_at','desc')->paginate(5);
-        return view('posts.index')->with(['posts' => $post,'keyword',$keyword]);  
+    
+        return view('posts.index')->with(['posts' => $post,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get()]);  
     }
     
     public function show(Post $post ,Image $image,Comment $comment)
@@ -85,6 +87,25 @@ class PostController extends Controller
         $post->teams()->sync($input_teams);
         return redirect('/posts/' . $post->id);
     }
+    
+   public function like($id)
+  {
+    Like::create([
+      'post_id' => $id,
+      'user_id' => Auth::id(),
+    ]);
+    session()->flash('success', 'You Liked the Post.');
+    return redirect()->back();
+  }
+  public function unlike($id)
+  {
+    $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
+    $like->delete();
+
+    session()->flash('success', 'You Unliked the Reply.');
+
+    return redirect()->back();
+  }
     
     public function delete(Post $post)
     {

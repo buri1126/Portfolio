@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->foreignId('post_id')->constrained('posts');
             $table->foreignId('user_id')->constrained('users');
             
