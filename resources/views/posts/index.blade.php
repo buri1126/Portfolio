@@ -32,6 +32,21 @@
                     </div>
                 @endforeach
             </div>
+            <!--のちにサイドバー化-->
+            <div class="sidebar">
+                <div class='category_index'>
+                     @foreach($categories as $category)
+                        <a href="/categories/{{ $category->id }}">{{ $category->name }}</a>
+                    @endforeach
+                </div>
+                <div class="team_index">
+                    @foreach($teams as $team)
+                        <a href="/teams/{{$team->id}}">{{$team->name}}</p>
+                    @endforeach
+                </div>
+            </div>
+           
+           
         <div class='paginate'>
             {{ $posts->links() }}
         </div>

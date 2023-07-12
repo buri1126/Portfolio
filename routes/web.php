@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,10 +29,14 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::get('/', 'index')->name('index');
     Route::post('/posts', 'store')->name('store');
     Route::get('/posts/create', 'create')->name('create');
+    Route::get('/posts/like/{id}','like')->name('like');
+    Route::get('/posts/unlike/{id}','unlike')->name('unlike');
     Route::get('/posts/{post}', 'show')->name('show');
     Route::put('/posts/{post}', 'update')->name('update');
     Route::delete('/posts/{post}', 'delete')->name('delete');
     Route::get('/posts/{post}/edit', 'edit')->name('edit');
+    
+   
 });
 
 Route::get('/categories/{category}', [CategoryController::class,'index']);
@@ -47,6 +52,8 @@ Route::get('/teams/{team}', [TeamController::class,'index']);
 Route::delete('/posts/comments/{comment}', [CommentController::class,'delete']);
 Route::get('/posts/{post}/comments',[CommentController::class,'index']);
 Route::post('/posts/{post}/comments',[CommentController::class,'comment']);
+
+
 
 
 
