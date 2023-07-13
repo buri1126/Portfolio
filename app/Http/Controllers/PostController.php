@@ -74,6 +74,7 @@ class PostController extends Controller
     
     public function edit(Post $post,Category $category,Team $team)
     {
+       
         return view('posts.edit')->with(['post' => $post,'categories' => $category->get(),'teams' => $team->get()]);
     }
     

@@ -32,7 +32,7 @@
         </div>
         <div>
           @if($post->is_liked_by_auth_user())
-            <a href="{{ route('unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+            <a href="{{ route('unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいねを取り消す<span class="badge">{{ $post->likes->count() }}</span></a>
           @else
             <a href="{{ route('like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
           @endif
