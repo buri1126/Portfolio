@@ -23,19 +23,29 @@
                 <h2>Category</h2>
                 <select name="post[category_id]">
                     @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @if($post->category_id===$category->id)
+                        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                        @else
+                        <option value="{{ $category->id }}" >{{ $category->name }}</option>
+                        @endif
                     @endforeach
                 </select>
-            </div>
-            <div class="team">
-                <h2>Team</h2>
-                <select name="teams_array[]">
-                    @foreach($teams as $team)
-                        <option value="{{ $team->id }}">{{ $team->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <input type="submit" value="保存">
+                </div>
+                <div class="team">
+                    <h2>Team</h2>
+                    <select name="teams_array[]">
+                        @foreach($teams as $team)
+                            @foreach($post->teams as $team_selected)
+                                @if($team_selected->id===$team->id)
+                                <option value="{{ $team->id }}" selected>{{ $team->name }}</option>
+                                @else
+                                <option value="{{ $team->id }}" >{{ $team->name }}</option>
+                                @endif
+                            @endforeach
+                        @endforeach
+                    </select>
+                </div>
+                <input type="submit" value="保存">
             </form>
         </div>
         <div class="footer">
