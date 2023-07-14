@@ -11,20 +11,17 @@ class TeamController extends Controller
 {
     public function index(Team $team,Post $post,Category $category,Request $request)
     {
-        //  $keyword = $request->input('keyword');
+         $keyword = $request->input('keyword');
          
-        // $query =Post::where(
-        //     //この部分
-        // );
-        // if(!empty($keyword))
-        // {
-        //     // DD($keyword);
-        //     $query->where('body','like','%'.$keyword.'%')->where(
-        //         //この部分
-        //         );
-        // }
+        $query =$team->posts();
+           
+        if(!empty($keyword))
+        {
+            // DD($keyword);
+            $query->where('body','like','%'.$keyword.'%')->get();
+        }
 
-        // $team_data=$query->orderBy('created_at','desc')->paginate(5);
-        return view('teams.index')->with(['posts' => $team->getByTeam(),'teams'=>$team->get(),'categories'=>$category->get()]);
+        $team_data=$query->orderBy('created_at','desc')->paginate(5);
+        return view('teams.index')->with(['posts' => $team_data,'team'=>$team,'teams'=>$team->get(),'categories'=>$category->get()]);
     }
 }

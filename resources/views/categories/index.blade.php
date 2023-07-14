@@ -34,11 +34,11 @@
                 @endforeach
             </div>
             <div class='paginate'>
-                {{ $posts->links() }}
-            </div>
-            <div class="footer">
-                <a href="/">戻る</a>
-            </div>
+            {{ $posts->links() }}
+        </div>
+        <div class="footer">
+            <a href="/">戻る</a>
+        </div>
              <!--のちにサイドバー化-->
             <div class="sidebar">
                 <div class='category_index'>
