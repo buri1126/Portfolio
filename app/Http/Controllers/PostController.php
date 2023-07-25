@@ -19,6 +19,27 @@ class PostController extends Controller
 {
     public function index(Post $post,Request $request,Team $team,Category $category)
     {
+        // API処理
+        $client = new \GuzzleHttp\Client();
+        $response_standings = $client->request('GET', 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2023&league=39', [
+        	'headers' => [
+        		'X-RapidAPI-Host' => 'api-football-v1.p.rapidapi.com',
+        		'X-RapidAPI-Key' => 'bec5700bc8msh8eebc62e717579bp173f67jsnb80be10b42c4',
+        	],
+        ]);
+        //dd($response);
+        $standings=json_decode($response_standings->getBody(),true);
+        
+       $response_fixtures = $client->request('GET', 'https://api-football-v1.p.rapidapi.com/v3/fixtures?league=39&season=2023', [
+        	'headers' => [
+        		'X-RapidAPI-Host' => 'api-football-v1.p.rapidapi.com',
+        		'X-RapidAPI-Key' => 'bec5700bc8msh8eebc62e717579bp173f67jsnb80be10b42c4',
+        	],
+        ]);
+        $fixtures=json_decode($response_fixtures->getBody(),true);
+        //dd($fixtures);
+         
+         
         $keyword = $request->input('keyword');
         $query =Post::query();
         if(!empty($keyword))
@@ -28,7 +49,7 @@ class PostController extends Controller
         }
         $post=$query->orderBy('created_at','desc')->paginate(5);
     
-        return view('posts.index')->with(['posts' => $post,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get()]);  
+        return view('posts.index')->with(['posts' => $post,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get(),'standings'=>$standings,'fixtures'=>$fixtures]);  
     }
     
     public function show(Post $post ,Image $image,Comment $comment)

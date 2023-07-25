@@ -35,6 +35,54 @@
             <div class='paginate'>
                 {{ $posts->links() }}
             </div>
+            
+            <div class='standings'>
+                <h1>standings</h1>
+                <table>
+                <thead>
+                    <tr>
+                    <th>順位</th>
+                    <th>クラブ</th>
+                    <th>試合</th>
+                    <th>勝</th>
+                    <th>分</th>
+                    <th>負</th>
+                    <th>Pts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($standings["response"][0]["league"]["standings"][0] as $standing)
+                    <tr>
+                        <td>{{$standing['rank']}}</td>
+                        <td>{{$standing['team']['name']}}</td>
+                        <td>{{$standing['all']['played']}}</td>
+                        <td>{{$standing['all']['win']}}</td>
+                        <td>{{$standing['all']['draw']}}</td>
+                        <td>{{$standing['all']['lose']}}</td>
+                        <td>{{$standing['points']}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            </div>
+            <div class='fixtures'>
+                <table>
+                <thead>
+                    <tr>
+                    <th>節</th>
+                    <th>ホーム</th>
+                    <th>vs</th>
+                    <th>アウェイ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <!--foreach文-->
+                    <!--日付が同じものだけ表示したい-->
+                   
+                </tbody>
+            </table>
+               
+            </div>
                 <!--のちにサイドバー化-->
                 <div class="sidebar">
                     <div class='category_index'>
