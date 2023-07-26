@@ -8,6 +8,8 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\FollowerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,7 +55,8 @@ Route::delete('/posts/comments/{comment}', [CommentController::class,'delete']);
 Route::get('/posts/{post}/comments',[CommentController::class,'index']);
 Route::post('/posts/{post}/comments',[CommentController::class,'comment']);
 
-
+Route::get('/users/{user}/follow', [FollowerController::class,'follow']);
+Route::get('/users/{user}/unfollow', [FollowerController::class,'unfollow']);
 
 
 

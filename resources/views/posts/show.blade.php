@@ -17,6 +17,8 @@
             <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
         @endforeach
         <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
+        <!--フォロー-->
+
         <small>{{ $post->created_at}}</small>
         
         <div class="content">

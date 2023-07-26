@@ -76,7 +76,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                   <!--foreach文-->
+                   @foreach($fixtures['response'] as $fixture)
+                  
+                   @endforeach
                     <!--日付が同じものだけ表示したい-->
                    
                 </tbody>

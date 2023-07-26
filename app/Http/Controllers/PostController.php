@@ -111,14 +111,14 @@ class PostController extends Controller
     }
     
    public function like($id)
-  {
-    Like::create([
-      'post_id' => $id,
-      'user_id' => Auth::id(),
-    ]);
-    session()->flash('success', 'You Liked the Post.');
-    return redirect()->back();
-  }
+    {
+        Like::create([
+          'post_id' => $id,
+          'user_id' => Auth::id(),
+        ]);
+        session()->flash('success', 'You Liked the Post.');
+        return redirect()->back();
+    }
   public function unlike($id)
   {
     $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
