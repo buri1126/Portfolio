@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('followers', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('follower_id'); 
+            });
     }
 
     /**

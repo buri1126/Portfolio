@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Follower;
 
 class User extends Authenticatable
 {
@@ -61,6 +62,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+    }
+
     
      public function getByUser(int $limit_count = 5)
     {
