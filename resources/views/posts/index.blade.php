@@ -76,17 +76,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                   @foreach($fixtures['response'] as $fixture)
-                    
-                       <tr>
-                        <td>{{$fixture['league']['round']}}</td>
-                        <td>{{$fixture['teams']['home']['name']}}</td>
-                        <td>vs</td>
-                        <td>{{$fixture['teams']['away']['name']}}</td>
-                       </tr>
-                   
-                   @endforeach
-                    
+                    @if($fixturedatas)
+                       @foreach($fixturedatas as $fixture)
+                           <tr>
+                            <td>{{$fixture['league']['round']}}</td>
+                            <td>{{$fixture['teams']['home']['name']}}</td>
+                            <td>vs</td>
+                            <td>{{$fixture['teams']['away']['name']}}</td>
+                           </tr>
+                       @endforeach
+                    @else
+                    <p>今日の試合はありません</p>
+                    @endif
                    
                 </tbody>
             </table>

@@ -12,6 +12,8 @@ use App\Models\Image;
 use App\Models\Comment;
 use App\Models\Like;
 use App\Http\Requests\PostRequest;
+// 日付取得のクラス
+use Carbon\Carbon;
 use Cloudinary;
 
 
@@ -37,8 +39,22 @@ class PostController extends Controller
     	],
     ]);
         $fixtures=json_decode($response_fixtures->getBody(),true);
-        //dd($fixtures);
-         
+        
+        // 日時取得
+         $date=Carbon::now()->format("Y-m-d");
+        // 繰り返し処理
+        $fixturedatas=array();
+        for($i=0;$i<380;$i++){
+            $fixturedata=$fixtures['response'][$i];
+            $fixture_date=$fixtures['response'][$i]['fixture']['date'];
+            $fixture_date_new=substr( $fixture_date,0,10);
+            if($fixture_date_new===$date){
+                array_push($fixturedatas,$fixturedata);
+            }
+        }
+        //dd($fixturedatas);
+       
+         //dd($date);
          
         $keyword = $request->input('keyword');
         $query =Post::query();
@@ -49,7 +65,7 @@ class PostController extends Controller
         }
         $post=$query->orderBy('created_at','desc')->paginate(5);
     
-        return view('posts.index')->with(['posts' => $post,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get(),'standings'=>$standings,'fixtures'=>$fixtures]);  
+        return view('posts.index')->with(['posts' => $post,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get(),'standings'=>$standings,'fixturedatas'=>$fixturedatas]);  
     }
     
     public function show(Post $post ,Image $image,Comment $comment)
