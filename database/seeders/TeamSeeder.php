@@ -83,7 +83,7 @@ class TeamSeeder extends Seeder
              
              ]);
         DB::table('teams')->insert([
-              'name' => 'Sheffield United',
+              'name' => 'Sheffield Utd',
              
              ]);
         DB::table('teams')->insert([

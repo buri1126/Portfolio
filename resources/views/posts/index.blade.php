@@ -77,9 +77,16 @@
                 </thead>
                 <tbody>
                    @foreach($fixtures['response'] as $fixture)
-                  
+                    
+                       <tr>
+                        <td>{{$fixture['league']['round']}}</td>
+                        <td>{{$fixture['teams']['home']['name']}}</td>
+                        <td>vs</td>
+                        <td>{{$fixture['teams']['away']['name']}}</td>
+                       </tr>
+                   
                    @endforeach
-                    <!--日付が同じものだけ表示したい-->
+                    
                    
                 </tbody>
             </table>

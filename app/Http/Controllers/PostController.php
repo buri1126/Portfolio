@@ -30,12 +30,12 @@ class PostController extends Controller
         //dd($response);
         $standings=json_decode($response_standings->getBody(),true);
         
-       $response_fixtures = $client->request('GET', 'https://api-football-v1.p.rapidapi.com/v3/fixtures?league=39&season=2023', [
-        	'headers' => [
-        		'X-RapidAPI-Host' => 'api-football-v1.p.rapidapi.com',
-        		'X-RapidAPI-Key' => 'bec5700bc8msh8eebc62e717579bp173f67jsnb80be10b42c4',
-        	],
-        ]);
+       $response_fixtures = $client->request('GET', 'https://api-football-v1.p.rapidapi.com/v3/fixtures?league=39&season=2023&timezone=asia%2Ftokyo', [
+    	'headers' => [
+    		'X-RapidAPI-Host' => 'api-football-v1.p.rapidapi.com',
+    		'X-RapidAPI-Key' => 'bec5700bc8msh8eebc62e717579bp173f67jsnb80be10b42c4',
+    	],
+    ]);
         $fixtures=json_decode($response_fixtures->getBody(),true);
         //dd($fixtures);
          
