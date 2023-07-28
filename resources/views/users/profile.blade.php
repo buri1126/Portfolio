@@ -12,6 +12,22 @@
                 <img src="{{$user->image_url}}">
                 <!--あとでサイズ設定-->
                 <h2>{{$user->name}}</h2>
+                 @if(Auth::id() != $user->id)
+                   @if (Auth::user()->isFollowing($user->id))
+                       <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="POST">
+                           {{ csrf_field() }}
+                           {{ method_field('DELETE') }}
+        
+                           <button type="submit" >フォロー解除</button>
+                       </form>
+                   @else
+                       <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
+                           {{ csrf_field() }}
+        
+                           <button type="submit" >フォローする</button>
+                       </form>
+                   @endif
+                @endif
                 @if($user->id===$Auth)
                 <a href="/profile">edit name email</a>
                 @endif

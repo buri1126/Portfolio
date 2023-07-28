@@ -17,8 +17,24 @@
             <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
         @endforeach
         <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
-        <!--フォロー-->
+        @if(Auth::id() != $post->user->id)
+           @if (Auth::user()->isFollowing($post->user->id))
+               <form action="{{ route('unfollow', ['user' => $post->user->id]) }}" method="POST">
+                   {{ csrf_field() }}
+                   {{ method_field('DELETE') }}
 
+                   <button type="submit" >フォロー解除</button>
+               </form>
+           @else
+               <form action="{{ route('follow', ['user' => $post->user->id]) }}" method="POST">
+                   {{ csrf_field() }}
+
+                   <button type="submit" >フォローする</button>
+               </form>
+           @endif
+        @endif
+        
+        
         <small>{{ $post->created_at}}</small>
         
         <div class="content">
