@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Post;
 use App\Models\Comment;
@@ -62,16 +63,37 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
-    public function follows()
+    
+     public function followers()
     {
         return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
     }
-
-    public function followers()
+    // フォロー→フォロワー
+    public function follows()
     {
         return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
     }
-
+    public function follow($user_id)
+   {
+       return $this->follows()->attach($user_id);
+   }
+ 
+   public function unfollow($user_id)
+   {
+       return $this->follows()->detach($user_id);
+   }
+    public function isFollowing($user_id)
+   {
+       return (boolean) $this->follows()->where('follower_id', $user_id)->exists();
+   }
+//   public function isFollowings($user_id)
+//   {
+//       return (boolean) $this->follows()->where('user_id', $user_id)->first();
+//   }
+//   public function isFollowed($user_id)
+//   {
+//       return (boolean) $this->followers()->where('user_id', $user_id)->first();
+//   }
     
      public function getByUser(int $limit_count = 5)
     {

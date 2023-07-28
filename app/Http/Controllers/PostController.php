@@ -63,18 +63,18 @@ class PostController extends Controller
             // DD($keyword);
             $query->where('body','like','%'.$keyword.'%');
         }
-        $post=$query->orderBy('created_at','desc')->paginate(5);
+        $post=$query->orderBy('created_at','desc')->get();
     
         return view('posts.index')->with(['posts' => $post,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get(),'standings'=>$standings,'fixturedatas'=>$fixturedatas]);  
     }
     
-    public function show(Post $post ,Image $image,Comment $comment)
+    public function show(Post $post ,Image $image,Comment $comment,User $user)
     {
         $Auth=Auth::id();
-        //DD($Auth);
+       
         $image_get=Image::where('post_id','=',$post->id)->get();
         $comment=Comment::Where('post_id','=',$post->id)->get();
-        return view('posts.show')->with(['post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth]);
+        return view('posts.show')->with(['post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth,'user'=>$user]);
     }
     
    public function create(Category $category,Team $team)

@@ -3,28 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Follower;
 use App\Models\Post;
 
 class FollowerController extends Controller
 {
-    public function follow(Post $post,User $user){
-       
-        $follow = Follower::create([
-            'user_id' => \Auth::user()->id,
-           'followers_id'=>$user->id
-        ]);
-        $follows_count = auth()->user()->follows()->get();
-        $followers_count = auth()->user()->followers()->get();
-         return redirect()->back();
-    }
-    public function unfollow(User $user) {
-        $follow = Follower::where('user_id', \Auth::user()->id)->where('follower_id', $user->id)->first();
-        $follow->delete();
-        $follows_count = auth()->user()->follows()->get();
-        $followers_count = auth()->user()->followers()->get();
-        return redirect()->back();
-    }   
+   public function follow(User $user)
+   {
+       $follower = auth()->user();
+       $is_following = $follower->isFollowing($user->id);
+      //dd($is_following);
+       if(!$is_following) {
+           $follower->follow($user->id);
+           return back();
+       }
+   }
+   public function unfollow(User $user)
+   {
+       $follower = auth()->user();
+       $is_following = $follower->isFollowing($user->id);
+       //dd($is_following);
+       //dd($user);
+       if($is_following) {
+           $follower->unfollow($user->id);
+           return back();
+       }
+   }
     
 }

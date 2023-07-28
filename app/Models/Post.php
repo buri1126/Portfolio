@@ -23,9 +23,9 @@ class Post extends Model
         'user_id',
         'image_url'
     ];
-    public function getPaginateByLimit(int $limit_count=5)
+    public function getPaginateByLimit()
     {
-        return $this::with(['category','user'])->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with(['category','user'])->orderBy('updated_at', 'DESC');
     }
     
     public function category()

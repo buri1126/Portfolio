@@ -1,3 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*index*/
+.component{
+    display: flex;
+}
+ .index{
+     text-align: center;
+     width:50%;
+     border-left:1px solid gray;
+     border-right:1px solid gray;
+ }
+ .posts{
+    margin:0 auto;
+    width:55%;
+ }
+ .post{
+     text-align: left;
+     padding-bottom: 20px;
+ }
+ .serch{
+     
+     text-align: center;
+     margin:20px;
+ }
+.leftbar{
+    text-align: left;
+     width:15%;
+}
+.category_index,.team_index{
+    text-align: center;
+}
+.category_index p,.team_index p{
+    border-bottom: 1px solid gray
+}
+.category_index .category,.team_index .team{
+    display:flex;
+    flex-direction:column;
+}
+.rightbar{
+    text-align: right;
+    width:35%;
+}
+.standings,.fixtures{
+    text-align: center;
+    margin: 40px;
+}
+.rightbar table{
+    display: inline
+}

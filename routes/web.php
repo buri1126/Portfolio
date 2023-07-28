@@ -55,8 +55,8 @@ Route::delete('/posts/comments/{comment}', [CommentController::class,'delete']);
 Route::get('/posts/{post}/comments',[CommentController::class,'index']);
 Route::post('/posts/{post}/comments',[CommentController::class,'comment']);
 
-Route::get('/users/{user}/follow', [FollowerController::class,'follow']);
-Route::get('/users/{user}/unfollow', [FollowerController::class,'unfollow']);
+Route::post('users/{user}/follow', [FollowerController::class, 'follow'])->name('follow');
+Route::delete('users/{user}/unfollow',[FollowerController::class, 'unfollow'])->name('unfollow');
 
 
 

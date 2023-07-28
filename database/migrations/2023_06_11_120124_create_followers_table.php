@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('followers', function (Blueprint $table) {
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('follower_id'); 
+           $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('follower_id')->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('follower_id')->references('id')->on('users')->onDelete('cascade');
             });
     }
 
