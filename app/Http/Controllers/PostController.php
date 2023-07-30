@@ -104,7 +104,6 @@ class PostController extends Controller
                 $image->save();
             }
         }
-        
         // DD($post);
         return redirect('/posts/' . $post->id);
     }
@@ -117,12 +116,29 @@ class PostController extends Controller
     
     public function update(PostRequest $request, Post $post)
     {
-        // $post_images=$request->file('files');
         $input_post = $request['post'];
         $input_teams= $request->teams_array;
         $post->fill($input_post)->save();
         $post->fill($input_teams)->save();
         $post->teams()->sync($input_teams);
+        //dd($request->file('files'));
+         if($request->file('files')){
+            $post_images=$request->file('files');
+            
+            foreach($post_images as $post_image){
+                $image_url=Cloudinary::upload($post_image->getRealPath())->getSecurePath();
+                if(!$post->images()){
+                    $image=Image::where('post_id',$post->id)->first();
+                }else{
+                    $image=New Image();
+                }
+                    $image->post_id=$post->id;
+                    $image->image_url=$image_url;
+                    // DD($request);
+                    $image->save();
+                
+            }
+        }
         return redirect('/posts/' . $post->id);
     }
     
