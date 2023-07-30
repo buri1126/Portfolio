@@ -16,14 +16,20 @@
                     <div class='category_index'>
                         <p>categories</p>
                         @foreach($categories as $category)
-                            <a href="/categories/{{ $category->id }}" class="category">{{ $category->name }}</a>
+                            @if($category->id===1)
+                            @else
+                                <a href="/categories/{{ $category->id }}" class="category">{{ $category->name }}</a>
+                            @endif
                         @endforeach
                     </div>
                     <br>
                     <div class="team_index">
                         <p>teams</p>
                         @foreach($teams as $team)
-                            <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
+                            @if($team->id===1)
+                            @else
+                                <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
+                             @endif
                         @endforeach
                     </div>
                 </div>

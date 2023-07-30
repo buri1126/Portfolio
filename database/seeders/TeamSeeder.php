@@ -17,6 +17,10 @@ class TeamSeeder extends Seeder
     public function run()
     {
         DB::table('teams')->insert([
+             'name' => '---',
+             
+             ]);
+        DB::table('teams')->insert([
              'name' => 'Arsenal',
              
              ]);

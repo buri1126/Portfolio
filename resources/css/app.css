@@ -14,11 +14,12 @@
  }
  .posts{
     margin:0 auto;
-    width:55%;
+    width:75%;
  }
  .post{
      text-align: left;
-     padding-bottom: 20px;
+     margin: 20px;
+     background-color: white;
  }
  .serch{
      
@@ -38,6 +39,9 @@
 .category_index .category,.team_index .team{
     display:flex;
     flex-direction:column;
+    width:60%;
+    margin: 10px auto;
+    background-color: white;
 }
 .rightbar{
     text-align: right;
@@ -46,7 +50,129 @@
 .standings,.fixtures{
     text-align: center;
     margin: 40px;
+    background-color: white
 }
 .rightbar table{
     display: inline
+}
+/*show,edit_post*/
+.show_component,.edit_component{
+    width:50%;
+    margin:0 auto;
+}
+
+.show_component .footer,.edit_component .footer{
+    text-align: center;
+}
+.show_component .user{
+   display: flex;
+}
+
+.title_option{
+     display: flex;
+     justify-content: space-between;
+}
+.post_option{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.post_option .edit{
+    margin-right: 30px;
+}
+.comment{
+    text-align: center
+}
+.comment input{
+    display:inline; 
+}
+
+.comment_content{
+    width:50%;
+    margin: 0 auto;
+}
+/*create*/
+.create_component{
+    width:50%;
+    margin:0 auto;
+}
+
+.create_component textarea{
+    width:100%;
+    height:300px;
+}
+.create_component .title input{
+    width:50%;
+}
+
+.create_option,.edit_option{
+    display:flex;
+    justify-content: space-around;
+    margin-bottom: 30px
+}
+.create_component .image,.edit_component .image{
+    text-align: center;
+    margin-left: 50px;
+}
+.create_component .save,.footer,.edit_component .update,.footer{
+    text-align: center
+}
+/*edit_post*/
+.edit_component .title .input{
+    width: auto;
+}
+.edit_component .content_body input{
+    width:100%;
+    height:4.5em;
+}
+/*profile*/
+.profile_component{
+    width: 75%;
+    margin: 0 auto;
+}
+.profile h2{
+    text-align: center;
+}
+.user_info{
+   width:50%;
+    margin: 0 auto;
+}
+.user_info p{
+    text-align: left;
+}
+.user_favorite{
+    display: flex;
+    justify-content: space-evenly;
+}
+.edit_info{
+    text-align: center;
+}
+.info_link{
+    margin-right: 60px;
+}
+.follow_user button{
+    display:block;
+margin:0 auto;
+}
+/*edit_profile*/
+.edit_profile_component{
+    width:75%;
+    margin:70px auto;
+}
+.edit_profile_component h1,.name{
+   text-align: center;
+}
+.edit_profile_component .info,.image,.back,.save_profile{
+    text-align: center;
+}
+.edit_profile_component .info textarea{
+    width:50%;
+    height:100px;
+}
+.edit_profile_component .favorite{
+    display: flex;
+    justify-content: center;
+}
+.edit_profile_component .favorite .favoriteteam,.favoriteplayer{
+    margin:0 20px;
 }

@@ -9,21 +9,25 @@
     </head>
     <x-app-layout>
     <body>
-        
-        
         <div class="component">
             <div class="leftbar">
                 <div class='category_index'>
                     <p>categories</p>
-                     @foreach($categories as $category)
-                        <a href="/categories/{{ $category->id }}" class="category">{{ $category->name }}</a>
+                    @foreach($categories as $category)
+                        @if($category->id===1)
+                          @else
+                            <a href="/categories/{{ $category->id }}" class="category">{{ $category->name }}</a>
+                         @endif
                     @endforeach
                 </div>
                 <br>
                 <div class="team_index">
                     <p>teams</p>
                     @foreach($teams as $team)
-                        <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
+                        @if($team->id===1)
+                        @else
+                            <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
+                        @endif
                     @endforeach
                 </div>
         </div>
@@ -50,6 +54,9 @@
                             <small>{{ $post->created_at}}</small>
                         </div>
                     @endforeach
+                </div>
+                 <div class="footer">
+                    <a href="/">戻る</a>
                 </div>
         </div>
             <div class="rightbar">
@@ -115,9 +122,7 @@
             </div>
         </div>
         
-            <div class="footer">
-                <a href="/">戻る</a>
-            </div>
+           
         
     </body>
     </x-app-layout>
