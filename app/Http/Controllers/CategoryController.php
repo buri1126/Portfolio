@@ -49,7 +49,7 @@ class CategoryController extends Controller
         if(!empty($keyword))
         {
             // DD($keyword);
-            $query->where('body','like','%'.$keyword.'%')->where('category_id','=',$category->id);
+            $query->where('body','like','%'.$keyword.'%')->orWhere('title','like','%'.$keyword.'%')->where('category_id','=',$category->id);
         }
 
         $category_data=$query->orderBy('created_at','desc')->paginate(5);

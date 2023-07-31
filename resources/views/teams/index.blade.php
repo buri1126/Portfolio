@@ -107,10 +107,13 @@
                             <tr>
                                 @if($fixturedatas)
                                    @foreach($fixturedatas as $fixture)
-                                        <td>{{$fixture['league']['round']}}</td>
-                                        <td>{{$fixture['teams']['home']['name']}}</td>
-                                        <td>vs</td>
-                                        <td>{{$fixture['teams']['away']['name']}}</td>
+                                        <tr>
+                                            <td>{{substr($fixture['fixture']['date'],0,10)}}<br>{{substr($fixture['fixture']['date'],11,5)}}</td>
+                                            <td>{{substr($fixture['league']['round'],17,2)}}</td>
+                                            <td>{{$fixture['teams']['home']['name']}}</td>
+                                            <td>vs</td>
+                                            <td>{{$fixture['teams']['away']['name']}}</td>
+                                        </tr>
                                    @endforeach
                                 @else
                                 <p>今日の試合はありません</p>

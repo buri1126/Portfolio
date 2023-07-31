@@ -49,7 +49,7 @@ class TeamController extends Controller
         if(!empty($keyword))
         {
             // DD($keyword);
-            $query->where('body','like','%'.$keyword.'%')->get();
+            $query->where('body','like','%'.$keyword.'%')->orWhere('title','like','%'.$keyword.'%')->get();
         }
 
         $team_data=$query->orderBy('created_at','desc')->paginate(5);
