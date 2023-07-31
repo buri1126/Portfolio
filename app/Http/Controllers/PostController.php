@@ -39,7 +39,6 @@ class PostController extends Controller
     	],
     ]);
         $fixtures=json_decode($response_fixtures->getBody(),true);
-        
         // 日時取得
          $date=Carbon::now()->format("Y-m-d");
         // 繰り返し処理
@@ -51,20 +50,19 @@ class PostController extends Controller
             if($fixture_date_new===$date){
                 array_push($fixturedatas,$fixturedata);
             }
+            //dd( $fixturedatas);
         }
-        //dd($fixturedatas);
-       
-         //dd($date);
-         
+        // 検索機能
         $keyword = $request->input('keyword');
         $query =Post::query();
         if(!empty($keyword))
         {
-            // DD($keyword);
-            $query->where('body','like','%'.$keyword.'%');
+            $query->where('body','like','%'.$keyword.'%')->orWhere('title','like','%'.$keyword.'%');
         }
         $post=$query->orderBy('created_at','desc')->get();
-    
+        //フォロー中
+        
+        
         return view('posts.index')->with(['posts' => $post,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get(),'standings'=>$standings,'fixturedatas'=>$fixturedatas]);  
     }
     

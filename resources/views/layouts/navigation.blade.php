@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-black border-b border-gray-100 fixed w-full top-0">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -9,24 +9,23 @@
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
-
+ 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
+                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')" class="text-white">
                         {{ __('Timeline') }}
                     </x-nav-link>
-                     <x-nav-link :href="route('profile',['user'=>Auth::id()])" :active="request()->routeIs('profile')">
+                     <x-nav-link :href="route('profile',['user'=>Auth::id()])" :active="request()->routeIs('profile')" class="text-white">
                         {{ __('account') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
-                        {{ __('create') }}
-                    </x-nav-link>
-                    <!--マイページ用のリンク　user_idの受け渡し-->
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+                 <x-nav-link :href="route('create')" :active="request()->routeIs('create')" align="right" class="m-2.5 text-black rounded-sm bg-white">
+                        {{ __('create') }}
+                    </x-nav-link>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">

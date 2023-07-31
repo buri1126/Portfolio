@@ -13,6 +13,11 @@
             <!--<a href='/posts/create'>create</a>-->
             <div class="component">
                 <div class="leftbar">
+                    <div class="post_select">
+                        <button>all</button>
+                        <br>
+                        <button>following</button>
+                    </div>
                     <div class='category_index'>
                         <p>categories</p>
                         @foreach($categories as $category)
@@ -25,20 +30,23 @@
                     <br>
                     <div class="team_index">
                         <p>teams</p>
-                        @foreach($teams as $team)
-                            @if($team->id===1)
-                            @else
-                                <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
-                             @endif
-                        @endforeach
+                        <div class="teams">
+                            @foreach($teams as $team)
+                                @if($team->id===1)
+                                @else
+                                    <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
+                                 @endif
+                            @endforeach
+                        </div>
+                       
                     </div>
                 </div>
                 <div class="index">
                     <div class="serch">
                         <form action="/">
-                            <input type="text" name="keyword" >
+                            <input type="text" name="keyword" placeholder="キーワード" class="serchword">
                             <br>
-                            <input type="submit" value="検索">
+                            <input type="submit" value="検索" class="serch_button">
                             <a href="{{route('index')}}">クリア</a>
                         </form>
                         <hr>
@@ -46,13 +54,13 @@
                     <div class='posts'>
                         @foreach ($posts as $post)
                             <div class='post'>
-                                <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                                <a href="/posts/{{ $post->id }}" class="title">{{ $post->title }}</a>
                                 <br>
-                                <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                                <a href="/categories/{{ $post->category->id }}" class="category">{{ $post->category->name }}</a>
                                 @foreach($post->teams as $team)   
-                                    <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
+                                    <a href="/teams/{{$team->id}}" class="team">{{ $team->name }}</a>
                                 @endforeach
-                                <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
+                                <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
                                 <small>{{ $post->created_at}}</small>
                             </div>
                         @endforeach
@@ -96,6 +104,7 @@
                         <table>
                             <thead>
                                 <tr>
+                                <th>日付</th>
                                 <th>節</th>
                                 <th>ホーム</th>
                                 <th>vs</th>
@@ -106,10 +115,13 @@
                                 <tr>
                                     @if($fixturedatas)
                                        @foreach($fixturedatas as $fixture)
-                                            <td>{{$fixture['league']['round']}}</td>
-                                            <td>{{$fixture['teams']['home']['name']}}</td>
-                                            <td>vs</td>
-                                            <td>{{$fixture['teams']['away']['name']}}</td>
+                                            <tr>
+                                                <td>{{substr($fixture['fixture']['date'],0,10)}}<br>{{substr($fixture['fixture']['date'],11,5)}}</td>
+                                                <td>{{substr($fixture['league']['round'],17,2)}}</td>
+                                                <td>{{$fixture['teams']['home']['name']}}</td>
+                                                <td>vs</td>
+                                                <td>{{$fixture['teams']['away']['name']}}</td>
+                                            </tr>
                                        @endforeach
                                     @else
                                     <p>今日の試合はありません</p>
