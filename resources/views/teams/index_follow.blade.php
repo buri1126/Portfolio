@@ -9,13 +9,11 @@
     </head>
     <x-app-layout>
         <body>
-            <!--移動する-->
-            <!--<a href='/posts/create'>create</a>-->
             <div class="component">
                 <div class="leftbar">
                     <div class="post_select">
+                        <a href="/">home</a>
                         <a href="/teams/{{$team->id}}">all</a>
-                        <br>
                         <a href="/teams/{{$team->id}}/follow">following</a>
                     </div>
                     <div class='category_index'>
@@ -58,6 +56,11 @@
                     </div>
                     <p>フォロー中の投稿</p>
                     <div class='posts'>
+                         @if($postscount===0)
+                            <p>投稿がありません</p>
+                        @else
+                            <p>{{$postscount}}件の投稿があります</p>
+                        @endif
                         @foreach ($posts as $post)
                             @if($post->user->id!==Auth::id())
                                 <div class='post'>

@@ -12,8 +12,8 @@
         <div class="component">
             <div class="leftbar">
                  <div class="post_select">
+                        <a href="/">home</a>
                         <a href="/teams/{{$team->id}}">all</a>
-                        <br>
                         <a href="/teams/{{$team->id}}/follow">following</a>
                     </div>
                 <div class='category_index'>
@@ -54,6 +54,11 @@
                     <hr>
                 </div>
                 <div class='posts'>
+                     @if($postscount===0)
+                            <p>投稿がありません</p>
+                        @else
+                            <p>{{$postscount}}件の投稿があります</p>
+                        @endif
                     @foreach ($posts as $post)
                         <div class='post'>
                             <a href="/posts/{{ $post->id }}" class="title">{{ $post->title }}</a>

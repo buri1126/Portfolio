@@ -48,14 +48,15 @@ class CategoryController extends Controller
          
         //  DD($category);
         $query =Post::where('category_id','=',$category->id);
+         $postscount=$query->count();
         if(!empty($keyword))
         {
             // DD($keyword);
             $query->where('body','like','%'.$keyword.'%')->orWhere('title','like','%'.$keyword.'%')->where('category_id','=',$category->id);
+            $postscount=$query->count();
         }
-
         $category_data=$query->orderBy('created_at','desc')->get();
-        return view('categories.index')->with(['posts' => $category_data,'category'=>$category,'categories'=>$category->get(),'teams'=>$team->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);
+        return view('categories.index')->with(['posts' => $category_data,'postscount'=>$postscount,'category'=>$category,'categories'=>$category->get(),'teams'=>$team->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);
     }
     public function index_follow(Post $post,Request $request,Team $team,Category $category){
          // API処理
@@ -94,12 +95,13 @@ class CategoryController extends Controller
         $query =Post::query();
         //dd(Post::query()->whereIn('user_id',Auth::user()->follows()->pluck('follower_id')));
        $follow_posts=Post::query()->whereIn('user_id',Auth::user()->follows()->pluck('follower_id'))->where('category_id','=',$category->id)->latest()->get();
-        
+         $postscount=$follow_posts->count();
         if(!empty($keyword))
         {
             $follow_posts=Post::query()->whereIn('user_id',Auth::user()->follows()->pluck('follower_id'))->where('category_id','=',$category->id)->where('body','like','%'.$keyword.'%')->orWhere('title','like','%'.$keyword.'%')->latest()->get();
+             $postscount=$follow_posts->count();
         }
         // $post=$follow_posts->orderBy('created_at','desc')->get();
-        return view('categories.index_follow')->with(['posts' => $follow_posts,'keyword',$keyword,'teams'=>$team->get(),'category'=>$category,'categories'=>$category->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);
+        return view('categories.index_follow')->with(['posts' => $follow_posts,'postscount'=>$postscount,'keyword',$keyword,'teams'=>$team->get(),'category'=>$category,'categories'=>$category->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);
     } 
 }
