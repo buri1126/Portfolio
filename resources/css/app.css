@@ -17,7 +17,8 @@
      margin-bottom: 10px;
  }
  
- .category,.team{
+ 
+ .index .category,.index .team{
      border:1px solid gray;
  }
  .posts{
