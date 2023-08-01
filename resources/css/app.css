@@ -46,7 +46,7 @@
      text-align: center;
      margin-top:15px;
  } 
- .leftbar .post_select button{
+ .leftbar .post_select a{
      margin: 0 auto;
      border:1px solid gray;
      background-color: white;

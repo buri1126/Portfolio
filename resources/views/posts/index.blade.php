@@ -38,7 +38,6 @@
                                  @endif
                             @endforeach
                         </div>
-                       
                     </div>
                 </div>
                 <div class="index">

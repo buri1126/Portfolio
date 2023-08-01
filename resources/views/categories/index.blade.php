@@ -40,7 +40,7 @@
                     <div class="serch">
                         @foreach($posts as $post)
                         <form action="/categories/{{$post->category->id}}">
-                            <input type="text" name="keyword" >
+                            <input type="text" name="keyword" placeholder="キーワード" class="serchword">
                             <br>
                             <input type="submit" value="検索">
                             <a href="/categories/{{$post->category->id}}">クリア</a>
@@ -52,13 +52,13 @@
                     <div class='posts'>
                         @foreach ($posts as $post)
                             <div class='post'>
-                                <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                                <a href="/posts/{{ $post->id }}" class="title">{{ $post->title }}</a>
                                 <br>
-                                <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                                <a href="/categories/{{ $post->category->id }}" class="category">{{ $post->category->name }}</a>
                                 @foreach($post->teams as $team)   
-                                    <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
+                                    <a href="/teams/{{$team->id}}" class="category">{{ $team->name }}</a>
                                 @endforeach
-                                <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
+                                <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
                                 <small>{{ $post->created_at}}</small>
                             </div>
                         @endforeach
@@ -93,6 +93,7 @@
                         <table>
                             <thead>
                                 <tr>
+                                <th>日付</th>
                                 <th>節</th>
                                 <th>ホーム</th>
                                 <th>vs</th>

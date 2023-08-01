@@ -28,20 +28,22 @@
                 <br>
                 <div class="team_index">
                     <p>teams</p>
-                    @foreach($teams as $team)
-                        @if($team->id===1)
-                        @else
-                            <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
-                        @endif
-                    @endforeach
+                    <div class="teams">
+                        @foreach($teams as $team)
+                            @if($team->id===1)
+                            @else
+                                <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
-        </div>
+            </div>
             <div class="index">
                 <div class="serch">
                    @foreach($posts as $post)
                         @foreach($post->teams as $team)
                             <form action="/teams/{{$team->id}}">
-                                <input type="text" name="keyword" >
+                                <input type="text" name="keyword" placeholder="キーワード" class="serchword">
                                 <br>
                                 <input type="submit" value="検索">
                                 <a href="/teams/{{$team->id}}">クリア</a>
@@ -49,26 +51,26 @@
                         @endforeach
                     @break
                     @endforeach
-                        <hr>
+                    <hr>
                 </div>
                 <div class='posts'>
                     @foreach ($posts as $post)
                         <div class='post'>
-                            <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                            <a href="/posts/{{ $post->id }}" class="title">{{ $post->title }}</a>
                             <br>
-                            <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                            <a href="/categories/{{ $post->category->id }}" class="category">{{ $post->category->name }}</a>
                             @foreach($post->teams as $team)   
-                                <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
+                                <a href="/teams/{{$team->id}}" class="team">{{ $team->name }}</a>
                             @endforeach
-                            <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
+                            <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
                             <small>{{ $post->created_at}}</small>
                         </div>
                     @endforeach
                 </div>
-                 <div class="footer">
+                <div class="footer">
                     <a href="/">戻る</a>
                 </div>
-        </div>
+            </div>
             <div class="rightbar">
                 <div class='standings'>
                     <h1>standings</h1>
@@ -95,10 +97,11 @@
                     <table>
                         <thead>
                             <tr>
-                            <th>節</th>
-                            <th>ホーム</th>
-                            <th>vs</th>
-                            <th>アウェイ</th>
+                            <th>日付</th>
+                                <th>節</th>
+                                <th>ホーム</th>
+                                <th>vs</th>
+                                <th>アウェイ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -109,6 +112,7 @@
                     </table>
                 </div>
             </div>
+            
         </div>
         
            

@@ -9,8 +9,6 @@
     </head>
     <x-app-layout>
         <body>
-            <!--移動する-->
-            <!--<a href='/posts/create'>create</a>-->
             <div class="component">
                 <div class="leftbar">
                     <div class="post_select">
@@ -23,7 +21,7 @@
                         @foreach($categories as $category)
                             @if($category->id===1)
                             @else
-                                <a href="/categories/{{ $category->id }}" class="category">{{ $category->name }}</a>
+                                <a href="/categories/{{ $category->id }}/follow" class="category">{{ $category->name }}</a>
                             @endif
                         @endforeach
                     </div>
@@ -34,7 +32,7 @@
                             @foreach($teams as $team)
                                 @if($team->id===1)
                                 @else
-                                    <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
+                                    <a href="/teams/{{$team->id}}/follow" class="team">{{$team->name}}</a>
                                  @endif
                             @endforeach
                         </div>
@@ -72,6 +70,10 @@
                             @endif
                         @endforeach
                     </div>
+                    <div class="footer">
+                        <a href="/">戻る</a>
+                    </div>
+
                 </div>
                 <div class="rightbar">
                     <div class='standings'>

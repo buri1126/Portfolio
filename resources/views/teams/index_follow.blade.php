@@ -23,7 +23,7 @@
                         @foreach($categories as $category)
                             @if($category->id===1)
                             @else
-                                <a href="/categories/{{ $category->id }}" class="category">{{ $category->name }}</a>
+                                <a href="/categories/{{ $category->id }}/follow" class="category">{{ $category->name }}</a>
                             @endif
                         @endforeach
                     </div>
@@ -34,7 +34,7 @@
                             @foreach($teams as $team)
                                 @if($team->id===1)
                                 @else
-                                    <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
+                                    <a href="/teams/{{$team->id}}/follow" class="team">{{$team->name}}</a>
                                  @endif
                             @endforeach
                         </div>
@@ -56,7 +56,7 @@
                     @endforeach
                         <hr>
                     </div>
-                    <p>フォロー中</p>
+                    <p>フォロー中の投稿</p>
                     <div class='posts'>
                         @foreach ($posts as $post)
                             @if($post->user->id!==Auth::id())
@@ -73,6 +73,9 @@
                             @else
                             @endif
                         @endforeach
+                    </div>
+                    <div class="footer">
+                        <a href="/">戻る</a>
                     </div>
                 </div>
                 <div class="rightbar">
@@ -116,6 +119,7 @@
                         </table>
                     </div>
                  </div>
+                
             </div>
         </body>
     </x-app-layout>
