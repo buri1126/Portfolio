@@ -8,15 +8,23 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Team;
 use App\Models\Post;
+use App\Models\Follower;
 use App\Http\Requests\UserRequest;
 use Cloudinary;
 
 class UserController extends Controller
 {
-   public function profile(User $user)
+   public function profile(User $user,Follower $follower)
     {
         $Auth=Auth::id();
-        return view('users.profile')->with(['posts' => $user->getByUser(),'user'=>$user,'Auth'=>$Auth]);
+        $follow_count = $user->follows()->count();
+        $follows=$user->follows()->get();
+        //DD($follows);
+        $followed_count = $user->followers()->count();
+        $followers=$user->followers()->get();
+        //dd($followers);
+        return view('users.profile')->with(['posts' => $user->getByUser(),'user'=>$user,'Auth'=>$Auth,'followcounts'=>$follow_count,'followercounts'=>$followed_count,'follows'=>$follows,'followers'=>$followers]);
+        
     }
     
    public function edit(Team $team,Post $post,User $user) 
@@ -37,4 +45,12 @@ class UserController extends Controller
         $user->teams()->sync($input_teams);
         return redirect('/users/' . $user->id);
     }
+    public function follow_follower(User $user,Follower $follower){
+        $follow_count = $user->follows()->count();
+        $follows=$user->follows()->get();
+        $follower_count = $user->followers()->count();
+        $followers=$user->followers()->get();
+        return view('users.follow_follower')->with(['follow_count'=>$follow_count,'follows'=>$follows,'follower_count'=>$follower_count,'followers'=>$followers]);
+    }
+    
 }
