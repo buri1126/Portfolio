@@ -8,13 +8,15 @@
         <link rel="stylesheet" href="{{ asset('/css/style.css')  }}">
     </head>
     <x-app-layout>
-    <body>
-        <div class="component">
+        <body>
+            <!--移動する-->
+            <!--<a href='/posts/create'>create</a>-->
+            <div class="component">
                 <div class="leftbar">
-                     <div class="post_select">
-                        <a href="/categories/{{$category->id}}">all</a>
+                    <div class="post_select">
+                        <a href="/teams/{{$team->id}}">all</a>
                         <br>
-                        <a href="/categories/{{$category->id}}/follow">following</a>
+                        <a href="/teams/{{$team->id}}/follow">following</a>
                     </div>
                     <div class='category_index'>
                         <p>categories</p>
@@ -22,49 +24,55 @@
                             @if($category->id===1)
                             @else
                                 <a href="/categories/{{ $category->id }}" class="category">{{ $category->name }}</a>
-                             @endif
+                            @endif
                         @endforeach
                     </div>
                     <br>
                     <div class="team_index">
                         <p>teams</p>
-                        @foreach($teams as $team)
-                            @if($team->id===1)
-                            @else
-                                <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
-                            @endif
-                        @endforeach
+                        <div class="teams">
+                            @foreach($teams as $team)
+                                @if($team->id===1)
+                                @else
+                                    <a href="/teams/{{$team->id}}" class="team">{{$team->name}}</a>
+                                 @endif
+                            @endforeach
+                        </div>
+                       
                     </div>
                 </div>
                 <div class="index">
                     <div class="serch">
-                        @foreach($posts as $post)
-                        <form action="/categories/{{$post->category->id}}">
-                            <input type="text" name="keyword" >
-                            <br>
-                            <input type="submit" value="検索">
-                            <a href="/categories/{{$post->category->id}}">クリア</a>
-                        </form>
-                        @break
+                         @foreach($posts as $post)
+                        @foreach($post->teams as $team)
+                            <form action="/teams/{{$team->id}}">
+                                <input type="text" name="keyword" >
+                                <br>
+                                <input type="submit" value="検索">
+                                <a href="/teams/{{$team->id}}">クリア</a>
+                            </form>
                         @endforeach
+                    @break
+                    @endforeach
                         <hr>
                     </div>
+                    <p>フォロー中</p>
                     <div class='posts'>
                         @foreach ($posts as $post)
-                            <div class='post'>
-                                <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
-                                <br>
-                                <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-                                @foreach($post->teams as $team)   
-                                    <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
-                                @endforeach
-                                <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
-                                <small>{{ $post->created_at}}</small>
-                            </div>
+                            @if($post->user->id!==Auth::id())
+                                <div class='post'>
+                                    <a href="/posts/{{ $post->id }}" class="title">{{ $post->title }}</a>
+                                    <br>
+                                    <a href="/categories/{{ $post->category->id }}" class="category">{{ $post->category->name }}</a>
+                                    @foreach($post->teams as $team)   
+                                        <a href="/teams/{{$team->id}}" class="team">{{ $team->name }}</a>
+                                    @endforeach
+                                    <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
+                                    <small>{{ $post->created_at}}</small>
+                                </div>
+                            @else
+                            @endif
                         @endforeach
-                    </div>
-                    <div class="footer">
-                        <a href="/">戻る</a>
                     </div>
                 </div>
                 <div class="rightbar">
@@ -85,7 +93,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                               
                             </tbody>
                         </table>
                     </div>
@@ -93,6 +101,7 @@
                         <table>
                             <thead>
                                 <tr>
+                                <th>日付</th>
                                 <th>節</th>
                                 <th>ホーム</th>
                                 <th>vs</th>
@@ -101,13 +110,13 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                   
+                                    
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                  </div>
             </div>
-    </body>
+        </body>
     </x-app-layout>
 </html>

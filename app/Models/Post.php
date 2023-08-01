@@ -72,4 +72,14 @@ class Post extends Model
       return false;
     }
   }
+  public function follow_posts(){
+      foreach($this as $post){
+            if( Auth::user()->isFollowing($post->id)){
+                $follow_posts+=$post;
+            }
+      }
+        return $follow_posts->orderBy('created_at','desc');
+        
+        
+  }
 }
