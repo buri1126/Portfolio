@@ -29,6 +29,7 @@ Route::get('/', function () {
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
+     Route::get('/posts/follow', 'index_follow')->name('index_follow');
     Route::post('/posts', 'store')->name('store');
     Route::get('/posts/create', 'create')->name('create');
     Route::get('/posts/like/{id}','like')->name('like');
@@ -42,6 +43,7 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
 });
 
 Route::get('/categories/{category}', [CategoryController::class,'index']);
+Route::get('/categories/{category}/follow', [CategoryController::class,'index_follow']);
 
 Route::controller(UserController::class)->middleware(['auth'])->group(function(){
     Route::get('/users/{user}/edit','edit')->name('edit');  
@@ -50,6 +52,7 @@ Route::controller(UserController::class)->middleware(['auth'])->group(function()
 });
 
 Route::get('/teams/{team}', [TeamController::class,'index']);
+Route::get('/teams/{team}/follow', [TeamController::class,'index_follow']);
 
 Route::delete('/posts/comments/{comment}', [CommentController::class,'delete']);
 Route::get('/posts/{post}/comments',[CommentController::class,'index']);

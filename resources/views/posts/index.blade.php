@@ -14,9 +14,9 @@
             <div class="component">
                 <div class="leftbar">
                     <div class="post_select">
-                        <button>all</button>
+                        <a href="/">all</a>
                         <br>
-                        <button>following</button>
+                        <a href="/posts/follow">following</a>
                     </div>
                     <div class='category_index'>
                         <p>categories</p>
@@ -84,19 +84,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($standings["response"][0]["league"]["standings"][0] as $standing)
-                                    <tr>
-                                        <td>{{$standing['rank']}}</td>
-                                        <td>{{$standing['team']['name']}}</td>
-                                        <td>{{$standing['all']['played']}}</td>
-                                        <td>{{$standing['all']['win']}}</td>
-                                        <td>{{$standing['all']['draw']}}</td>
-                                        <td>{{$standing['all']['lose']}}</td>
-                                        <td>{{$standing['all']['goals']['for']}}/{{$standing['all']['goals']['against']}}</td>
-                                        <td>{{$standing['goalsDiff']}}</td>
-                                        <td>{{$standing['points']}}</td>
-                                    </tr>
-                                @endforeach
+                                
                             </tbody>
                         </table>
                     </div>
@@ -113,19 +101,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    @if($fixturedatas)
-                                       @foreach($fixturedatas as $fixture)
-                                            <tr>
-                                                <td>{{substr($fixture['fixture']['date'],0,10)}}<br>{{substr($fixture['fixture']['date'],11,5)}}</td>
-                                                <td>{{substr($fixture['league']['round'],17,2)}}</td>
-                                                <td>{{$fixture['teams']['home']['name']}}</td>
-                                                <td>vs</td>
-                                                <td>{{$fixture['teams']['away']['name']}}</td>
-                                            </tr>
-                                       @endforeach
-                                    @else
-                                    <p>今日の試合はありません</p>
-                                    @endif
+                                    
                                 </tr>
                             </tbody>
                         </table>
