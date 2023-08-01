@@ -47,15 +47,16 @@ class TeamController extends Controller
          $keyword = $request->input('keyword');
          
         $query =$team->posts();
-           
+        $postscount=$query->count();
         if(!empty($keyword))
         {
             // DD($keyword);
             $query->where('body','like','%'.$keyword.'%')->orWhere('title','like','%'.$keyword.'%')->get();
+            $postscount=$query->count();
         }
 
         $team_data=$query->orderBy('created_at','desc')->paginate(5);
-        return view('teams.index')->with(['posts' => $team_data,'team'=>$team,'teams'=>$team->get(),'categories'=>$category->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);
+        return view('teams.index')->with(['posts' => $team_data,'postscount'=>$postscount,'team'=>$team,'teams'=>$team->get(),'categories'=>$category->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);
     }
     public function index_follow(Post $post,Request $request,Team $team,Category $category){
          // API処理
@@ -94,13 +95,14 @@ class TeamController extends Controller
         $query =$team->posts;
         //dd(Post::query()->whereIn('user_id',Auth::user()->follows()->pluck('follower_id')));
        $follow_posts=$query->whereIn('user_id',Auth::user()->follows()->pluck('follower_id'));
+        $postscount=$follow_posts->count();
         //dd($follow_posts);
         if(!empty($keyword))
         {
             $follow_posts=$query->whereIn('user_id',Auth::user()->follows()->pluck('follower_id'))->where('team_id','=',$team->id)->latest()->get();
-
+            $postscount=$follow_posts->count();
         }
         // $post=$follow_posts->orderBy('created_at','desc')->get();
-        return view('teams.index_follow')->with(['posts' => $follow_posts,'keyword',$keyword,'team'=>$team,'teams'=>$team->get(),'categories'=>$category->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);
+        return view('teams.index_follow')->with(['posts' => $follow_posts,'postscount'=>$postscount,'keyword',$keyword,'team'=>$team,'teams'=>$team->get(),'categories'=>$category->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);
     } 
 }

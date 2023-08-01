@@ -55,17 +55,21 @@ class PostController extends Controller
         // 検索機能
         $keyword = $request->input('keyword');
         $query =Post::query();
+        $postscount=$query->count();
         if(!empty($keyword))
         {
             $query->where('body','like','%'.$keyword.'%')->orWhere('title','like','%'.$keyword.'%');
+            $postscount=$query->count();
         }
+        //dd($postscount);
         $post=$query->orderBy('created_at','desc')->get();
         //フォロー中
         
         
-        return view('posts.index')->with(['posts' => $post,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);  
+        return view('posts.index')->with(['posts' => $post,'postscount'=>$postscount,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);  
     }
-    public function index_follow(Post $post,Request $request,Team $team,Category $category){
+    public function index_follow(Post $post,Request $request,Team $team,Category $category)
+    {
          // API処理
     //     $client = new \GuzzleHttp\Client();
     //     $response_standings = $client->request('GET', 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2023&league=39', [
@@ -99,16 +103,16 @@ class PostController extends Controller
     //     }
         // 検索機能
         $keyword = $request->input('keyword');
-        $query =Post::query();
         //dd(Post::query()->whereIn('user_id',Auth::user()->follows()->pluck('follower_id')));
        $follow_posts=Post::query()->whereIn('user_id',Auth::user()->follows()->pluck('follower_id'))->latest()->get();
-        
+        $postscount=$follow_posts->count();
         if(!empty($keyword))
         {
             $follow_posts=Post::query()->whereIn('user_id',Auth::user()->follows()->pluck('follower_id'))->where('body','like','%'.$keyword.'%')->orWhere('title','like','%'.$keyword.'%')->latest()->get();
+            $postscount=$follow_posts->count();
         }
-        // $post=$follow_posts->orderBy('created_at','desc')->get();
-        return view('posts.index_follow')->with(['posts' => $follow_posts,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);
+       //dd($postscount);
+        return view('posts.index_follow')->with(['posts' => $follow_posts,'postscount'=>$postscount,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get(),/*'standings'=>$standings,'fixturedatas'=>$fixturedatas*/]);
     } 
     public function show(Post $post ,Image $image,Comment $comment,User $user)
     {
