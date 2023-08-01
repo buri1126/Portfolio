@@ -43,6 +43,10 @@
                     <div class="user_info">
                         <p>{{$user->info}}</p>
                     </div>
+                   <div class="follow_follower">
+                        <a href="{{route('follow',['user'=>$user->id])}}">フォロー中{{$followcounts}}</a>
+                        <a href="{{route('follow',['user'=>$user->id])}}">フォロワー{{$followercounts}}</a>
+                   </div>
                     <div class="edit_info">
                         @if($user->id===$Auth)
                             <a href="/users/{{$user->id}}/edit" class="info_link">edit info</a>
