@@ -20,6 +20,7 @@
  
  .index .category,.index .team{
      border:1px solid gray;
+     border-radius: 3px;
  }
  .posts{
     margin:0 auto;
