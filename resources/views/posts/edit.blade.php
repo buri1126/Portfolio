@@ -18,7 +18,7 @@
                 </div>
                 <div class='content_body'>
                     <h2>本文</h2>
-                    <input type='text' name='post[body]' value="{{ $post->body }}">
+                    <textarea type='text' name='post[body]' >{{ $post->body }}</textarea>
                 </div>
                 <div class="edit_option">
                     <div class="category">
