@@ -20,33 +20,35 @@
                                    {{ csrf_field() }}
                                    {{ method_field('DELETE') }}
                 
-                                   <button type="submit" >フォロー解除</button>
+                                   <button type="submit" class="unfollow">フォロー解除</button>
                                </form>
                            @else
                                <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
                                    {{ csrf_field() }}
-                                   <button type="submit" >フォローする</button>
+                                   <button type="submit" class="follow">フォローする</button>
                                </form>
                            @endif
                         @endif
                     </div>
-                    <div class="user_favorite">
-                        @foreach($user->teams as $team)   
-                            @if($team->id===1)
-                                <p>未設定</p>
-                            @else
-                                <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
-                            @endif
-                         @endforeach
-                         <p>{{$user->favoriteplayer}}</p>
-                    </div>
-                    <div class="user_info">
-                        <p>{{$user->info}}</p>
-                    </div>
-                   <div class="follow_follower">
+                    <div class="follow_follower">
                         <a href="{{route('follow',['user'=>$user->id])}}">フォロー中{{$followcounts}}</a>
                         <a href="{{route('follow',['user'=>$user->id])}}">フォロワー{{$followercounts}}</a>
                    </div>
+                    <div class="user_favorite">
+                        @foreach($user->teams as $team)   
+                            @if($team->id===1)
+                                <p>推しチーム:未設定</p>
+                            @else
+                                <p>推しチーム:<a href="/teams/{{$team->id}}">{{ $team->name }}</a></p>
+                            @endif
+                         @endforeach
+                         <p>推し選手:{{$user->favoriteplayer}}</p>
+                    </div>
+                    <hr>
+                    <div class="user_info">
+                        <p>{{$user->info}}</p>
+                    </div>
+                   
                     <div class="edit_info">
                         @if($user->id===$Auth)
                             <a href="/users/{{$user->id}}/edit" class="info_link">edit info</a>
@@ -56,16 +58,17 @@
                 </div>
                 <hr>
                 <div class='posts'>
+                    <p class="text-center">{{$postscount}}件の投稿があります</p>
+                    <hr>
                     @foreach($posts as $post)
                         <div class='post'>
-                            <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                            <a href="/posts/{{ $post->id }}" class="title">{{ $post->title }}</a>
                             <br>
                             <div class="post_info">
-                                <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                                <a href="/categories/{{ $post->category->id }}" class="category">{{ $post->category->name }}</a>
                                 @foreach($post->teams as $team)   
-                                    <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
+                                    <a href="/teams/{{$team->id}}" class="team">{{ $team->name }}</a>
                                 @endforeach
-                                <p>{{ $post->user->name }}</p>
                             </div>
                          <small>{{ $post->created_at}}</small>
                         </div>

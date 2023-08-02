@@ -23,7 +23,9 @@ class UserController extends Controller
         $followed_count = $user->followers()->count();
         $followers=$user->followers()->get();
         //dd($followers);
-        return view('users.profile')->with(['posts' => $user->getByUser(),'user'=>$user,'Auth'=>$Auth,'followcounts'=>$follow_count,'followercounts'=>$followed_count,'follows'=>$follows,'followers'=>$followers]);
+       
+        $postscount=$user->getByUser()->count();
+        return view('users.profile')->with(['posts' => $user->getByUser(),'postscount'=>$postscount,'user'=>$user,'Auth'=>$Auth,'followcounts'=>$follow_count,'followercounts'=>$followed_count,'follows'=>$follows,'followers'=>$followers]);
         
     }
     
