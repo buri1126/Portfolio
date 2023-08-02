@@ -170,18 +170,17 @@ class PostController extends Controller
         //dd($request->file('files'));
          if($request->file('files')){
             $post_images=$request->file('files');
-            
+            if($post->images()){
+                    $image_delete=Image::where('post_id',$post->id);
+                    $image_delete->delete();
+                }
             foreach($post_images as $post_image){
                 $image_url=Cloudinary::upload($post_image->getRealPath())->getSecurePath();
-                if(!$post->images()){
-                    $image=Image::where('post_id',$post->id)->first();
-                }else{
                     $image=New Image();
-                }
                     $image->post_id=$post->id;
                     $image->image_url=$image_url;
                     // DD($request);
-                    $image->save();
+                    $image->save();   
                 
             }
         }
@@ -207,10 +206,12 @@ class PostController extends Controller
     return redirect()->back();
   }
     
-    public function delete(Post $post)
+    public function delete(Post $post,Comment $comment)
     {
         // DD($post);
         $post->delete();
+        $comment_delete=Comment::where('post_id',$post->id);
+        $comment_delete->delete();
         return redirect('/');
     }
 }

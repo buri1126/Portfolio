@@ -32,7 +32,7 @@
      background-color: white;
  }
  .post .title{
-     font-size: 20px;
+     font-size: 30px;
  }
  .serch{
      
@@ -77,21 +77,36 @@
     border-right:1px solid gray;
 }
 /*show,edit_post*/
+.swiper-container {
+  width: 100%;
+  height:auto;
+}
+.swiper-container img{
+  width: 100%;
+  height: auto;
+}
+
+
 .show_component,.edit_component{
     width:50%;
     margin:65px auto;
 }
-
+.img{
+    width:100%;
+}
 .show_component .footer,.edit_component .footer{
     text-align: center;
 }
 .show_component .user{
    display: flex;
 }
-
+.show_component .like{
+    border-bottom: 1px solid gray;
+}
 .title_option{
      display: flex;
      justify-content: space-between;
+     border-bottom: 1px solid gray;
 }
 .post_option{
     display: flex;
@@ -99,7 +114,24 @@
 }
 
 .post_option .edit{
-    margin-right: 30px;
+    background-color:blue;
+    color:white;
+    width:50px;
+    height: 25px;
+    text-align: center;
+    margin: auto 5px;
+}
+.post_option .delete{
+    text-align: center;
+     background-color:red;
+    color:white;
+     width:50px;
+     height:25px;
+     margin: auto 5px;
+}
+.post_content p{
+    font-size: 20px;
+    overflow-wrap: break-word;
 }
 .comment{
     text-align: center
@@ -112,6 +144,17 @@
     width:50%;
     margin: 0 auto;
 }
+.comment_info{
+    text-align: left
+}
+.comment_body{
+    margin:0 auto;
+}
+.comment_body p{
+    text-align:left;
+     overflow-wrap: break-word;
+}
+
 /*create*/
 .create_component{
     width:50%;
