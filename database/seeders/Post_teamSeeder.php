@@ -17,7 +17,7 @@ class Post_teamSeeder extends Seeder
     {
         DB::table('post_team')->insert([
               'post_id' => 1,
-              'team_id' => 1,
+              'team_id' => 2,
          ]);
         DB::table('post_team')->insert([
              'post_id' => 2,

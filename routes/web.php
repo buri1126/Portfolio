@@ -47,7 +47,8 @@ Route::get('/categories/{category}/follow', [CategoryController::class,'index_fo
 
 Route::controller(UserController::class)->middleware(['auth'])->group(function(){
     Route::get('/users/{user}/edit','edit')->name('edit'); 
-    Route::get('/users/{user}/follow','follow_follower')->name('follow');
+    Route::get('/users/{user}/follow','follow')->name('follow');
+    Route::get('/users/{user}/follower','follower')->name('follower');
     Route::get('/users/{user}','profile')->name('profile');
     Route::put('/users/{user}','update')->name('update');
 });

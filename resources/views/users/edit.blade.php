@@ -15,24 +15,15 @@
                     <h2>{{$user->name}}</h2>
                 </div>
                 <div class="favorite">
+                     <div class="favoriteplayer">
+                        <h2>favoriteplayer</h2>
+                        <input type="text" name="user[favoritePlayer]" placeholder="選手名" value="{{ $user->favoritePlayer }}"/>
+                    </div>
                     <div class="favoriteteam">
                         <h2>favorite team</h2>
-                        <select name="teams_array[]">
-                            @foreach($teams as $team)
-                                @foreach($user->teams as $team_selected)
-                                    @if($team_selected->id===$team->id)
-                                    <option value="{{ $team->id }}" selected>{{ $team->name }}</option>
-                                    @else
-                                    <option value="{{ $team->id }}" >{{ $team->name }}</option>
-                                    @endif
-                                @endforeach
-                            @endforeach
-                        </select>
+                        <input type="text" name="user[favoriteTeam]" placeholder="チーム名" value="{{ $user->favoriteTeam }}"/>
                     </div>
-                    <div class="favoriteplayer">
-                        <h2>favoriteplayer</h2>
-                        <input type="text" name="user[favoriteplayer]" placeholder="選手名" value="{{ $user->favoriteplayer }}"/>
-                    </div>
+                   
                 </div>
                 <br>
                 <div class="info">
