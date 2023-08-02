@@ -10,8 +10,6 @@
         <body>
             <div class="profile_component">
                 <div class="profile">
-                    <img src="{{$user->image_url}}">
-                    <!--あとでサイズ設定-->
                     <h2>{{$user->name}}</h2>
                     <div class="follow_user">
                         @if(Auth::id() != $user->id)
@@ -52,13 +50,16 @@
                     <div class="edit_info">
                         @if($user->id===$Auth)
                             <a href="/users/{{$user->id}}/edit" class="info_link">edit info</a>
-                            <a href="/profile">edit setting</a>
                         @endif
                     </div>
                 </div>
                 <hr>
                 <div class='posts'>
+                    @if($postscount===0)
+                    <p class="text-center">投稿はありません</p>
+                    @else
                     <p class="text-center">{{$postscount}}件の投稿があります</p>
+                    @endif
                     <hr>
                     @foreach($posts as $post)
                         <div class='post'>
