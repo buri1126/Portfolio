@@ -17,7 +17,7 @@
                     </div>
                     <div class="body">
                         <h2>Body</h2>
-                        <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。">{{ old('post.body') }}</textarea>
+                        <textarea name="post[body]" placeholder="今日の試合もお疲れ様です">{{ old('post.body') }}</textarea>
                         <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
                     </div>
                     <div class="create_option">
@@ -42,10 +42,10 @@
                         <input type="file" name="files[]"  multiple>
                     </div>
                     <div class="save">
-                        <input type="submit" value="保存"/>
+                        <input type="submit" value="投稿する"/>
                     </div>
             </form>
-            <div class="footer"><a href="/">back</a></div>
+            <div class="footer"><a href="/">戻る</a></div>
         </div>
     </body>
     </x-app-layout>
