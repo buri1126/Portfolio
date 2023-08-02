@@ -236,9 +236,11 @@
 .edit_info{
     text-align: center;
 }
-.info_link{
-    margin-right: 60px;
+.edit_info a{
+    background-color: green;
+    color:white;
 }
+
 .follow_user button{
     display:block;
 margin:0 auto;

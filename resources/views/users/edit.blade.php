@@ -19,7 +19,13 @@
                         <h2>favorite team</h2>
                         <select name="teams_array[]">
                             @foreach($teams as $team)
-                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                @foreach($user->teams as $team_selected)
+                                    @if($team_selected->id===$team->id)
+                                    <option value="{{ $team->id }}" selected>{{ $team->name }}</option>
+                                    @else
+                                    <option value="{{ $team->id }}" >{{ $team->name }}</option>
+                                    @endif
+                                @endforeach
                             @endforeach
                         </select>
                     </div>
