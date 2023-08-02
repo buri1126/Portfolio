@@ -25,10 +25,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'image_url',
         'info',
-        'team_id',
-        'favoriteplayer',
+        'favoritePlayer',
+        'favoriteTeam',
     ];
     
 
@@ -53,10 +52,6 @@ class User extends Authenticatable
     public function posts()   
     {
         return $this->hasMany(Post::class);  
-    }
-     public function teams()
-    {
-       return $this->belongsToMany(Team::class);
     }
     
     public function comments()
@@ -90,10 +85,10 @@ class User extends Authenticatable
 //   {
 //       return (boolean) $this->follows()->where('user_id', $user_id)->first();
 //   }
-//   public function isFollowed($user_id)
-//   {
-//       return (boolean) $this->followers()->where('user_id', $user_id)->first();
-//   }
+      public function isFollowed($user_id)
+      {
+          return (boolean) $this->followers()->where('user_id', $user_id)->first();
+      }
     
      public function getByUser(int $limit_count = 5)
     {

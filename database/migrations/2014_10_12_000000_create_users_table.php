@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('favoriteplayer')->nullable();
+            $table->string('favoriteTeam')->nullable();
+            $table->string('favoritePlayer')->nullable();
             $table->string('info')->nullable();
-             $table->string('image_url')->nullable();
         });
     }
 

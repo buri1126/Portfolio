@@ -30,17 +30,11 @@
                     </div>
                     <div class="follow_follower">
                         <a href="{{route('follow',['user'=>$user->id])}}">フォロー中{{$followcounts}}</a>
-                        <a href="{{route('follow',['user'=>$user->id])}}">フォロワー{{$followercounts}}</a>
+                        <a href="{{route('follower',['user'=>$user->id])}}">フォロワー{{$followercounts}}</a>
                    </div>
                     <div class="user_favorite">
-                        @foreach($user->teams as $team)   
-                            @if($team->id===1)
-                                <p>推しチーム:未設定</p>
-                            @else
-                                <p>推しチーム:<a href="/teams/{{$team->id}}">{{ $team->name }}</a></p>
-                            @endif
-                         @endforeach
-                         <p>推し選手:{{$user->favoriteplayer}}</p>
+                        <p>推しチーム:{{ $user->favoriteTeam }}</p>
+                         <p>推し選手:{{$user->favoritePlayer}}</p>
                     </div>
                     <hr>
                     <div class="user_info">
