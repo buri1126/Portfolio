@@ -52,7 +52,7 @@
                     <input type="file" name="files[]"  multiple>
                 </div>
                 <div class="update">
-                    <input type="submit" value="保存">
+                    <input type="submit" value="編集する"/>
                 </div>
             </form>
              <div class="footer">
