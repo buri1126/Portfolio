@@ -10,7 +10,7 @@
         <body>
             <div class="profile_component">
                 <div class="profile">
-                    <h2>{{$user->name}}</h2>
+                    <h2 class="user_name">{{$user->name}}</h2>
                     <div class="follow_user">
                         @if(Auth::id() != $user->id)
                            @if (Auth::user()->isFollowing($user->id))
@@ -70,10 +70,10 @@
                         <hr>
                     @endforeach
                  </div>
-                <div class="footer">
+            </div>
+            <div class="footer">
                     <a href="/">戻る</a>
                 </div>
-            </div>
         </body>
     </x-app-layout>
 </html>

@@ -55,9 +55,9 @@
                     <input type="submit" value="編集する"/>
                 </div>
             </form>
-             <div class="footer">
-                <a href="/posts/{{$post->id}}">戻る</a>
-            </div>
+        </div>
+        <div class="footer">
+            <a href="/posts/{{$post->id}}">戻る</a>
         </div>
     </body>
     </x-app-layout>

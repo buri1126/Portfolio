@@ -10,19 +10,21 @@
     </head>
     <x-app-layout>
     <body>
-        <div class="show_component">
-            <div class="img">
+        <div class="img">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             @foreach($images as $image)
                                 <img src="{{$image->image_url}}" class="swiper-slide" alt="画像が読み込めません"/>
                             @endforeach
+                            <div class="swiper-button-prev"></div>
+        		            <div class="swiper-button-next"></div>
+                            <div class="swiper-pagination"></div>
                         </div>
-                        <!--<div class="swiper-pagination"></div>-->
-                		<div class="swiper-button-prev"></div>
-    		            <div class="swiper-button-next"></div>
+                	
                     </div>
-                </div>
+            </div>
+        <div class="show_component">
+            
             <div class="post">
                 <div class="title_option">
                     <h1 class="title">
@@ -112,11 +114,10 @@
                     @endforeach
                 </div>
             </div>
-            <div class="footer">
+        </div>
+        <div class="footer">
                 <a href="/">戻る</a>
             </div>
-        </div>
-        
     </body>
     <script>
         function deletePost(id) {

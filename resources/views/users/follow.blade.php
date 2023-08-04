@@ -51,7 +51,7 @@
                         </div>
                        @endforeach
                    </div>
-                    <div class="back"><a href="{{route('profile',['user'=>Auth::id()])}}">back</a></div>
+                    <div class="footer"><a href="{{route('profile',['user'=>Auth::id()])}}">back</a></div>
 
            </div>
         </body>
