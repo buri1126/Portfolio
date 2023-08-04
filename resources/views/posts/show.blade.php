@@ -57,13 +57,13 @@
                                {{ csrf_field() }}
                                {{ method_field('DELETE') }}
             
-                               <button type="submit" >フォロー解除</button>
+                               <button type="submit" class="unfollow">フォロー解除</button>
                            </form>
                        @else
                            <form action="{{ route('follow', ['user' => $post->user->id]) }}" method="POST">
                                {{ csrf_field() }}
             
-                               <button type="submit" >フォローする</button>
+                               <button type="submit" class="follow">フォローする</button>
                            </form>
                        @endif
                     @endif
@@ -114,10 +114,10 @@
                     @endforeach
                 </div>
             </div>
-        </div>
-        <div class="footer">
+             <div class="footer">
                 <a href="/">戻る</a>
             </div>
+        </div>
     </body>
     <script>
         function deletePost(id) {

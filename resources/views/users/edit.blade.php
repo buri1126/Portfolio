@@ -34,10 +34,11 @@
                     <input type="submit" value="保存"/>
                 </div>
             </form>
-        </div>
-        <div class="back">
+            <div class="footer">
             <a href="/">back</a>
         </div>
+        </div>
+        
     </body>
     </x-app-layout>
 </html>
