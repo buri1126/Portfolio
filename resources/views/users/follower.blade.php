@@ -12,8 +12,13 @@
             
            <div class="follow_follower_component">
                <div class="followers">
-                   <p class="text-center">{{$follower_count}}人にフォローされています</p>
-                   <br>
+                   @if(Auth::id()===$user->id)
+                       <p class="text-center">あなたは{{$follower_count}}人にフォローされています</p>
+                       @else
+                       <p class="text-center">{{$user->name}}は{{$follower_count}}人にフォローされています</p>
+                       @endif
+                       <hr>
+                    <div class="list">
                    @foreach($followers as $follower)
                    <div class="follower">
                         <a href="/users/{{$follower->id}}">{{$follower->name}}</a>
@@ -52,11 +57,13 @@
                         @endif
                     </div>    
                    @endforeach
+                   </div>
                </div>
-           </div>
-            <div class="back">
+                <div class="back">
                 <a href="{{route('profile',['user'=>Auth::id()])}}">back</a>
             </div>
+           </div>
+           
         </body>
     </x-app-layout>
 </html>

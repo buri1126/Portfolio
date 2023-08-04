@@ -30,7 +30,7 @@ class PostSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 2,
          ]);
          DB::table('posts')->insert([
                 'title' => 'title3',
@@ -38,7 +38,7 @@ class PostSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 3,
          ]);
          DB::table('posts')->insert([
                 'title' => 'title4',
@@ -46,7 +46,7 @@ class PostSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 4,
          ]);
          DB::table('posts')->insert([
                 'title' => 'title5',
@@ -54,7 +54,7 @@ class PostSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 5,
          ]);
          DB::table('posts')->insert([
                 'title' => 'title6',
@@ -62,7 +62,7 @@ class PostSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 6,
          ]);
          DB::table('posts')->insert([
                 'title' => 'title7',
@@ -70,7 +70,7 @@ class PostSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 7,
          ]);
          DB::table('posts')->insert([
                 'title' => 'title8',
@@ -78,7 +78,7 @@ class PostSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 8,
          ]);
          DB::table('posts')->insert([
                 'title' => 'title9',
@@ -86,7 +86,7 @@ class PostSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 10,
          ]);
          DB::table('posts')->insert([
                 'title' => 'title10',
@@ -94,7 +94,7 @@ class PostSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 11,
         ]);
 
     }

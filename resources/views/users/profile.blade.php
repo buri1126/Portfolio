@@ -70,10 +70,11 @@
                         <hr>
                     @endforeach
                  </div>
-            </div>
-            <div class="footer">
+                  <div class="footer">
                     <a href="/">戻る</a>
                 </div>
+            </div>
+           
         </body>
     </x-app-layout>
 </html>

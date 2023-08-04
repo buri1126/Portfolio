@@ -7,11 +7,14 @@
 }
 body{
     background-color: black;
+
 }
 /*index*/
 .component{
     display: flex;
-    margin-top: 65px
+    margin-top: 65px;
+    height:100vh;
+
 }
  .index{
      text-align: center;
@@ -22,12 +25,16 @@ body{
  .index .serchword{
      margin-bottom: 10px;
  }
- 
- 
  .index .category,.index .team,.profile_component .category,.profile_component .team{
      border:1px solid gray;
      border-radius: 3px;
  }
+    .component .posts,.profile_component .posts{
+        margin: 0 auto;
+overflow-y: scroll;
+height: 75%;
+width: 75%;
+    }
  .posts{
     margin:0 auto;
     width:75%;
@@ -48,6 +55,9 @@ body{
 .leftbar{
     text-align: left;
      width:15%;
+     margin: 0 auto;
+    overflow-y: scroll;
+    height: 90%;
 }
  
 .category_index,.team_index,.post_select{
@@ -67,6 +77,9 @@ body{
 .rightbar{
     text-align: right;
     width:35%;
+    margin: 0 auto;
+    overflow-y: scroll;
+    height: 90%;
 }
 .standings,.fixtures{
     text-align: center;
@@ -98,6 +111,7 @@ body{
  
 }
 .show_component,.edit_component{
+    height:100vh;
     width:50%;
      margin-top:65px;
     margin-left: auto;
@@ -119,10 +133,10 @@ body{
 .show_component .like{
     border-bottom: 1px solid gray;
 }
-.show_component button{
-    background-color: red;
-    color:white;
-}
+/*.show_component button{*/
+/*    background-color: red;*/
+/*    color:white;*/
+/*}*/
 .title_option{
      display: flex;
      justify-content: space-between;
@@ -177,6 +191,7 @@ body{
 
 /*create*/
 .create_component{
+    height:100vh;
     width:50%;
     margin-top:65px;
     margin-left: auto;
@@ -226,6 +241,7 @@ body{
 }
 /*profile*/
 .profile_component{
+    height:100vh;
     width: 50%;
     margin-top:65px;
     margin-left: auto;
@@ -264,18 +280,19 @@ body{
     display:block;
 margin:0 auto;
 }
-.follow_user .follow{
+ .follow,.follower{
     background-color: white;
     color:black;
     border:1px solid black;
 }
-.follow_user .unfollow{
+ .unfollow{
     background-color: black;
     color:white;
      border:1px solid black;
 }
 /*edit_profile*/
 .edit_profile_component{
+    height:100vh;
     width:75%;
     margin-top:70px;
     margin-left: auto;
@@ -300,10 +317,17 @@ margin:0 auto;
 }
 /*follow_follower*/
 .follow_follower_component{
+    height:100vh;
     width:50%;
     margin-top:65px;
     margin-left: auto;
     margin-right: auto;
+}
+.follow_follower_component .follows,.follow_follower_component .followers{
+    margin: 0 auto;
+overflow-y: scroll;
+height: 90%;
+width: 100%;
 }
 .follow_follower_component .follow,.follow_follower_component .follower{
    text-align: center;
@@ -311,6 +335,7 @@ margin:0 auto;
    border-radius: 2px;
    width:50%;
    margin: 10px auto;
+    padding: 10px 0;
 }
 .list .follows,.list .followers{
     width: 50%;
