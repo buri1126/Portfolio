@@ -9,27 +9,42 @@ body{
     background-color: black;
 
 }
-/*index*/
-.component{
-    display: flex;
-    margin-top: 65px;
-    height:100vh;
-
+*{
+  box-sizing:border-box;
 }
- .index{
-     text-align: center;
-     width:50%;
-     border-left:1px solid gray;
-     border-right:1px solid gray;
- }
- .index .serchword{
-     margin-bottom: 10px;
- }
- .index .category,.index .team,.profile_component .category,.profile_component .team{
+/*index*/
+/*@media (max-width:1000px) {*/
+/*.leftbar{*/
+/*    width:30%;*/
+/*}*/
+/*.index{*/
+/*    width:70%;*/
+/*}*/
+/*.rightbar{*/
+/*    display:none;*/
+/*}*/
+/*}*/
+
+/*.component{*/
+/*    display: flex;*/
+/*    margin-top: 65px;*/
+/*    height:100vh;*/
+
+/*}*/
+ /*.index{*/
+ /*    text-align: center;*/
+ /*    width:50%;*/
+ /*    border-left:1px solid gray;*/
+ /*    border-right:1px solid gray;*/
+ /*}*/
+ /*.index .serchword{*/
+ /*    margin-bottom: 10px;*/
+ /*}*/
+ /*.index .category,.index .team,*/.profile_component .category,.profile_component .team{
      border:1px solid gray;
-     border-radius: 3px;
+     border-radius: 2px;
  }
-    .component .posts,.profile_component .posts{
+    /*.component .posts,*/.profile_component .posts{
         margin: 0 auto;
 overflow-y: scroll;
 height: 75%;
@@ -37,61 +52,62 @@ width: 75%;
     }
  .posts{
     margin:0 auto;
-    width:75%;
+    /*width:75%;*/
  }
- .component .post,.profile_component .post{
+ /*.component .post,*/.profile_component .post{
      text-align: left;
      margin: 20px;
      background-color: white;
  }
- .post .title{
-     font-size: 30px;
- }
- .serch{
+ /*.post .title{*/
+ /*    font-size: 30px;*/
+ /*}*/
+ /*.serch{*/
      
-     text-align: center;
-     margin:20px;
- }
+ /*    text-align: center;*/
+ /*    margin:20px;*/
+ /*}*/
 .leftbar{
-    text-align: left;
-     width:15%;
+    /*text-align: left;*/
+     /*width:15%;*/
      margin: 0 auto;
-    overflow-y: scroll;
-    height: 90%;
+    /*overflow-y: scroll;*/
+    /*height: 90%;*/
 }
  
-.category_index,.team_index,.post_select{
-    text-align: center;
-    margin-top: 20px ;
-}
-.category_index p,.team_index p{
-    border-bottom: 1px solid gray
-}
+/*.category_index,.team_index,.post_select{*/
+/*    text-align: center;*/
+/*    margin-top: 20px ;*/
+/*}*/
+/*.category_index p,.team_index p{*/
+/*    border-bottom: 1px solid gray*/
+/*}*/
 .category_index .category,.team_index .team,.leftbar .post_select a{
-    display:flex;
-    flex-direction:column;
-    width:60%;
+    /*display:flex;*/
+    /*flex-direction:column;*/
+    /*width:60%;*/
     margin: 10px auto;
-    background-color: white;
+    /*background-color: white;*/
+    /*overflow-wrap: break-word;*/
 }
 .rightbar{
-    text-align: right;
-    width:35%;
+    /*text-align: right;*/
+    /*width:35%;*/
     margin: 0 auto;
-    overflow-y: scroll;
-    height: 90%;
+    /*overflow-y: scroll;*/
+    /*height: 90%;*/
 }
-.standings,.fixtures{
-    text-align: center;
-    margin: 40px;
-    background-color: white
-}
-.rightbar table{
-    display: inline;
-}
-.rightbar th,tr{
-    border:1px solid gray;
-}
+/*.standings,.fixtures{*/
+/*    text-align: center;*/
+/*    margin: 40px;*/
+/*    background-color: white*/
+/*}*/
+/*.rightbar table{*/
+/*    display: inline;*/
+/*}*/
+/*.rightbar th,tr{*/
+/*    border:1px solid gray;*/
+/*}*/
 .rightbar td{
     border-right:1px solid gray;
 }
