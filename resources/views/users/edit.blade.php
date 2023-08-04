@@ -8,10 +8,10 @@
     <body>
         <div class="edit_profile_component">
             <h1>プロフィール編集</h1>
-            <form action="/users/{{$user->id}}" method="POST"  enctype="multipart/form-data">
+            <form action="/users/{{$user->id}}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="name">
+                <div class="user_name">
                     <h2>{{$user->name}}</h2>
                 </div>
                 <div class="favorite">
@@ -29,14 +29,14 @@
                 <div class="info">
                     <textarea name="user[info]">{{ $user->info }}</textarea>
                 </div>
-                <div class="image">
-                    <input type="file" name="image">
-                </div>
+                
                 <div class="save_profile">
                     <input type="submit" value="保存"/>
                 </div>
             </form>
-            <div class="back"><a href="/">back</a></div>
+        </div>
+        <div class="back">
+            <a href="/">back</a>
         </div>
     </body>
     </x-app-layout>

@@ -45,7 +45,9 @@
                         <input type="submit" value="投稿する"/>
                     </div>
             </form>
-            <div class="footer"><a href="/">戻る</a></div>
+        </div>
+        <div class="footer">
+            <a href="/">戻る</a>
         </div>
     </body>
     </x-app-layout>
