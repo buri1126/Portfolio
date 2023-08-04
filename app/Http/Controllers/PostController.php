@@ -142,7 +142,7 @@ class PostController extends Controller
             $post_images=$request->file('files');
             foreach($post_images as $post_image){
                 // DD($post_image);
-                $image_url=Cloudinary::upload($post_image->getRealPath())->getSecurePath();
+                $image_url=Cloudinary::upload($post_image->getRealPath(),['folder'=>'assets','width'=>1024,'height'=>640,'crop'=>'pad'])->getSecurePath();
                 $image=New Image();
                 $image->post_id=$post->id;
                 $image->image_url=$image_url;
@@ -175,7 +175,7 @@ class PostController extends Controller
                     $image_delete->delete();
                 }
             foreach($post_images as $post_image){
-                $image_url=Cloudinary::upload($post_image->getRealPath())->getSecurePath();
+                $image_url=Cloudinary::upload($post_image->getRealPath(),['folder'=>'assets','width'=>1024,'height'=>640,'crop'=>'pad'])->getSecurePath();
                     $image=New Image();
                     $image->post_id=$post->id;
                     $image->image_url=$image_url;
