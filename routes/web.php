@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\LeagueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +64,7 @@ Route::post('/posts/{post}/comments',[CommentController::class,'comment']);
 Route::post('users/{user}/follow', [FollowerController::class, 'follow'])->name('follow');
 Route::delete('users/{user}/unfollow',[FollowerController::class, 'unfollow'])->name('unfollow');
 
-
+Route::get('/league',[LeagueController::class,'league'])->name('league');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
