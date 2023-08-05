@@ -7,20 +7,20 @@
     </head>
     <x-app-layout>
     <body>
-        <div class="create_component">
+        <div class="create_component h-screen w-1/2 ">
             <form action="/posts" method="POST" name="post" id="post" enctype="multipart/form-data">
                 @csrf
                     <div class="title">
                         <h2>Title</h2>
-                        <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
+                        <input type="text" class="w-1/2" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
                         <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
                     </div>
                     <div class="body">
                         <h2>Body</h2>
-                        <textarea name="post[body]" placeholder="今日の試合もお疲れ様です">{{ old('post.body') }}</textarea>
+                        <textarea name="post[body]" placeholder="今日の試合もお疲れ様です" class="w-full h-72">{{ old('post.body') }}</textarea>
                         <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
                     </div>
-                    <div class="create_option">
+                    <div class="create_option flex justify-around mb-7">
                         <div class="category">
                             <h2>Category</h2>
                             <select name="post[category_id]">
@@ -38,16 +38,16 @@
                             </select>
                         </div>
                     </div>
-                    <div class="image">
+                    <div class="image text-center ml-12">
                         <input type="file" name="files[]"  multiple>
                     </div>
-                    <div class="save">
+                    <div class="save text-center bg-green-700 w-1/4 text-white">
                         <input type="submit" value="投稿する"/>
                     </div>
             </form>
-        </div>
-        <div class="footer">
-            <a href="/">戻る</a>
+            <div class="footer text-center">
+                <a href="/">戻る</a>
+            </div>
         </div>
     </body>
     </x-app-layout>
