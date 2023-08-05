@@ -7,7 +7,7 @@
     </head>
     <x-app-layout>
     <body>
-        <div class="edit_component">
+        <div class="edit_component h-screen w-3/4 lg:w-1/2 mt-16">
             <h1 class="title">編集画面</h1>
             <form action="/posts/{{ $post->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -18,9 +18,9 @@
                 </div>
                 <div class='content_body'>
                     <h2>本文</h2>
-                    <textarea type='text' name='post[body]' >{{ $post->body }}</textarea>
+                    <textarea type='text' class="w-full h-72"name='post[body]' >{{ $post->body }}</textarea>
                 </div>
-                <div class="edit_option">
+                <div class="edit_option flex flex-row justify-evenly">
                     <div class="category">
                         <h2>Category</h2>
                         <select name="post[category_id]">
@@ -48,16 +48,16 @@
                         </select>
                     </div>
                 </div>
-                <div class="image">
+                <div class="image text-center ml-12">
                     <input type="file" name="files[]"  multiple>
                 </div>
-                <div class="update">
+                <div class="update text-center bg-green-700 w-1/4 text-white">
                     <input type="submit" value="編集する"/>
                 </div>
             </form>
-        </div>
-        <div class="footer">
-            <a href="/posts/{{$post->id}}">戻る</a>
+             <div class="footer text-center">
+                <a href="/posts/{{$post->id}}">戻る</a>
+            </div>
         </div>
     </body>
     </x-app-layout>
