@@ -2,343 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
-/*.footer{*/
-/*    text-align: center;*/
-/*}*/
 body{
    background-color: rgb(243 244 246 );
-
 }
 *{
   box-sizing:border-box;
 }
 /*index*/
-
-
-/*.component{*/
-/*    display: flex;*/
-/*    margin-top: 65px;*/
-/*    height:100vh;*/
-
-/*}*/
- /*.index{*/
- /*    text-align: center;*/
- /*    width:50%;*/
- /*    border-left:1px solid gray;*/
- /*    border-right:1px solid gray;*/
- /*}*/
- /*.index .serchword{*/
- /*    margin-bottom: 10px;*/
- /*}*/
- /*.index .category,.index .team,.profile_component .category,.profile_component .team{*/
- /*    border:1px solid gray;*/
- /*    border-radius: 2px;*/
- /*}*/
     .component .posts,.profile_component .posts{
         margin: 0 auto;
-/*overflow-y: scroll;*/
-/*height: 75%;*/
-/*width: 75%;*/
     }
  .posts{
     margin:0 auto;
-    /*width:75%;*/
  }
- /*.component .post,.profile_component .post{*/
- /*    text-align: left;*/
- /*    margin: 20px;*/
- /*    background-color: white;*/
- /*}*/
- /*.post .title{*/
- /*    font-size: 30px;*/
- /*}*/
- /*.serch{*/
-     
- /*    text-align: center;*/
- /*    margin:20px;*/
- /*}*/
 .leftbar{
-    /*text-align: left;*/
-     /*width:15%;*/
      margin: 0 auto;
-    /*overflow-y: scroll;*/
-    /*height: 90%;*/
 }
- 
-/*.category_index,.team_index,.post_select{*/
-/*    text-align: center;*/
-/*    margin-top: 20px ;*/
-/*}*/
-/*.category_index p,.team_index p{*/
-/*    border-bottom: 1px solid gray*/
-/*}*/
 .category_index .category,.team_index .team,.leftbar .post_select a{
-    /*display:flex;*/
-    /*flex-direction:column;*/
-    /*width:60%;*/
     margin: 10px auto;
-    /*background-color: white;*/
-    /*overflow-wrap: break-word;*/
 }
 .rightbar{
-    /*text-align: right;*/
-    /*width:35%;*/
     margin: 0 auto;
-    /*overflow-y: scroll;*/
-    /*height: 90%;*/
 }
-/*.rightbar .standings,.rightbar .fixtures{*/
-/*    width: 90%;*/
-/*    margin:0 auto;*/
-/*}*/
-/*.standings,.fixtures{*/
-/*    text-align: center;*/
-/*    margin: 40px;*/
-/*    background-color: white*/
-/*}*/
-/*.rightbar table{*/
-/*    display: inline;*/
-/*}*/
-/*.rightbar th,tr{*/
-/*    border:1px solid gray;*/
-/*}*/
-/*.rightbar td{*/
-/*    border-right:1px solid gray;*/
-/*}*/
+
 /*show,edit_post*/
 .swiper-container {
-  /*width: 100%;*/
   height:auto;
 }
 .swiper-container img{
-  /*width: 100%;*/
   height: 100%
 }
 .swiper-slide{
-  /*   display: table-cell;*/
-  /*vertical-align: middle;*/
   background-color: white;
  
 }
 .show_component,.edit_component,.league_component{
-    /*height:100vh;*/
-    /*width:50%;*/
-    /* margin-top:65px;*/
     margin-left: auto;
     margin-right: auto;
 }
 .img{
-    /*display: table;*/
-    /*width:50%;*/
-    /*margin-top:65px;*/
     margin-left: auto;
     margin-right: auto;
 }
-/*.show_component .post{*/
-/*     margin: 20px;*/
-/*}*/
-/*.show_component .user{*/
-/*   display: flex;*/
-/*}*/
-/*.show_component .like{*/
-/*    border-bottom: 1px solid gray;*/
-/*}*/
-/*.show_component button{*/
-/*    background-color: red;*/
-/*    color:white;*/
-/*}*/
-/*.title_option{*/
-/*     display: flex;*/
-/*     justify-content: space-between;*/
-/*     border-bottom: 1px solid gray;*/
-/*}*/
 .post_option{
-    /*display: flex;*/
     justify-content: flex-end;
 }
-
 .post_option .edit{
-    /*background-color:blue;*/
-    /*color:white;*/
-    /*width:50px;*/
-    /*height: 25px;*/
-    /*text-align: center;*/
     margin: auto 5px;
 }
 .post_option .delete{
-    /*text-align: center;*/
-    /* background-color:red;*/
-    /*color:white;*/
-    /* width:50px;*/
-    /* height:25px;*/
      margin: auto 5px;
 }
-/*.post_content p{*/
-/*    font-size: 20px;*/
-/*    overflow-wrap: break-word;*/
-/*}*/
-/*.comment{*/
-/*    text-align: center*/
-/*}*/
-/*.comment input{*/
-/*    display:inline; */
-/*}*/
-
 .comment_content{
-    /*width:50%;*/
     margin: 0 auto;
 }
-/*.comment_info{*/
-/*    text-align: left*/
-/*}*/
 .comment_body{
     margin:0 auto;
 }
-/*.comment_body p{*/
-/*    text-align:left;*/
-/*     overflow-wrap: break-word;*/
-/*}*/
-
 /*create*/
 .create_component{
-    /*height:100vh;*/
-    /*width:50%;*/
     margin-top:65px;
     margin-left: auto;
     margin-right: auto;
 }
-
-/*.create_component textarea{*/
-/*    width:100%;*/
-/*    height:300px;*/
-/*}*/
-/*.create_component .title input{*/
-/*    width:50%;*/
-/*}*/
-
-/*.create_option,.edit_option{*/
-/*    display:flex;*/
-/*    justify-content: space-around;*/
-/*    margin-bottom: 30px*/
-/*}*/
-/*.create_component .image,.edit_component .image{*/
-/*    text-align: center;*/
-/*    margin-left: 50px;*/
-/*}*/
 .create_component .save,.edit_component .update,.edit_profile_component .save_profile{
-    /*text-align: center;*/
-    /*background-color:green;*/
-    /*width: 25%;*/
     margin: 10px auto;
-    /*color:white;*/
 }
 /*edit_post*/
 .edit_component .title input{
     width: auto;
 }
-/*.edit_component .content_body input{*/
-/*    width:100%;*/
-/*    height:4.5em;*/
-/*}*/
-/*.edit_component textarea{*/
-/*    width:100%;*/
-/*    height:300px;*/
-/*}*/
 /*profile*/
 .profile_component{
-    /*height:100vh;*/
-    /*width: 50%;*/
-    /*margin-top:65px;*/
     margin-left: auto;
     margin-right: auto;
     padding-top: 10px;
 }
 .profile{
-    /*background-color: white;*/
     margin-top:10px;
 }
-/*.profile .user_name,*/.edit_profile_component .user_name{
+.edit_profile_component .user_name{
     text-align: center;
     font-size: 30px;
 }
 .user_info{
-   /*width:50%;*/
     margin: 0 auto;
 }
-/*.user_info p{*/
-/*    text-align: left;*/
-/*    overflow-wrap: break-word;*/
-/*}*/
-/*.user_favorite,.follow_follower{*/
-/*    display: flex;*/
-/*    justify-content: space-evenly;*/
-/*}*/
-/*.edit_info{*/
-/*    text-align: center;*/
-/*}*/
-/*.edit_info a{*/
-/*    background-color: green;*/
-/*    color:white;*/
-/*}*/
 
 .follow_user button{
-    /*display:block;*/
 margin:0 auto;
 }
- /*.follow,.follower{*/
-    /*background-color: white;*/
-    /*color:black;*/
-    /*border:1px solid black;*/
-/*}*/
-/* .unfollow{*/
-/*    background-color: black;*/
-/*    color:white;*/
-/*     border:1px solid black;*/
-/*}*/
 /*edit_profile*/
 .edit_profile_component{
-    /*height:100vh;*/
-    /*width:75%;*/
     margin-top:70px;
     margin-left: auto;
     margin-right: auto;
 }
-/*.edit_profile_component h1{*/
-/*   text-align: center;*/
-/*}*/
-/*.edit_profile_component .info,.image,.back,.save_profile{*/
-/*    text-align: center;*/
-/*}*/
-/*.edit_profile_component .info textarea{*/
-/*    width:50%;*/
-/*    height:100px;*/
-/*}*/
-/*.edit_profile_component .favorite{*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
-/*.edit_profile_component .favorite .favoriteteam,.favoriteplayer{*/
-/*    margin:0 20px;*/
-/*}*/
+
 /*follow_follower*/
 .follow_follower_component{
-    /*height:100vh;*/
-    /*width:50%;*/
     margin-top:65px;
     margin-left: auto;
     margin-right: auto;
 }
 .follow_follower_component .follows,.follow_follower_component .followers{
     margin: 0 auto;
-/*overflow-y: scroll;*/
-/*height: 90%;*/
-/*width: 100%;*/
 }
 .follow_follower_component .follow,.follow_follower_component .follower{
-   /*text-align: center;*/
-   /*background-color: white;*/
-   /*border-radius: 2px;*/
-   /*width:50%;*/
    margin: 10px auto;
     padding: 10px 0;
 }
