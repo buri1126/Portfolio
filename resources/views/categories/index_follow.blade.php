@@ -75,7 +75,7 @@
                         @endforeach
                     </div>
                     <div class="footer text-center">
-                        <a href="/">戻る</a>
+                        <a href="#" onclick="history.back(); return false;">戻る</a>
                     </div>
 
                 </div>

@@ -120,12 +120,14 @@ class PostController extends Controller
        
         $image_get=Image::where('post_id','=',$post->id)->get();
         $comment=Comment::Where('post_id','=',$post->id)->get();
-        return view('posts.show')->with(['post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth,'user'=>$user]);
+        $prevUrl = url()->previous();
+        return view('posts.show')->with(['prevUrl'=>$prevUrl,'post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth,'user'=>$user]);
     }
     
    public function create(Category $category,Team $team)
     {
-        return view('posts.create')->with(['categories' => $category->get(),'teams' => $team->get()]);
+        $prevUrl = url()->previous();
+        return view('posts.create')->with(['prevUrl'=>$prevUrl,'categories' => $category->get(),'teams' => $team->get()]);
     }
     
     public function store(PostRequest $request, Post $post)

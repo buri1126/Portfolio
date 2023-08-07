@@ -6,7 +6,7 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-var mySwiper = new Swiper(".swiper-container", {
+let mySwiper = new Swiper(".swiper-container", {
   // オプション設定
   loop: true, // ループ
   speed: 600, // 切り替えスピード(ミリ秒)。
@@ -33,3 +33,4 @@ var mySwiper = new Swiper(".swiper-container", {
     prevEl: ".swiper-button-prev",
   },
 });
+
