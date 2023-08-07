@@ -73,10 +73,10 @@
                     @endforeach
                 </div>
                 <div class="footer text-center">
-                    <a href="/">戻る</a>
+                    <a href="#" onclick="history.back(); return false;">戻る</a>
                 </div>
             </div>
-                <div class="rightbar lg:w-4/12 lg:block hidden h-5/6 text-left overflow-y-scroll ">
+            <div class="rightbar lg:w-4/12 lg:block hidden h-5/6 text-left overflow-y-scroll ">
                     <div class='standings text-center mb-10 bg-white'>
                         <h1 class="text-center">standings</h1>
                         <table class="inline">

@@ -41,6 +41,7 @@ class LeagueController extends Controller
             }
             //dd( $fixturedatas);
         }
-        return view('league')->with(['standings'=>$standings,'fixturedatas'=>$fixturedatas]);
+        $prevUrl = url()->previous();
+        return view('league')->with(['prevUrl'=>$prevUrl,'standings'=>$standings,'fixturedatas'=>$fixturedatas]);
     }
 }

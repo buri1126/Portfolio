@@ -76,8 +76,7 @@
                     </table>
                 </div>
                 <div class="footer text-center">
-                    <a href="{{route('index')}}">戻る</a>
-                </div>
+                     <a href="{{ url($prevUrl) }}">戻る</a>
             </div>
         </body>
     </x-app-layout>

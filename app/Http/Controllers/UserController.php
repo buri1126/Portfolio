@@ -25,7 +25,8 @@ class UserController extends Controller
         //dd($followers);
        
         $postscount=$user->getByUser()->count();
-        return view('users.profile')->with(['posts' => $user->getByUser(),'postscount'=>$postscount,'user'=>$user,'Auth'=>$Auth,'followcounts'=>$follow_count,'followercounts'=>$followed_count,'follows'=>$follows,'followers'=>$followers]);
+        $prevUrl = url()->previous();
+        return view('users.profile')->with(['prevUrl'=>$prevUrl,'posts' => $user->getByUser(),'postscount'=>$postscount,'user'=>$user,'Auth'=>$Auth,'followcounts'=>$follow_count,'followercounts'=>$followed_count,'follows'=>$follows,'followers'=>$followers]);
         
     }
     

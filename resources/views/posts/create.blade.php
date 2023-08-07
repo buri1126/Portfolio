@@ -46,7 +46,7 @@
                     </div>
             </form>
             <div class="footer text-center">
-                <a href="/">戻る</a>
+                <a href="{{ url($prevUrl) }}">戻る</a>
             </div>
         </div>
     </body>
