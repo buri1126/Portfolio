@@ -10,8 +10,8 @@
         <body>
             
             
-           <div class="follow_follower_component">
-               <div class="followers">
+           <div class="follow_follower_component h-screen w-3/4 md:w-1/2">
+               <div class="followers overflow-y-scroll w-full">
                    @if(Auth::id()===$user->id)
                        <p class="text-center">あなたは{{$follower_count}}人にフォローされています</p>
                        @else
@@ -20,7 +20,7 @@
                        <hr>
                     <div class="list">
                    @foreach($followers as $follower)
-                   <div class="follower">
+                   <div class="follower border border-black border-solid text-center bg-white w-3/4 md:w-1/2 rounded-sm">
                         <a href="/users/{{$follower->id}}">{{$follower->name}}</a>
                        @if(Auth::id() != $follower->id)
                            @if (Auth::user()->isFollowing($follower->id))
@@ -59,7 +59,7 @@
                    @endforeach
                    </div>
                </div>
-                <div class="back">
+                <div class="footer text-center">
                 <a href="{{route('profile',['user'=>Auth::id()])}}">back</a>
             </div>
            </div>
