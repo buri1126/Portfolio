@@ -10,48 +10,75 @@
     </head>
     <x-app-layout>
         <body>
-            <div class="component flex mt-16 h-screen">
-                <div class="rightbar lg:w-4/12 lg:block hidden h-5/6 text-left overflow-y-scroll ">
-                    <div class='standings text-center m-10 bg-white'>
-                        <h1>standings</h1>
-                        <table class="inline">
-                            <thead>
-                                <tr class="border border-gray-300 border-solid">
-                                <th class="border border-gray-300 border-solid">順位</th>
-                                <th class="border border-gray-300 border-solid">クラブ</th>
-                                <th class="border border-gray-300 border-solid">試合</th>
-                                <th class="border border-gray-300 border-solid">勝</th>
-                                <th class="border border-gray-300 border-solid">分</th>
-                                <th class="border border-gray-300 border-solid">負</th>
-                                <th class="border border-gray-300 border-solid">+/-</th>
-                                <th class="border border-gray-300 border-solid">差</th>
-                                <th class="border border-gray-300 border-solid">Pts</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!--class="border-r border-gray-300 border-solid"-->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class='fixtures text-center m-10 bg-white'>
-                        <table class="inline">
-                            <thead>
-                                <tr class="border border-gray-300 border-solid">
-                                <th class="border border-gray-300 border-solid">日付</th>
-                                <th class="border border-gray-300 border-solid">節</th>
-                                <th class="border border-gray-300 border-solid">ホーム</th>
-                                <th class="border border-gray-300 border-solid">vs</th>
-                                <th class="border border-gray-300 border-solid">アウェイ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+            <div class="league_component flex flex-col w-3/4 md:w-1/2 mt-16 h-screen">
+                <div class='standings text-center  w-full mb-10'>
+                    <h1 class="text-center">standings</h1>
+                    <table class="w-full bg-white">
+                        <thead>
+                            <tr class="border border-gray-300 border-solid">
+                            <th class="border border-gray-300 border-solid">順位</th>
+                            <th class="border border-gray-300 border-solid">クラブ</th>
+                            <th class="border border-gray-300 border-solid">試合</th>
+                            <th class="border border-gray-300 border-solid">勝</th>
+                            <th class="border border-gray-300 border-solid">分</th>
+                            <th class="border border-gray-300 border-solid">負</th>
+                            <th class="border border-gray-300 border-solid">+/-</th>
+                            <th class="border border-gray-300 border-solid">差</th>
+                            <th class="border border-gray-300 border-solid">Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--class="border-r border-gray-300 border-solid"-->
+                            @foreach($standings["response"][0]["league"]["standings"][0] as $standing)
                                 <tr>
-                                    
+                                    <td class="border border-gray-300 border-solid">{{$standing['rank']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['team']['name']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['played']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['win']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['draw']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['lose']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['goals']['for']}}/{{$standing['all']['goals']['against']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['goalsDiff']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['points']}}</td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                 </div>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class='fixtures text-center w-full'>
+                    <h1 class="text-center">fixtures</h1>
+                    <table class="w-full bg-white">
+                        <thead>
+                            <tr class="border border-gray-300 border-solid">
+                            <th class="border border-gray-300 border-solid">日付</th>
+                            <th class="border border-gray-300 border-solid">節</th>
+                            <th class="border border-gray-300 border-solid">ホーム</th>
+                            <th class="border border-gray-300 border-solid">vs</th>
+                            <th class="border border-gray-300 border-solid">アウェイ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                @if($fixturedatas)
+                                   @foreach($fixturedatas as $fixture)
+                                        <tr>
+                                            <td class="border border-gray-300 border-solid">{{substr($fixture['fixture']['date'],0,10)}}<br>{{substr($fixture['fixture']['date'],11,5)}}</td>
+                                            <td class="border border-gray-300 border-solid">{{substr($fixture['league']['round'],17,2)}}</td>
+                                            <td class="border border-gray-300 border-solid">{{$fixture['teams']['home']['name']}}</td>
+                                            <td class="border border-gray-300 border-solid">vs</td>
+                                            <td class="border border-gray-300 border-solid">{{$fixture['teams']['away']['name']}}</td>
+                                        </tr>
+                                   @endforeach
+                                @else
+                                <p>今日の試合はありません</p>
+                                @endif
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="footer text-center">
+                    <a href="{{route('index')}}">戻る</a>
+                </div>
             </div>
         </body>
     </x-app-layout>

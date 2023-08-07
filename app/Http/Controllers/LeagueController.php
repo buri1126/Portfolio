@@ -29,13 +29,13 @@ class LeagueController extends Controller
     ]);
         $fixtures=json_decode($response_fixtures->getBody(),true);
         // 日時取得
-         $date=Carbon::now()->format("Y-m-d");
+         $date=Carbon::now()->format("Y-m");
         // 繰り返し処理
         $fixturedatas=array();
         for($i=0;$i<380;$i++){
             $fixturedata=$fixtures['response'][$i];
             $fixture_date=$fixtures['response'][$i]['fixture']['date'];
-            $fixture_date_new=substr( $fixture_date,0,10);
+            $fixture_date_new=substr( $fixture_date,0,7);
             if($fixture_date_new===$date){
                 array_push($fixturedatas,$fixturedata);
             }
