@@ -87,6 +87,10 @@ body{
     /*overflow-y: scroll;*/
     /*height: 90%;*/
 }
+/*.rightbar .standings,.rightbar .fixtures{*/
+/*    width: 90%;*/
+/*    margin:0 auto;*/
+/*}*/
 /*.standings,.fixtures{*/
 /*    text-align: center;*/
 /*    margin: 40px;*/
@@ -98,9 +102,9 @@ body{
 /*.rightbar th,tr{*/
 /*    border:1px solid gray;*/
 /*}*/
-.rightbar td{
-    border-right:1px solid gray;
-}
+/*.rightbar td{*/
+/*    border-right:1px solid gray;*/
+/*}*/
 /*show,edit_post*/
 .swiper-container {
   /*width: 100%;*/

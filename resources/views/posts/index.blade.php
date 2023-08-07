@@ -69,8 +69,8 @@
                     </div>
                 </div>
                 <div class="rightbar lg:w-4/12 lg:block hidden h-5/6 text-left overflow-y-scroll ">
-                    <div class='standings text-center m-10 bg-white'>
-                        <h1>standings</h1>
+                    <div class='standings text-center mb-10 bg-white'>
+                        <h1 class="text-center">standings</h1>
                         <table class="inline">
                             <thead>
                                 <tr class="border border-gray-300 border-solid">
@@ -86,11 +86,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!--class="border-r border-gray-300 border-solid"-->
+                                <!--class="border border-gray-300 border-solid"-->
+                                @foreach($standings["response"][0]["league"]["standings"][0] as $standing)
+                                <tr>
+                                    <td class="border border-gray-300 border-solid">{{$standing['rank']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['team']['name']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['played']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['win']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['draw']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['lose']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['goals']['for']}}/{{$standing['all']['goals']['against']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['goalsDiff']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['points']}}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
                     <div class='fixtures text-center m-10 bg-white'>
+                        <h1 class="text-center">fixtures</h1>
                         <table class="inline">
                             <thead>
                                 <tr class="border border-gray-300 border-solid">
@@ -103,7 +117,19 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    
+                                    @if($fixturedatas)
+                                   @foreach($fixturedatas as $fixture)
+                                        <tr>
+                                            <td class="border border-gray-300 border-solid">{{substr($fixture['fixture']['date'],0,10)}}<br>{{substr($fixture['fixture']['date'],11,5)}}</td>
+                                            <td class="border border-gray-300 border-solid">{{substr($fixture['league']['round'],17,2)}}</td>
+                                            <td class="border border-gray-300 border-solid">{{$fixture['teams']['home']['name']}}</td>
+                                            <td class="border border-gray-300 border-solid">vs</td>
+                                            <td class="border border-gray-300 border-solid">{{$fixture['teams']['away']['name']}}</td>
+                                        </tr>
+                                   @endforeach
+                                @else
+                                <p>今日の試合はありません</p>
+                                @endif    
                                 </tr>
                             </tbody>
                         </table>

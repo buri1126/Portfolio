@@ -28,7 +28,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!--class="border-r border-gray-300 border-solid"-->
                             @foreach($standings["response"][0]["league"]["standings"][0] as $standing)
                                 <tr>
                                     <td class="border border-gray-300 border-solid">{{$standing['rank']}}</td>
