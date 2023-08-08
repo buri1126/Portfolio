@@ -18,12 +18,12 @@
                                    {{ csrf_field() }}
                                    {{ method_field('DELETE') }}
                 
-                                   <button type="submit" class="unfollow block bg-black text-white border border-solid border-gray-300">フォロー解除</button>
+                                   <button type="submit" class="unfollow block bg-black text-white ">フォロー解除</button>
                                </form>
                            @else
                                <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
                                    {{ csrf_field() }}
-                                   <button type="submit" class="follow block bg-white text-black border border-solid border-gray-300">フォローする</button>
+                                   <button type="submit" class="follow block bg-white text-black border border-solid border-black">フォローする</button>
                                </form>
                            @endif
                         @endif
@@ -43,11 +43,10 @@
                    
                     <div class="edit_info text-center">
                         @if($user->id===$Auth)
-                            <a href="/users/{{$user->id}}/edit" class="info_link bg-green-700 text-white">edit info</a>
+                            <a href="/users/{{$user->id}}/edit" class="info_link"><button class="bg-green-700 text-white">edit info</button></a>
                         @endif
                     </div>
                 </div>
-                <hr>
                 <div class='posts overflow-y-scroll h-3/4 w-3/4'>
                     @if($postscount===0)
                     <p class="text-center">投稿はありません</p>
