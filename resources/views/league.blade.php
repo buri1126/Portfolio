@@ -13,6 +13,7 @@
             <div class="league_component flex flex-col w-3/4 md:w-1/2 mt-16 h-screen">
                 <div class='standings text-center  w-full mb-10'>
                     <h1 class="text-center">standings</h1>
+                    <p>現在の順位</p>
                     <table class="w-full bg-white">
                         <thead>
                             <tr class="border border-gray-300 border-solid">
@@ -46,6 +47,7 @@
                 </div>
                 <div class='fixtures text-center w-full'>
                     <h1 class="text-center">fixtures</h1>
+                    <p>今月の試合日程</p>
                     <table class="w-full bg-white">
                         <thead>
                             <tr class="border border-gray-300 border-solid">
