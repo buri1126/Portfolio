@@ -27,7 +27,8 @@
                 </div>
                 <br>
                 <div class="info text-center">
-                    <textarea name="user[info]" class="w-1/2 h-25">{{ $user->info }}</textarea>
+                    <textarea name="user[info]" class="w-1/2 h-25" onkeyup="ShowLength(value);">{{ $user->info }}</textarea>
+                        <p id="inputlength">0文字</p>
                 </div>
                 
                 <div class="save_profile text-center bg-green-700 text-white w-1/4">

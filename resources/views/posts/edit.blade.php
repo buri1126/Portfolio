@@ -18,7 +18,8 @@
                 </div>
                 <div class='content_body'>
                     <h2>本文</h2>
-                    <textarea type='text' class="w-full h-72"name='post[body]' >{{ $post->body }}</textarea>
+                    <textarea type='text' class="w-full h-72"name='post[body]' onkeyup="ShowLength(value);">{{ $post->body }}</textarea>
+                        <p><span id="inputlength">0文字</span>/4000文字</p>
                 </div>
                 <div class="edit_option flex flex-row justify-evenly">
                     <div class="category">
@@ -61,4 +62,9 @@
         </div>
     </body>
     </x-app-layout>
+    <script>
+        function ShowLength( str ) {
+           document.getElementById("inputlength").innerHTML = str.length + "文字";
+        }
+    </script>
 </html>
