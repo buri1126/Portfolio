@@ -28,18 +28,23 @@
                 <br>
                 <div class="info text-center">
                     <textarea name="user[info]" class="w-1/2 h-25" onkeyup="ShowLength(value);">{{ $user->info }}</textarea>
-                        <p id="inputlength">0文字</p>
+                        <p><span id="inputlength">{{mb_strlen($user->info)}}文字</span>/300文字</p>
                 </div>
                 
-                <div class="save_profile text-center bg-green-700 text-white w-1/4">
-                    <input type="submit" value="保存"/>
+                <div class="save_profile text-center">
+                    <input type="submit" class="bg-green-700 text-white" value="保存"/>
                 </div>
             </form>
             <div class="footer text-center">
-            <a href="#" onclick="history.back(); return false;">戻る</a>
+            <a href="/users/{{$user->id}}" >戻る</a>
         </div>
         </div>
         
     </body>
     </x-app-layout>
+     <script>
+        function ShowLength( str ) {
+           document.getElementById("inputlength").innerHTML = str.length + "文字";
+        }
+    </script>
 </html>

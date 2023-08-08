@@ -25,7 +25,9 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'user.info' => 'string|max:300',
+            'user.favoriteTeam'=>'nullable|string|max:100',
+            'user.favoritePlayer'=>'nullable|string|max:100',
+            'user.info' => 'nullable|string|max:300',
         ];
     }
 }

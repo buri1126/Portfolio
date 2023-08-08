@@ -37,12 +37,10 @@ class UserController extends Controller
 
     public function update(UserRequest $request, User $user)
     {
-        $input = $request['user'];
-        //dd($input);
         
-        //DD($user);
+        $input = $request['user'];
+        // dd($input);
         $user->fill($input)->save();
-        //DD($user);
         return redirect('/users/' . $user->id);
     }
     public function follow(User $user,Follower $follower){
