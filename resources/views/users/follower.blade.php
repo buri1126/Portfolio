@@ -20,7 +20,7 @@
                        <hr>
                     <div class="list">
                    @foreach($followers as $follower)
-                   <div class="follower border border-black border-solid text-center bg-white w-3/4 md:w-1/2 rounded-sm">
+                   <div class="follower border border-black border-solid text-center bg-white w-3/4 md:w-1/2 hover:scale-110">
                         <a href="/users/{{$follower->id}}">{{$follower->name}}</a>
                        @if(Auth::id() != $follower->id)
                            @if (Auth::user()->isFollowing($follower->id))
@@ -31,13 +31,13 @@
                                    {{ csrf_field() }}
                                    {{ method_field('DELETE') }}
                 
-                                   <button type="submit" class="unfollows">フォロー解除</button>
+                                   <button type="submit" class="unfollows bg-black text-white">フォロー解除</button>
                                </form>
                             @elseif(Auth::id()===$user->id)<!--本人なら-->
                            <small>フォローされています</small>
                                <form action="{{ route('follow', ['user' => $follower->id]) }}" method="POST">
                                    {{ csrf_field() }}
-                                   <button type="submit" class="follows">フォローバック</button>
+                                   <button type="submit" class="follows bg-white text-black border border-solid border-black">フォローバック</button>
                                </form>
                             @else
                                  @if (Auth::user()->isFollowing($follower->id))
@@ -45,12 +45,12 @@
                                        {{ csrf_field() }}
                                        {{ method_field('DELETE') }}
                     
-                                       <button type="submit" class="unfollows">フォロー解除</button>
+                                       <button type="submit" class="unfollows bg-black text-white">フォロー解除</button>
                                    </form>
                                 @else
                                    <form action="{{ route('follow', ['user' => $follower->id]) }}" method="POST">
                                        {{ csrf_field() }}
-                                       <button type="submit" class="follows">フォローする</button>
+                                       <button type="submit" class="follows bg-white text-black border border-solid border-black">フォローする</button>
                                    </form>
                                 @endif
                            @endif
