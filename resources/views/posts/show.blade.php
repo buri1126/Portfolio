@@ -58,13 +58,13 @@
                                {{ csrf_field() }}
                                {{ method_field('DELETE') }}
             
-                               <button type="submit" class="unfollow">フォロー解除</button>
+                               <button type="submit" class="unfollow bg-black text-white">フォロー解除</button>
                            </form>
                        @else
                            <form action="{{ route('follow', ['user' => $post->user->id]) }}" method="POST">
                                {{ csrf_field() }}
             
-                               <button type="submit" class="follow">フォローする</button>
+                               <button type="submit" class="follow bg-white text-black">フォローする</button>
                            </form>
                        @endif
                     @endif
@@ -78,7 +78,7 @@
                   @endif
                 </div>
                 <div class="post_content">
-                    <p class="text-xl break-words">{{ $post->body }}</p>    
+                    <p class="text-xl break-words">{!!nl2br(e($post->body))!!}</p>    
                 </div>
             </div>
             <hr>
