@@ -82,7 +82,7 @@
                 </div>
             </div>
             <hr>
-            <div class="comment text-center overflow-y-scroll h-4/6">
+            <div class="comments text-center overflow-y-scroll h-4/6">
                 <hr>
                 <form action="/posts/{{$post->id}}/comments" method="POST" >
                     @csrf
@@ -96,27 +96,29 @@
                 <hr>
                 <div class="comment_content w-1/2 ">
                     @foreach($comments as $comment)
-                        <div class="comment_info text-left">
-                            <small>{{$comment->created_at}}</small>
-                            <br>
-                            <a href="/users/{{$post->user->id}}">{{$comment->user->name}}より</a>
-                        </div>
-                        <div class="comment_body">
-                             <p class="text-left break-words">{{$comment->body}}</p>
-                        </div>
-                        @if($comment->user->id===$Auth)
-                            <form action="/posts/comments/{{$comment->id}}" id="form_{{ $comment->id }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" onclick="deleteComment({{ $comment->id }})">delete</button> 
-                            </form>
-                        @endif
-                        <hr>
+                        <div class="comment bg-white my-8">
+                            <div class="comment_info text-left">
+                                <small>{{$comment->created_at}}</small>
+                                <br>
+                                <a href="/users/{{$post->user->id}}">{{$comment->user->name}}より</a>
+                            </div>
+                            <div class="comment_body">
+                                 <p class="text-left break-words">{{$comment->body}}</p>
+                            </div>
+                            @if($comment->user->id===Auth::id())
+                                <form action="/posts/comments/{{$comment->id}}" id="form_{{ $comment->id }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" onclick="deleteComment({{ $comment->id }})">delete</button> 
+                                </form>
+                            @endif
+                        </div>    
                     @endforeach
                 </div>
             </div>
              <div class="footer text-center">
-                <a href="{{ url($prevUrl) }}">戻る</a>
+                <a href="/">ホームに戻る</a>
+                 <a href="/users/{{$post->user->id}}">アカウントに戻る</a>
             </div>
         </div>
     </body>

@@ -19,7 +19,7 @@
                 <div class='content_body'>
                     <h2>本文</h2>
                     <textarea type='text' class="w-full h-72"name='post[body]' onkeyup="ShowLength(value);">{{ $post->body }}</textarea>
-                        <p><span id="inputlength">0文字</span>/4000文字</p>
+                        <p><span id="inputlength">{{mb_strlen($post->body)}}文字</span>/4000文字</p>
                 </div>
                 <div class="edit_option flex flex-row justify-evenly">
                     <div class="category">
@@ -52,8 +52,8 @@
                 <div class="image text-center ml-12">
                     <input type="file" name="files[]"  multiple>
                 </div>
-                <div class="update text-center bg-green-700 w-1/4 text-white">
-                    <input type="submit" value="編集する"/>
+                <div class="update text-center ">
+                    <input type="submit" class="bg-green-700 w-1/4 text-white" value="編集する"/>
                 </div>
             </form>
              <div class="footer text-center">

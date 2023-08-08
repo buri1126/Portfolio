@@ -120,8 +120,7 @@ class PostController extends Controller
        
         $image_get=Image::where('post_id','=',$post->id)->get();
         $comment=Comment::Where('post_id','=',$post->id)->get();
-        $prevUrl = url()->previous();
-        return view('posts.show')->with(['prevUrl'=>$prevUrl,'post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth,'user'=>$user]);
+        return view('posts.show')->with(['post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth,'user'=>$user]);
     }
     
    public function create(Category $category,Team $team)
@@ -158,7 +157,6 @@ class PostController extends Controller
     
     public function edit(Post $post,Category $category,Team $team)
     {
-       
         return view('posts.edit')->with(['post' => $post,'categories' => $category->get(),'teams' => $team->get()]);
     }
     
