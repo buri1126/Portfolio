@@ -42,8 +42,8 @@
                     <div class="image text-center ml-12">
                         <input type="file" name="files[]"  multiple>
                     </div>
-                    <div class="save text-center bg-green-700 w-1/4 text-white">
-                        <input type="submit" value="投稿する"/>
+                    <div class="save text-center">
+                        <input type="submit" class="  bg-green-700 w-1/4 text-white" value="投稿する"/>
                     </div>
             </form>
             <div class="footer text-center">
