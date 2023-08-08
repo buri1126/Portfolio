@@ -10,18 +10,18 @@
     <x-app-layout>
         <body>
             <div class="component flex mt-16 h-screen">
-                <div class="leftbar lg:w-2/12 w-3/12 h-5/6 overflow-y-scroll text-left">
+                <div class="leftbar lg:w-2/12 w-3/12 h-5/6 overflow-y-scroll text-left pt-8">
                     <div class="post_select text-center mt-5">
-                        <a href="/" class="flex flex-col w-3/5 bg-white break-words">home</a>
-                        <a href="/" class="flex flex-col w-3/5 bg-white break-words">all</a>
-                        <a href="/posts/follow" class="flex flex-col w-3/5 bg-white break-words">following</a>
+                        <a href="/" class="flex flex-col w-3/5 bg-white break-words rounded-xl">home</a>
+                        <a href="/" class="flex flex-col w-3/5 bg-white break-words rounded-xl">all</a>
+                        <a href="/posts/follow" class="flex flex-col w-3/5 bg-white break-words rounded-xl">following</a>
                     </div>
                     <div class='category_index text-center mt-5'>
                         <p class="border-b border-gray-300 border-solid">categories</p>
                         @foreach($categories as $category)
                             @if($category->id===1)
                             @else
-                                <a href="/categories/{{ $category->id }}/follow" class="category flex flex-col w-3/5 bg-white break-words">{{ $category->name }}</a>
+                                <a href="/categories/{{ $category->id }}/follow" class="category flex flex-col w-3/5 bg-white break-words rounded-xl">{{ $category->name }}</a>
                             @endif
                         @endforeach
                     </div>
@@ -57,10 +57,10 @@
                         @endif
                         @foreach ($posts as $post)
                             @if($post->user->id!==Auth::id())
-                                <div class='post text-left m-5 bg-white'>
-                                    <a href="/posts/{{ $post->id }}" class="title text-3xl">{{ $post->title }}</a>
+                                <div class='post text-left bg-white rounded-xl hover:scale-110'>
+                                    <a href="/posts/{{ $post->id }}" class="title text-3xl ml-8">{{ $post->title }}</a>
                                     <br>
-                                    <a href="/categories/{{ $post->category->id }}" class="category border border-gray-300 rounded-sm">{{ $post->category->name }}</a>
+                                    <a href="/categories/{{ $post->category->id }}" class="category ml-8 border border-gray-300 rounded-sm">{{ $post->category->name }}</a>
                                     @foreach($post->teams as $team)   
                                         <a href="/teams/{{$team->id}}" class="team border border-gray-300 rounded-sm">{{ $team->name }}</a>
                                     @endforeach
@@ -75,7 +75,7 @@
                         <a href="/">戻る</a>
                     </div>
                 </div>
-                <div class="rightbar lg:w-4/12 lg:block hidden h-5/6 text-left overflow-y-scroll ">
+                <div class="rightbar lg:w-4/12 lg:block hidden h-5/6 text-left overflow-y-scroll pt-8">
                     <div class='standings text-center mb-10 bg-white'>
                         <h1 class="text-center">standings</h1>
                         <table class="inline">

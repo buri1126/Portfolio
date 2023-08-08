@@ -17,7 +17,8 @@
                     </div>
                     <div class="body">
                         <h2>Body</h2>
-                        <textarea name="post[body]" placeholder="今日の試合もお疲れ様です" class="w-full h-72">{{ old('post.body') }}</textarea>
+                        <textarea name="post[body]" placeholder="今日の試合もお疲れ様です" class="w-full h-72" onkeyup="ShowLength(value);">{{ old('post.body') }}</textarea>
+                        <p><span id="inputlength">0文字</span>/4000文字</p>
                         <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
                     </div>
                     <div class="create_option flex justify-around mb-7">
@@ -60,6 +61,10 @@
             cloneObj.attr('name', `files[]`);
             cloneObj.appendTo('#post');
            console.log(cloneObj);
+        }
+        
+        function ShowLength( str ) {
+           document.getElementById("inputlength").innerHTML = str.length + "文字";
         }
     </script>
 </html>

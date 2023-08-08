@@ -11,28 +11,28 @@
     <x-app-layout>
         <body>
             <div class="component flex mt-16 h-screen">
-                <div class="leftbar lg:w-2/12 w-3/12 h-5/6 overflow-y-scroll text-left">
+                <div class="leftbar lg:w-2/12 w-3/12 h-5/6 overflow-y-scroll text-left pt-8">
                     <div class="post_select text-center mt-5">
-                        <a href="/" class="flex flex-col w-3/5 bg-white break-words">all</a>
-                        <a href="/posts/follow" class="flex flex-col w-3/5 bg-white break-words">following</a>
+                        <a href="/" class="flex flex-col w-3/5 bg-white break-words  rounded-xl">all</a>
+                        <a href="/posts/follow" class="flex flex-col w-3/5 bg-white break-words  rounded-xl">following</a>
                     </div>
                     <div class='category_index text-center mt-5'>
                         <p class="border-b border-gray-300 border-solid">categories</p>
                         @foreach($categories as $category)
                             @if($category->id===1)
                             @else
-                                <a href="/categories/{{ $category->id }}" class="category flex flex-col w-3/5 bg-white break-words">{{ $category->name }}</a>
+                                <a href="/categories/{{ $category->id }}" class="category flex flex-col w-3/5 bg-white break-words  rounded-xl">{{ $category->name }}</a>
                             @endif
                         @endforeach
                     </div>
                     <br>
                     <div class="team_index text-center mt-5">
-                        <p class="border-b border-gray-300 border-solid">teams</p>
+                        <p class="border-b border-gray-300 border-solid ">teams</p>
                         <div class="teams">
                             @foreach($teams as $team)
                                 @if($team->id===1)
                                 @else
-                                    <a href="/teams/{{$team->id}}" class="team flex flex-col w-3/5 bg-white break-words">{{$team->name}}</a>
+                                    <a href="/teams/{{$team->id}}" class="team flex flex-col w-3/5 bg-white break-words  rounded-xl">{{$team->name}}</a>
                                  @endif
                             @endforeach
                         </div>
@@ -44,7 +44,7 @@
                             <input type="text" name="keyword" placeholder="キーワード" class="serchword mb-2.5">
                             <br>
                             <input type="submit" value="検索" class="serch_button">
-                            <a href="{{route('index')}}">クリア</a>
+                            <a href="{{route('index')}}"><input type="button" value="クリア"  class="serch_button"></a>
                         </form>
                         <hr>
                     </div>
@@ -55,10 +55,10 @@
                             <p>{{$postscount}}件の投稿があります</p>
                         @endif
                         @foreach ($posts as $post)
-                            <div class='post text-left m-5 bg-white'>
-                                <a href="/posts/{{ $post->id }}" class="title text-3xl">{{ $post->title }}</a>
+                            <div class='post text-left bg-white rounded-xl hover:scale-110'>
+                                <a href="/posts/{{ $post->id }}" class="title text-3xl ml-8 ">{{ $post->title }}</a>
                                 <br>
-                                <a href="/categories/{{ $post->category->id }}" class="category border border-gray-300 rounded-sm" >{{ $post->category->name }}</a>
+                                <a href="/categories/{{ $post->category->id }}" class="category border border-gray-300 rounded-sm ml-8" >{{ $post->category->name }}</a>
                                 @foreach($post->teams as $team)   
                                     <a href="/teams/{{$team->id}}" class="team border border-gray-300 border-solid rounded-sm">{{ $team->name }}</a>
                                 @endforeach
@@ -68,8 +68,8 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="rightbar lg:w-4/12 lg:block hidden h-5/6 text-left overflow-y-scroll ">
-                    <div class='standings text-center mb-10 bg-white'>
+                <div class="rightbar lg:w-4/12 lg:block hidden h-5/6 text-left overflow-y-scroll pt-8">
+                    <div class='standings text-center mb-10 bg-white rounded-xl'>
                         <h1 class="text-center">standings</h1>
                         <table class="inline">
                             <thead>
@@ -103,7 +103,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class='fixtures text-center m-10 bg-white'>
+                    <div class='fixtures text-center m-10 bg-white rounded-xl'>
                         <h1 class="text-center">fixtures</h1>
                         <table class="inline">
                             <thead>

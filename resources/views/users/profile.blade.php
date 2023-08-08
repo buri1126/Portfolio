@@ -56,16 +56,16 @@
                     @endif
                     <hr>
                     @foreach($posts as $post)
-                        <div class='post text-left m-5 bg-white'>
-                            <a href="/posts/{{ $post->id }}" class="title">{{ $post->title }}</a>
+                        <div class='post text-left bg-white rounded-xl hover:scale-110'>
+                            <a href="/posts/{{ $post->id }}" class="title ml-8">{{ $post->title }}</a>
                             <br>
                             <div class="post_info">
-                                <a href="/categories/{{ $post->category->id }}" class="category border border-solid border-gray-300">{{ $post->category->name }}</a>
+                                <a href="/categories/{{ $post->category->id }}" class="category ml-8 border border-solid border-gray-300">{{ $post->category->name }}</a>
                                 @foreach($post->teams as $team)   
                                     <a href="/teams/{{$team->id}}" class="team border border-solid border-gray-300">{{ $team->name }}</a>
                                 @endforeach
                             </div>
-                         <small>{{ $post->created_at}}</small>
+                         <small class="ml-8">{{ $post->created_at}}</small>
                         </div>
                         <hr>
                     @endforeach

@@ -34,7 +34,7 @@
                 <!--投稿者専用機能-->
                     <div class="post_option flex ">
                         @if($post->user->id===$Auth)
-                            <a href="/posts/{{ $post->id }}/edit" class="edit bg-blue-600 text-white w-1/2 h-6 text-center">edit</a>
+                            <a href="/posts/{{ $post->id }}/edit"><button class="edit bg-blue-600 text-white text-center">edit</button></a>
                             <div class="delete bg-red-600 text-white w-1/2 text-center">
                             <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                                 @csrf
@@ -124,7 +124,7 @@
         function deletePost(id) {
             'use strict'
            
-       console.log(document.getElementById(`form_${id}`));
+      console.log(document.getElementById(`form_${id}`));
             if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
                 document.getElementById(`form_${id}`).submit();
             }
