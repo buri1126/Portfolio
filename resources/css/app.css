@@ -64,7 +64,7 @@ body{
     justify-content: flex-end;
 }
 .post_option .edit{
-    margin: auto 5px;
+    /*margin: auto 5px;*/
     padding:5px 10px;
     border-radius:5px;
 }
@@ -76,7 +76,7 @@ body{
     border-radius:5px;
 }
 .post_option .delete{
-     margin: auto 5px;
+     /*margin: auto 5px;*/
     padding:5px 10px;
     border-radius:5px;
 }
