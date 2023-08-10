@@ -78,7 +78,7 @@
                   @endif
                 </div>
                 <div class="post_content">
-                    <p class="text-xl break-words">{!!nl2br(e($post->body))!!}</p>    
+                    <p class="text-xl break-words">{!!nl2br($introduction)!!}</p>    
                 </div>
             </div>
             <hr>

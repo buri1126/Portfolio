@@ -38,7 +38,7 @@
                     </div>
                     <hr>
                     <div class="user_info w-1/2">
-                        <p class="text-left break-words">{{$user->info}}</p>
+                        <p class="text-left break-words">{!! nl2br($introduction) !!}</p>
                     </div>
                    
                     <div class="edit_info text-center">
