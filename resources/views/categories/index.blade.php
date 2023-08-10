@@ -58,14 +58,16 @@
                         @foreach ($posts as $post)
                             <div class='post text-left bg-white rounded-xl hover:scale-110'>
                                 <div class="ml-8">
-                                    <a href="/posts/{{ $post->id }}" class="title text-3xl">{{ $post->title }}</a>
+                                    <div class="title">
+                                    <a href="/posts/{{ $post->id }}" class="text-3xl">{{ $post->title }}</a>
+                                    </div>
+                                    <a href="/categories/{{ $post->category->id }}" class="category border border-gray-300 rounded-sm ml-8" >{{ $post->category->name }}</a>
+                                    @foreach($post->teams as $team)   
+                                        <a href="/teams/{{$team->id}}" class="team border border-gray-300 border-solid rounded-sm">{{ $team->name }}</a>
+                                    @endforeach
+                                    <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
+                                    <small>{{ substr($post->created_at,0,16)}}</small>
                                 </div>
-                                <a href="/categories/{{ $post->category->id }}" class="category ml-8 border border-gray-300 rounded-sm">{{ $post->category->name }}</a>
-                                @foreach($post->teams as $team)   
-                                    <a href="/teams/{{$team->id}}" class="team border border-gray-300 border-solid rounded-sm">{{ $team->name }}</a>
-                                @endforeach
-                                <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
-                                <small>{{ $post->created_at}}</small>
                             </div>
                         @endforeach
                     </div>
