@@ -8,13 +8,14 @@
     <x-app-layout>
     <body>
         <div class="edit_component h-screen w-3/4 lg:w-1/2 mt-16">
-            <h1 class="title">編集画面</h1>
+            <h1 class="title text-center text-3xl">投稿編集</h1>
+            <div class="form  bg-white rounded-2xl">
             <form action="/posts/{{ $post->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class='content_title'>
                     <h2>タイトル</h2>
-                    <input type='text' name='post[title]' value="{{ $post->title }}">
+                    <input type='text' class="w-1/2" name='post[title]' value="{{ $post->title }}">
                 </div>
                 <div class='content_body'>
                     <h2>本文</h2>
@@ -56,6 +57,7 @@
                     <input type="submit" class="bg-green-700 w-1/4 text-white" value="編集する"/>
                 </div>
             </form>
+            </div>
              <div class="footer text-center">
                 <a href="/posts/{{$post->id}}">戻る</a>
             </div>
