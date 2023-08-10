@@ -64,7 +64,7 @@
                                     <a href="/teams/{{$team->id}}" class="team border border-gray-300 border-solid rounded-sm">{{ $team->name }}</a>
                                 @endforeach
                                 <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
-                                <small>{{ $post->created_at}}</small>
+                                <small>{{ substr($post->created_at,0,16)}}</small>
                             </div>
                         @endforeach
                     </div>
