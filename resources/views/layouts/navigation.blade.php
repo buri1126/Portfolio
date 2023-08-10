@@ -17,10 +17,10 @@
                         {{ __('Timeline') }}
                     </x-nav-link>
                      <x-nav-link :href="route('profile',['user'=>Auth::id()])" :active="request()->routeIs('profile')" class="text-white">
-                        {{ __('account') }}
+                        {{ __('Account') }}
                     </x-nav-link>
                      <x-nav-link :href="route('league')" :active="request()->routeIs('league')" class="text-white">
-                        {{ __('league') }}
+                        {{ __('League') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -28,7 +28,7 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                  <x-nav-link :href="route('create')" :active="request()->routeIs('create')" align="right" class="m-2.5 text-black rounded-sm bg-white">
-                        {{ __('create') }}
+                        {{ __('Create') }}
                     </x-nav-link>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -100,7 +100,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Setting') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
