@@ -56,8 +56,9 @@
                         @endif
                         @foreach ($posts as $post)
                             <div class='post text-left bg-white rounded-xl hover:scale-110'>
-                                <a href="/posts/{{ $post->id }}" class="title text-3xl ml-8 ">{{ $post->title }}</a>
-                                <br>
+                                <div class="ml-8">
+                                    <a href="/posts/{{ $post->id }}" class="title text-3xl">{{ $post->title }}</a>
+                                </div>
                                 <a href="/categories/{{ $post->category->id }}" class="category border border-gray-300 rounded-sm ml-8" >{{ $post->category->name }}</a>
                                 @foreach($post->teams as $team)   
                                     <a href="/teams/{{$team->id}}" class="team border border-gray-300 border-solid rounded-sm">{{ $team->name }}</a>

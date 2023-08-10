@@ -7,7 +7,8 @@
     <x-app-layout>
     <body>
         <div class="edit_profile_component h-screen w-3/4 lg:w-1/2 ">
-            <h1 class="text-center">プロフィール編集</h1>
+            <h1 class="text-center text-3xl">プロフィール編集</h1>
+            <div class="form  bg-white rounded-2xl">
             <form action="/users/{{$user->id}}" method="POST">
                 @csrf
                 @method('PUT')
@@ -35,6 +36,7 @@
                     <input type="submit" class="bg-green-700 text-white" value="保存"/>
                 </div>
             </form>
+            </div>
             <div class="footer text-center">
             <a href="/users/{{$user->id}}" >戻る</a>
         </div>

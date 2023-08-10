@@ -27,12 +27,21 @@
         <div class="show_component h-screen w-3/4 lg:w-1/2 mt-16">
            
             <div class="post m-5">
-                <div class="title_option flex justify-between border-b border-solid border-gray-300">
+                <div class="title_option  border-b border-solid border-gray-300">
                     <h1 class="title text-3xl">
                     {{ $post->title }}
                 </h1>
+                    
+                </div>
+                <div class="flex justify-between">
+                    <div class="category_team">
+                    <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                        @foreach($post->teams as $team)   
+                            <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
+                        @endforeach
+                    </div>
                 <!--投稿者専用機能-->
-                    <div class="post_option flex ">
+                <div class="post_option flex ">
                         @if($post->user->id===$Auth)
                             <a href="/posts/{{ $post->id }}/edit"><button class="edit bg-blue-600 text-white text-center">edit</button></a>
                             <div class="delete bg-red-600 text-white w-1/2 text-center">
@@ -43,13 +52,8 @@
                             </form>
                             </div>
                         @endif
+                    </div>
                 </div>
-                </div>
-                <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-                @foreach($post->teams as $team)   
-                    <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
-                @endforeach
-                <br>
                 <div class="user flex">
                     <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
                     @if(Auth::id() != $post->user->id)
