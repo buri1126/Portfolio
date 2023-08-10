@@ -90,6 +90,20 @@ class User extends Authenticatable
           return (boolean) $this->followers()->where('user_id', $user_id)->first();
       }
     
+    public  static function convertLink($plane_text)
+    {
+        //URL抽出の正規表現
+        $pattern = '/https?:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+/';
+
+        //該当する文字列に処理
+        $convert_text = preg_replace_callback($pattern,function ($matches) {
+
+            return '<a href="'.$matches[0].'" class="info_link">'.$matches[0].'</a>';
+        },htmlspecialchars($plane_text));
+
+        return $convert_text;
+    }
+    
      public function getByUser(int $limit_count = 5)
     {
          return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
