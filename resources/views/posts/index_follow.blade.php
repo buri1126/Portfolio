@@ -62,7 +62,7 @@
                                     <div class="title">
                                     <a href="/posts/{{ $post->id }}" class="text-3xl">{{ $post->title }}</a>
                                     </div>
-                                    <a href="/categories/{{ $post->category->id }}" class="category border border-gray-300 rounded-sm ml-8" >{{ $post->category->name }}</a>
+                                    <a href="/categories/{{ $post->category->id }}" class="category border border-gray-300 rounded-sm" >{{ $post->category->name }}</a>
                                     @foreach($post->teams as $team)   
                                         <a href="/teams/{{$team->id}}" class="team border border-gray-300 border-solid rounded-sm">{{ $team->name }}</a>
                                     @endforeach
