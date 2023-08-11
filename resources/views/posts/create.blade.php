@@ -7,7 +7,7 @@
     </head>
     <x-app-layout>
     <body>
-        <div class="create_component h-screen w-1/2">
+        <div class="create_component h-screen w-3/4 lg:w-1/2">
             <div class="form  bg-white rounded-2xl mt-24">
                 <form action="/posts" method="POST" name="post" id="post" enctype="multipart/form-data">
                     @csrf
@@ -22,7 +22,7 @@
                             <p><span id="inputlength">0文字</span>/4000文字</p>
                             <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
                         </div>
-                        <div class="create_option flex justify-around mb-7">
+                        <div class="create_option flex justify-around mb-7 flex-col md:flex-row items-center">
                             <div class="category">
                                 <h2>Category</h2>
                                 <select name="post[category_id]">

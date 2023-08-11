@@ -15,7 +15,7 @@
                 <div class="user_name">
                     <h2>{{$user->name}}</h2>
                 </div>
-                <div class="favorite flex justify-center">
+                <div class="favorite flex justify-center flex-col md:flex-row items-center">
                      <div class="favoriteplayer mx-5">
                         <h2>favoriteplayer</h2>
                         <input type="text" name="user[favoritePlayer]" placeholder="選手名" value="{{ $user->favoritePlayer }}"/>

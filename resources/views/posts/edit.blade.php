@@ -22,7 +22,7 @@
                     <textarea type='text' class="w-full h-72"name='post[body]' onkeyup="ShowLength(value);">{{ $post->body }}</textarea>
                         <p><span id="inputlength">{{mb_strlen($post->body)}}文字</span>/4000文字</p>
                 </div>
-                <div class="edit_option flex flex-row justify-evenly">
+                <div class="edit_option flex flex-col md:flex-row items-center justify-evenly">
                     <div class="category">
                         <h2>Category</h2>
                         <select name="post[category_id]">
