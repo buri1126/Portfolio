@@ -35,9 +35,9 @@
                 </div>
                 <div class="flex justify-between">
                     <div class="category_team">
-                    <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                    <a class="category" href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                         @foreach($post->teams as $team)   
-                            <a href="/teams/{{$team->id}}">{{ $team->name }}</a>
+                            <a class="team" href="/teams/{{$team->id}}">{{ $team->name }}</a>
                         @endforeach
                     </div>
                 <!--投稿者専用機能-->
