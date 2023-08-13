@@ -57,6 +57,10 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
     </script>
     <script>
+        document.querySelector("button").addEventListener("click", () => {
+          document.querySelector("input").click();
+        });
+        
         function elementClone() {
             
             let cloneObj = $($('input[name="files[]"]')[0]).clone();

@@ -22,6 +22,24 @@ body{
   .component .post:hover,.profile_component .post:hover{
       box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
  }
+ .component .index .category,.component .index .team,.profile_component .category,.profile_component .team{
+    position: relative;
+    display: inline-block;
+    padding: 0 0.5rem 0 2rem;
+    color: #fff;
+    border-radius: 50px 0 0 50px;
+    background: black;
+ }
+ .component .index .category:before,.component .index .team:before,.profile_component .category:before,.profile_component .team:before{
+     position: absolute;
+  top: calc(50% - 7px);
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  content: '';
+  border-radius: 50%;
+  background: #fff;
+ }
  .serch_button{
      padding:3px 10px;
      border-radius:5px;
