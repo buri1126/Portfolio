@@ -44,11 +44,11 @@
                 <div class="post_option flex ">
                         @if($post->user->id===$Auth)
                             <a href="/posts/{{ $post->id }}/edit"><button class="edit bg-blue-600 text-white text-center">edit</button></a>
-                            <div class="delete bg-red-600 text-white w-1/2 text-center">
+                            <div>
                             <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" onclick="deletePost({{ $post->id }})" >delete</button> 
+                                <button type="button" onclick="deletePost({{ $post->id }})" class="delete bg-red-600 text-white text-center">delete</button> 
                             </form>
                             </div>
                         @endif
@@ -92,7 +92,7 @@
                     @csrf
                     <div class="comment_form">
                         <h2>comment</h2>
-                        <textarea name="comment[body]"></textarea>
+                        <textarea name="comment[body]" class="w-1/2"></textarea>
                         <br>
                         <input class="inline" type="submit" value="コメントする"/>
                     </div>
@@ -113,7 +113,7 @@
                                 <form action="/posts/comments/{{$comment->id}}" id="form_{{ $comment->id }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" onclick="deleteComment({{ $comment->id }})">delete</button> 
+                                    <button type="button" onclick="deleteComment({{ $comment->id }})" class="delete bg-red-600 text-white text-center">delete</button> 
                                 </form>
                             @endif
                         </div>    

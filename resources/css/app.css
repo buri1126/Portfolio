@@ -83,7 +83,7 @@ body{
 .post_option{
     justify-content: flex-end;
 }
-.post_option .edit{
+.post_option .edit,.post_option .delete,.comment_content .delete{
     /*margin: auto 5px;*/
     padding:5px 10px;
     border-radius:5px;
@@ -95,13 +95,8 @@ body{
     padding:5px 10px;
     border-radius:5px;
 }
-.post_option .delete{
-     /*margin: auto 5px;*/
-    padding:5px 10px;
-    border-radius:5px;
-}
 .comment{
-    border-radius:5px;
+    border-radius:10px;
 }
 .comment_content{
     margin: 0 auto;
