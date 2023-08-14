@@ -57,9 +57,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
     </script>
     <script>
-        document.querySelector("button").addEventListener("click", () => {
-          document.querySelector("input").click();
-        });
         
         function elementClone() {
             
