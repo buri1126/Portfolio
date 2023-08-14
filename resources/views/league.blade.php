@@ -10,7 +10,7 @@
     </head>
     <x-app-layout>
         <body>
-            <div class="league_component flex flex-col w-3/4 md:w-1/2 mt-16 h-screen">
+            <div class="league_component flex flex-col w-11/12 md:w-1/2 mt-16 h-screen">
                 <div class='standings text-center  w-full mb-10'>
                     <h1 class="text-center">standings</h1>
                     <p>現在の順位</p>
@@ -32,7 +32,7 @@
                             @foreach($standings["response"][0]["league"]["standings"][0] as $standing)
                                 <tr>
                                     <td class="border border-gray-300 border-solid">{{$standing['rank']}}</td>
-                                    <td class="border border-gray-300 border-solid">{{$standing['team']['name']}}</td>
+                                    <td class="border border-gray-300 border-solid"><img src="{{$standing['team']['logo']}}" class="w-1/12 inline">{{$standing['team']['name']}}</td>
                                     <td class="border border-gray-300 border-solid">{{$standing['all']['played']}}</td>
                                     <td class="border border-gray-300 border-solid">{{$standing['all']['win']}}</td>
                                     <td class="border border-gray-300 border-solid">{{$standing['all']['draw']}}</td>
@@ -65,9 +65,45 @@
                                         <tr>
                                             <td class="border border-gray-300 border-solid">{{substr($fixture['fixture']['date'],0,10)}}<br>{{substr($fixture['fixture']['date'],11,5)}}</td>
                                             <td class="border border-gray-300 border-solid">{{substr($fixture['league']['round'],17,2)}}</td>
-                                            <td class="border border-gray-300 border-solid">{{$fixture['teams']['home']['name']}}</td>
+                                            @if($fixture['teams']['home']['winner']===true)
+                                            <td class="border border-gray-300 border-solid bg-white text-black">
+                                                <img src="{{$fixture['teams']['home']['logo']}}" class="inline w-1/12">
+                                                {{$fixture['teams']['home']['name']}}
+                                                <span class="ml-2">{{$fixture['goals']['home']}}</span>
+                                            </td>
+                                            @elseif($fixture['teams']['home']['winner']===false)
+                                            <td class="border border-gray-300 border-solid bg-black text-white">
+                                                <img src="{{$fixture['teams']['home']['logo']}}" class="inline w-1/12">
+                                                {{$fixture['teams']['home']['name']}}
+                                                <span class="ml-2">{{$fixture['goals']['home']}}</span>
+                                                </td>
+                                            @else
+                                            <td class="border border-gray-300 border-solid">
+                                                <img src="{{$fixture['teams']['home']['logo']}}" class="inline w-1/12">
+                                                {{$fixture['teams']['home']['name']}}
+                                                <span class="ml-2">{{$fixture['goals']['home']}}</span>
+                                                </td>
+                                            @endif
                                             <td class="border border-gray-300 border-solid">vs</td>
-                                            <td class="border border-gray-300 border-solid">{{$fixture['teams']['away']['name']}}</td>
+                                            @if($fixture['teams']['away']['winner']===true)
+                                            <td class="border border-gray-300 border-solid bg-white text-black">
+                                                <span class="mr-2">{{$fixture['goals']['away']}}</span>
+                                                {{$fixture['teams']['away']['name']}}
+                                                <img src="{{$fixture['teams']['away']['logo']}}" class="inline w-1/12">
+                                            </td>
+                                            @elseif($fixture['teams']['away']['winner']===false)
+                                            <td class="border border-gray-300 border-solid bg-black text-white">
+                                                <span class="mr-2">{{$fixture['goals']['away']}}</span>
+                                                {{$fixture['teams']['away']['name']}}
+                                                <img src="{{$fixture['teams']['away']['logo']}}" class="inline w-1/12">
+                                            </td>
+                                            @else
+                                            <td class="border border-gray-300 border-solid">
+                                                <span class="mr-2">{{$fixture['goals']['away']}}</span>
+                                                {{$fixture['teams']['away']['name']}}
+                                                <img src="{{$fixture['teams']['away']['logo']}}" class="inline w-1/12">
+                                            </td>
+                                            @endif
                                         </tr>
                                    @endforeach
                                 @else

@@ -135,11 +135,23 @@
                                     @if($fixturedatas)
                                    @foreach($fixturedatas as $fixture)
                                         <tr>
-                                            <td class="border border-gray-300 border-solid">{{substr($fixture['fixture']['date'],0,10)}}<br>{{substr($fixture['fixture']['date'],11,5)}}</td>
+                                             <td class="border border-gray-300 border-solid">{{substr($fixture['fixture']['date'],0,10)}}<br>{{substr($fixture['fixture']['date'],11,5)}}</td>
                                             <td class="border border-gray-300 border-solid">{{substr($fixture['league']['round'],17,2)}}</td>
-                                            <td class="border border-gray-300 border-solid">{{$fixture['teams']['home']['name']}}</td>
+                                            @if($fixture['teams']['home']['winner']===true)
+                                            <td class="border border-gray-300 border-solid bg-white text-black">{{$fixture['teams']['home']['name']}}<span class="ml-2">{{$fixture['goals']['home']}}</span></td>
+                                            @elseif($fixture['teams']['home']['winner']===false)
+                                            <td class="border border-gray-300 border-solid bg-black text-white">{{$fixture['teams']['home']['name']}}<span class="ml-2">{{$fixture['goals']['home']}}</span></td>
+                                            @else
+                                            <td class="border border-gray-300 border-solid">{{$fixture['teams']['home']['name']}}<span class="ml-2">{{$fixture['goals']['home']}}</span></td>
+                                            @endif
                                             <td class="border border-gray-300 border-solid">vs</td>
-                                            <td class="border border-gray-300 border-solid">{{$fixture['teams']['away']['name']}}</td>
+                                            @if($fixture['teams']['away']['winner']===true)
+                                            <td class="border border-gray-300 border-solid bg-white text-black"><span class="mr-2">{{$fixture['goals']['away']}}</span>{{$fixture['teams']['away']['name']}}</td>
+                                            @elseif($fixture['teams']['away']['winner']===false)
+                                            <td class="border border-gray-300 border-solid bg-black text-white"><span class="mr-2">{{$fixture['goals']['away']}}</span>{{$fixture['teams']['away']['name']}}</td>
+                                            @else
+                                            <td class="border border-gray-300 border-solid"><span class="mr-2">{{$fixture['goals']['away']}}</span>{{$fixture['teams']['away']['name']}}</td>
+                                            @endif
                                         </tr>
                                    @endforeach
                                 @else
