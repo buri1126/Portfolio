@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('/css/style.css')  }}">
+        <script src="https://kit.fontawesome.com/e881b85793.js" crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
         <body>
@@ -66,6 +67,10 @@
                                     @endforeach
                                     <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
                                     <small>{{ substr($post->created_at,0,16)}}</small>
+                                    <div class="flex ">
+                                        <p><span class="fa-solid fa-heart" style="color: #ff0000;"></span>{{$post->likes->count()}}</p>
+                                        <p class="ml-4"><span class="fa-regular fa-comment"></span>{{$post->comments->count()}}</p>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

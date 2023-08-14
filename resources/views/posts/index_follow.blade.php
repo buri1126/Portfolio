@@ -68,6 +68,10 @@
                                     @endforeach
                                     <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
                                     <small>{{ substr($post->created_at,0,16)}}</small>
+                                    <div class="flex ">
+                                        <p><span class="fa-solid fa-heart" style="color: #ff0000;"></span>{{$post->likes->count()}}</p>
+                                        <p class="ml-4"><span class="fa-regular fa-comment"></span>{{$post->comments->count()}}</p>
+                                    </div>
                                 </div>
                             </div>
                             @else
