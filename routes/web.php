@@ -27,12 +27,12 @@ Route::get('/', function () {
 });
 
 
-
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');
      Route::get('/posts/follow', 'index_follow')->name('index_follow');
     Route::post('/posts', 'store')->name('store');
     Route::get('/posts/create', 'create')->name('create');
+    Route::post('/like', 'like')->name('posts.like');
     Route::get('/posts/like/{id}','like')->name('like');
     Route::get('/posts/unlike/{id}','unlike')->name('unlike');
     Route::get('/posts/{post}', 'show')->name('show');
