@@ -3,11 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>Football review</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
         <script src="https://kit.fontawesome.com/e881b85793.js" crossorigin="anonymous"></script>
+        <script   src="https://code.jquery.com/jquery-3.7.0.min.js"   integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="   crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
     <body>
@@ -75,11 +78,17 @@
                 </div>
                 <small>{{ $post->created_at}}</small>
                 <div class="like border-b border-solid border-gray-300">
-                  @if($post->is_liked_by_auth_user())
-                    <a href="{{ route('unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいねを取り消す<span class="fa-solid fa-heart" style="color: #ff0000;"></span><span class="badge">{{ $post->likes->count() }}</span></a>
-                  @else
-                    <a href="{{ route('like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="fa-regular fa-heart" style="color: #050505;"></span><span class="badge">{{ $post->likes->count() }}</span></a>
-                  @endif
+                    @if (!$post->isLikedBy(Auth::user()))
+                    <span class="likes">
+                        <i class="fa-solid fa-heart like-toggle" data-post-id="{{ $post->id }}"></i>
+                        <span class="like-counter">{{$post->likes->count()}}</span>
+                    </span>
+                 @else
+                    <span class="likes">
+                        <i class="fa-solid fa-heart like-toggle liked" data-post-id="{{ $post->id }}"></i>
+                        <span class="like-counter">{{$post->likes->count()}}</span>
+                    </span>
+                 @endif
                 </div>
                 <div class="post_content">
                     <p class="text-xl break-words">{!!nl2br($introduction)!!}</p>    
@@ -127,6 +136,33 @@
         </div>
     </body>
     <script>
+    $(function () {
+  let like = $('.like-toggle'); 
+  let likePostId; 
+  like.on('click', function () { 
+    let $this = $(this);
+    likePostId = $this.data('post-id'); 
+
+    $.ajax({
+      headers: { 
+        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+      }, 
+      url: '/like',
+      method: 'POST', 
+      data: {
+        'post_id': likePostId 
+      },
+    })
+   
+    .done(function (data) {
+      $this.toggleClass('liked'); 
+      $this.next('.like-counter').html(data.post_likes_count);
+    })
+    .fail(function () {
+      console.log('fail'); 
+    });
+  });
+  });
         function deletePost(id) {
             'use strict'
            

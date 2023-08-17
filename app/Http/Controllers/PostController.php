@@ -122,7 +122,27 @@ class PostController extends Controller
         $comment=Comment::Where('post_id','=',$post->id)->get();
         return view('posts.show')->with(['introduction'=>$introduction,'post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth,'user'=>$user]);
     }
+    public function like(Request $request)
+{
+    $user_id = Auth::user()->id; 
+    $post_id = $request->post_id;
+    $already_liked = Like::where('user_id', $user_id)->where('post_id', $post_id)->first(); //3.
+
+    if (!$already_liked) { 
+        $like = new Like;
+        $like->post_id = $post_id; 
+        $like->user_id = $user_id;
+        $like->save();
+    } else {
+        Like::where('post_id', $post_id)->where('user_id', $user_id)->delete();
+    }
     
+    $post_likes_count = Post::withCount('likes')->findOrFail($post_id)->likes_count;
+    $param = [
+        'post_likes_count' => $post_likes_count,
+    ];
+    return response()->json($param);
+}
    public function create(Category $category,Team $team)
     {
         $prevUrl = url()->previous();
@@ -187,24 +207,7 @@ class PostController extends Controller
         return redirect('/posts/' . $post->id);
     }
     
-   public function like($id)
-    {
-        Like::create([
-          'post_id' => $id,
-          'user_id' => Auth::id(),
-        ]);
-        session()->flash('success', 'You Liked the Post.');
-        return redirect()->back();
-    }
-  public function unlike($id)
-  {
-    $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
-    $like->delete();
 
-    session()->flash('success', 'You Unliked the Reply.');
-
-    return redirect()->back();
-  }
     public function delete(Post $post,Comment $comment)
     {
         // DD($post);
