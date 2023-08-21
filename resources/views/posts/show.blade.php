@@ -59,22 +59,24 @@
                 </div>
                 <div class="user flex">
                     <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
-                    @if(Auth::id() != $post->user->id)
+                     @if(Auth::id() != $post->user->id)
                        @if (Auth::user()->isFollowing($post->user->id))
-                           <form action="{{ route('unfollow', ['user' => $post->user->id]) }}" method="POST">
-                               {{ csrf_field() }}
-                               {{ method_field('DELETE') }}
-            
-                               <button type="submit" class="unfollow bg-black text-white">フォロー解除</button>
-                           </form>
-                       @else
-                           <form action="{{ route('follow', ['user' => $post->user->id]) }}" method="POST">
-                               {{ csrf_field() }}
-            
-                               <button type="submit" class="follow bg-white text-black">フォローする</button>
-                           </form>
-                       @endif
+                            @if(!Auth::user()->isFollowed($post->user->id))
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black hidden">フォローする</button>
+                            @else
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black hidden">フォローバック</button>
+                            @endif
+                            <button onclick="unfollow({{ $post->user->id }})" id="unfollow" class="bg-black text-white ">フォロー中</button>
+                        @else
+                            @if(!Auth::user()->isFollowed($post->user->id))
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black ">フォローする</button>
+                            @else
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black">フォローバック</button>
+                            @endif
+                            <button onclick="unfollow({{ $post->user->id }})" id="unfollow" class="bg-black text-white hidden">フォロー中</button>
+                        @endif
                     @endif
+                    
                 </div>
                 <small>{{ $post->created_at}}</small>
                 <div class="like border-b border-solid border-gray-300">
@@ -163,6 +165,39 @@
     });
   });
   });
+  
+function follow(userId) {
+    $.ajax({
+      // これがないと419エラーが出ます
+      headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
+      url: `/follow/${userId}`,
+      type: "POST",
+    })
+      .done((data) => {
+      $('#follow').toggleClass('hidden')
+      $('#unfollow').toggleClass('hidden')
+        console.log("ok");
+      })
+      .fail((data) => {
+        console.log("fail");
+      });
+  }  
+  function unfollow(userId) {
+    $.ajax({
+      // これがないと419エラーが出ます
+      headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
+      url: `/unfollow/${userId}`,
+      type: "POST",
+    })
+      .done((data) => {
+      $('#follow').toggleClass('hidden')
+      $('#unfollow').toggleClass('hidden')
+        console.log("ok");
+      })
+      .fail((data) => {
+        console.log("fail");
+      });
+  }  
         function deletePost(id) {
             'use strict'
            

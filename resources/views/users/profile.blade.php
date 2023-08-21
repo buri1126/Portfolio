@@ -6,32 +6,35 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <script src="https://kit.fontawesome.com/e881b85793.js" crossorigin="anonymous"></script>
+        <script   src="https://code.jquery.com/jquery-3.7.0.min.js"   integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="   crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
         <body>
             <div class="profile_component h-screen w-3/4 md:w-1/2 mt-16">
                 <div class="profile bg-white">
                     <h2 class="user_name text-center text-xl">{{$user->name}}</h2>
-                    <div class="follow_user">
+                    <div class="follow_user text-center">
                         @if(Auth::id() != $user->id)
                            @if (Auth::user()->isFollowing($user->id))
-                               <form action="{{ route('unfollow', ['user' => $user->id]) }}" method="POST">
-                                   {{ csrf_field() }}
-                                   {{ method_field('DELETE') }}
-                
-                                   <button type="submit" class="unfollow block bg-black text-white ">フォロー解除</button>
-                               </form>
-                           @else
-                               <form action="{{ route('follow', ['user' => $user->id]) }}" method="POST">
-                                   {{ csrf_field() }}
-                                   <button type="submit" class="follow block bg-white text-black border border-solid border-black">フォローする</button>
-                               </form>
-                           @endif
+                            @if(!Auth::user()->isFollowed($user->id))
+                                <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black hidden">フォローする</button>
+                            @else
+                                <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black hidden">フォローバック</button>
+                            @endif
+                            <button onclick="unfollow({{ $user->id }})" id="unfollow" class="bg-black text-white ">フォロー中</button>
+                        @else
+                            @if(!Auth::user()->isFollowed($user->id))
+                                <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black ">フォローする</button>
+                            @else
+                                <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black">フォローバック</button>
+                            @endif
+                            <button onclick="unfollow({{ $user->id }})" id="unfollow" class="bg-black text-white hidden">フォロー中</button>
+                        @endif
                         @endif
                     </div>
                     <div class="follow_follower flex justify-evenly">
                         <a href="{{route('follow',['user'=>$user->id])}}">フォロー中{{$followcounts}}</a>
-                        <a href="{{route('follower',['user'=>$user->id])}}">フォロワー{{$followercounts}}</a>
+                        <a href="{{route('follower',['user'=>$user->id])}}">フォロワー<span class="follower_counter">{{$followercounts}}</span></a>
                    </div>
                     <div class="user_favorite flex justify-evenly">
                         <p>推しチーム:{{ $user->favoriteTeam }}</p>
@@ -83,4 +86,40 @@
            
         </body>
     </x-app-layout>
+    <script>
+        function follow(userId) {
+    $.ajax({
+      // これがないと419エラーが出ます
+      headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
+      url: `/follow/${userId}`,
+      type: "POST",
+    })
+      .done((data) => {
+      $('#follow').toggleClass('hidden')
+      $('#unfollow').toggleClass('hidden')
+      $('.follower_counter').html(data.follower_count)
+        console.log("ok");
+      })
+      .fail((data) => {
+        console.log("fail");
+      });
+  }  
+  function unfollow(userId) {
+    $.ajax({
+      // これがないと419エラーが出ます
+      headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
+      url: `/unfollow/${userId}`,
+      type: "POST",
+    })
+      .done((data) => {
+      $('#follow').toggleClass('hidden')
+      $('#unfollow').toggleClass('hidden')
+      $('.follower_counter').html(data.follower_count)
+        console.log("ok");
+      })
+      .fail((data) => {
+        console.log("fail");
+      });
+  }  
+    </script>
 </html>
