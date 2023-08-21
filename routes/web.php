@@ -26,6 +26,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/follow/{userId}', [ FollowerController::class, 'store']);
+Route::post('/unfollow/{userId}', [ FollowerController::class, 'delete']);
+
 
 Route::controller(PostController::class)->middleware(['auth'])->group(function(){
     Route::get('/', 'index')->name('index');

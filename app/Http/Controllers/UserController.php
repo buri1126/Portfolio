@@ -30,8 +30,7 @@ class UserController extends Controller
         
     }
    public function edit(Team $team,Post $post,User $user) 
-    {
-        return view('users.edit')->with(['post' => $post,'user'=>$user]);
+    {        return view('users.edit')->with(['post' => $post,'user'=>$user]);
     }
     public function update(UserRequest $request, User $user)
     {

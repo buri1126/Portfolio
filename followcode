@@ -1,0 +1,58 @@
+  Route::get('/users/{user}/follow','follow')->name('follow');
+    Route::get('/users/{user}/follower','follower')->name('follower');
+ @if (!Auth::user()->isFollowed($post->user->id))
+     @if (Auth::user()->isFollowing($post->user->id))
+                        <span class="follows">
+                            <button id="button1" value="フォロー中" class=" follow-toggle" data-user-id="{{ $post->user->id }}"></button>
+                            <button id="button2"value="フォローする"　class=" follow-toggle" data-user-id="{{ $post->user->id }}"></button>
+                        </span>
+                     @else
+                        <span class="follows">
+                            <button id="button1" value="フォローする"　class=" follow-toggle" data-user-id="{{ $post->user->id }}"></button>
+                            <button id="button2" value="フォロー中"　class=" follow-toggle" data-user-id="{{ $post->user->id }}"></button>
+                        </span>
+                     @endif
+    @else
+    //フォローする->フォローバック
+     @if (Auth::user()->isFollowing($post->user->id))
+                        <span class="follows">
+                            <button id="button1" value="フォロー中" class=" follow-toggle" data-user-id="{{ $post->user->id }}"></button>
+                            <button id="button2"value="フォローバック"　class=" follow-toggle" data-user-id="{{ $post->user->id }}"></button>
+                        </span>
+                     @else
+                        <span class="follows">
+                            <button id="button1" value="フォローバック"　class=" follow-toggle" data-user-id="{{ $post->user->id }}"></button>
+                            <button id="button2" value="フォロー中"　class=" follow-toggle" data-user-id="{{ $post->user->id }}"></button>
+                        </span>
+                     @endif
+    @endif
+   
+   $(function () {
+   $('#button2').toggle();
+
+  let follow = $('.follow-toggle'); 
+  let followedUserId; 
+  like.on('click', function () { 
+    let $this = $(this);
+    followedUserId = $this.data('user-id'); 
+
+    $.ajax({
+      headers: { 
+        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+      }, 
+      url: '/users/{user}follow',
+      method: 'POST', 
+      data: {
+        'follow_id': followedUserId 
+      },
+    })
+   
+    .done(function (data) {
+    $('#button1').toggle();
+    $('#button2').toggle();
+    })
+    .fail(function () {
+      console.log('fail'); 
+    });
+  });
+  });

@@ -84,6 +84,9 @@ body{
 .liked{
     color:red;
 }
+.hidden{
+    display: none;
+}
 .post_option{
     justify-content: flex-end;
 }
