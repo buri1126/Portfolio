@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-black border-b border-gray-100 fixed w-full top-0 z-10">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class=" px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -16,24 +16,20 @@
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')" class="text-white">
                         {{ __('Timeline') }}
                     </x-nav-link>
-                     <x-nav-link :href="route('profile',['user'=>Auth::id()])" :active="request()->routeIs('profile')" class="text-white">
-                        {{ __('Account') }}
-                    </x-nav-link>
                      <x-nav-link :href="route('league')" :active="request()->routeIs('league')" class="text-white">
                         {{ __('League') }}
                     </x-nav-link>
                 </div>
             </div>
+            
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                 <x-nav-link :href="route('create')" :active="request()->routeIs('create')" align="right" class="m-2.5 text-black rounded-sm bg-white">
-                        {{ __('Create') }}
-                    </x-nav-link>
+                 
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            <i class="fa-solid fa-user"></i>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -44,6 +40,9 @@
                     </x-slot>
 
                     <x-slot name="content">
+                         <x-dropdown-link :href="route('profile',['user'=>Auth::id()])">
+                            {{ __('Account') }}
+                        </x-dropdown-link>
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Setting') }}
                         </x-dropdown-link>
@@ -60,6 +59,9 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                <x-nav-link :href="route('create')" :active="request()->routeIs('create')" align="right" class="inline-flex items-center m-2.5  text-black rounded-md bg-white">
+                    <i class="fa-solid fa-pencil"></i><p>Create</p>
+                </x-nav-link>
             </div>
 
             <!-- Hamburger -->

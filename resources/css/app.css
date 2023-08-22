@@ -9,6 +9,7 @@ body{
   box-sizing:border-box;
  font-family:"Franklin Gothic","Yu Mincho",sans-serif ;
 }
+
 /*index*/
     .component .posts,.profile_component .posts{
         margin: 0 auto;
@@ -43,19 +44,32 @@ body{
   border-radius: 50%;
   background: #fff;
  }
+ .serch input{
+     border-radius: 15px;
+ }
  .serch_button{
-     padding:3px 10px;
+     padding:5px 10px;
      border-radius:5px;
      background-color: white;
+     border:1px solid black;
+     
+ }
+ .index .posts{
+     height:90%;
  }
 .leftbar{
      margin: 0 auto;
 }
 .category_index .category,.team_index .team,.leftbar .post_select a{
     margin: 10px auto;
+    padding: 5px 0;
+}
+.category_index .category:hover,.team_index .team:hover,.leftbar .post_select a:hover{
+    background-color: lightblue;
 }
 .rightbar{
     margin: 0 auto;
+    height:90%;
 }
 
 /*show,edit_post*/

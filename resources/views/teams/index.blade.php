@@ -11,7 +11,7 @@
     <x-app-layout>
     <body>
         <div class="component flex mt-16 h-screen">
-            <div class="leftbar lg:w-2/12 w-3/12 h-5/6 overflow-y-scroll text-left pt-8">
+            <div class="leftbar lg:w-2/12 w-3/12 h-11/12 overflow-y-scroll text-left pt-8">
                  <div class="post_select  text-center mt-5">
                         <a href="/" class="flex flex-col w-3/5 bg-white break-words rounded-xl">home</a>
                         <a href="/teams/{{$team->id}}" class="flex flex-col w-3/5 bg-white break-words rounded-xl">all</a>
@@ -45,16 +45,14 @@
                         @foreach($post->teams as $team)
                             <form action="/teams/{{$team->id}}">
                                 <input type="text" name="keyword" placeholder="キーワード" class="serchword mb-2.5">
-                                <br>
-                                <input type="submit" value="検索" class="serch_button">
-                                <a href="/teams/{{$team->id}}">クリア</a>
+                                <a href="/teams/{{$team->id}}"><input type="button" value="クリア"  class="serch_button"></a>
                             </form>
                         @endforeach
                     @break
                     @endforeach
                     <hr>
                 </div>
-                <div class='posts w-3/4 overflow-y-scroll h-3/4'>
+                <div class='posts w-3/4 overflow-y-scroll h-4/5'>
                      @if($postscount===0)
                             <p>投稿がありません</p>
                         @else
@@ -72,6 +70,9 @@
                                 @endforeach
                                 <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
                                 <small>{{ substr($post->created_at,0,16)}}</small>
+                                <div class="body_preview">
+                                        <small>{{mb_substr($post->body,0,30)}}</small>
+                                    </div>
                                 <div class="flex ">
                                     <p><span class="fa-solid fa-heart" style="color: #ff0000;"></span>{{$post->likes->count()}}</p>
                                     <p class="ml-4"><span class="fa-regular fa-comment"></span>{{$post->comments->count()}}</p>
@@ -85,11 +86,11 @@
                 </div>
             </div>
             <div class="rightbar lg:w-4/12 lg:block hidden h-5/6 text-left overflow-y-scroll pt-8">
-                    <div class='standings text-center mb-10 bg-white'>
+                    <div class='standings text-center mb-10 pb-10 bg-white'>
                         <h1 class="text-center">standings</h1>
                         
                     </div>
-                    <div class='fixtures text-center m-10 bg-white'>
+                    <div class='fixtures text-center mt-10 pb-10 bg-white'>
                         <h1 class="text-center">fixtures</h1>
                         
                     </div>
