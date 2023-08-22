@@ -46,34 +46,34 @@
                 <!--投稿者専用機能-->
                 <div class="post_option flex ">
                         @if($post->user->id===$Auth)
-                            <a href="/posts/{{ $post->id }}/edit"><button class="edit bg-blue-600 text-white text-center">edit</button></a>
+                            <a href="/posts/{{ $post->id }}/edit"><button class="edit bg-white hover:bg-blue-600 text-blue-600 hover:text-white text-center">edit</button></a>
                             <div>
                             <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" onclick="deletePost({{ $post->id }})" class="delete bg-red-600 text-white text-center">delete</button> 
+                                <button type="button" onclick="deletePost({{ $post->id }})" class="delete bg-white hover:bg-red-600 text-red-600 hover:text-white ml-4 text-center">delete</button> 
                             </form>
                             </div>
                         @endif
                     </div>
                 </div>
-                <div class="user flex">
-                    <a href="/users/{{$post->user->id}}">{{ $post->user->name }}</a>
+                <div class="user flex m-1">
+                    <a href="/users/{{$post->user->id}}"><i class="fa-solid fa-user"></i>{{ $post->user->name }}</a>
                      @if(Auth::id() != $post->user->id)
                        @if (Auth::user()->isFollowing($post->user->id))
                             @if(!Auth::user()->isFollowed($post->user->id))
-                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black hidden">フォローする</button>
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black hidden ml-1">フォローする</button>
                             @else
-                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black hidden">フォローバック</button>
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black hidden ml-1">フォローバック</button>
                             @endif
-                            <button onclick="unfollow({{ $post->user->id }})" id="unfollow" class="bg-black text-white ">フォロー中</button>
+                            <button onclick="unfollow({{ $post->user->id }})" id="unfollow" class="bg-black text-white ml-1">フォロー中</button>
                         @else
                             @if(!Auth::user()->isFollowed($post->user->id))
-                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black ">フォローする</button>
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black ml-1">フォローする</button>
                             @else
-                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black">フォローバック</button>
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black ml-1">フォローバック</button>
                             @endif
-                            <button onclick="unfollow({{ $post->user->id }})" id="unfollow" class="bg-black text-white hidden">フォロー中</button>
+                            <button onclick="unfollow({{ $post->user->id }})" id="unfollow" class="bg-black text-white hidden ml-1">フォロー中</button>
                         @endif
                     @endif
                     
@@ -103,22 +103,21 @@
                     @csrf
                     <div class="comment_form">
                         <h2>comment</h2>
-                        <textarea name="comment[body]" class="w-1/2"></textarea>
+                        <textarea name="comment[body]" class="w-1/2" placeholder="筆者と意見を交換しましょう"></textarea>
                         <br>
-                        <input class="inline" type="submit" value="コメントする"/>
+                        <button class="comment_button hover:bg-green-600 hover:text-white bg-white text-green-600"><input class="inline" type="submit" value="コメントする"/></button>
                     </div>
                 </form>
                 <hr>
                 <div class="comment_content w-1/2 ">
                     @foreach($comments as $comment)
                         <div class="comment bg-white my-8">
-                            <div class="comment_info text-left">
-                                <small>{{$comment->created_at}}</small>
-                                <br>
-                                <a href="/users/{{$post->user->id}}">{{$comment->user->name}}より</a>
+                            <div class="comment_info text-left flex flex-col">
+                                <a href="/users/{{$post->user->id}}"><i class="fa-regular fa-user"></i>{{$comment->user->name}}</a>
+                                <small class="text-xs">{{$comment->created_at}}</small>
                             </div>
                             <div class="comment_body">
-                                 <p class="text-left break-words">{{$comment->body}}</p>
+                                 <p class="text-left break-words">{!!nl2br(e($comment->body))!!}</p>
                             </div>
                             @if($comment->user->id===Auth::id())
                                 <form action="/posts/comments/{{$comment->id}}" id="form_{{ $comment->id }}" method="post">
