@@ -30,16 +30,16 @@
                             @if(Auth::id()!=$follow->id)
                                    @if (Auth::user()->isFollowing($follow->id))
                                         @if(!Auth::user()->isFollowed($follow->id))
-                                            <button onclick="follow({{ $follow->id }})" id="follow{{ $follow->id }}" class="follow-toggle bg-white text-black hidden">フォローする</button>
+                                            <button onclick="follow({{ $follow->id }})" id="follow{{ $follow->id }}" class="follow-toggle bg-white text-black hidden follow_button">フォローする</button>
                                         @else
-                                            <button onclick="follow({{ $follow->id }})" id="follow{{ $follow->id }}" class="follow-toggle bg-white text-black hidden">フォローバック</button>
+                                            <button onclick="follow({{ $follow->id }})" id="follow{{ $follow->id }}" class="follow-toggle bg-white text-black hidden follow_button">フォローバック</button>
                                         @endif
                                         <button onclick="unfollow({{ $follow->id }})" id="unfollow{{ $follow->id }}" class="follow-toggle bg-black text-white ">フォロー中</button>
                                     @else
                                         @if(!Auth::user()->isFollowed($follow->id))
-                                            <button onclick="follow({{ $follow->id }})" id="follow{{ $follow->id }}" class="follow-toggle bg-white text-black ">フォローする</button>
+                                            <button onclick="follow({{ $follow->id }})" id="follow{{ $follow->id }}" class="follow-toggle bg-white text-black follow_button">フォローする</button>
                                         @else
-                                            <button onclick="follow({{ $follow->id }})" id="follow{{ $follow->id }}" class="follow-toggle bg-white text-black">フォローバック</button>
+                                            <button onclick="follow({{ $follow->id }})" id="follow{{ $follow->id }}" class="follow-toggle bg-white text-black follow_button">フォローバック</button>
                                         @endif
                                         <button onclick="unfollow({{ $follow->id }})" id="unfollow{{ $follow->id }}" class="follow-toggle bg-black text-white hidden">フォロー中</button>
                                     @endif
