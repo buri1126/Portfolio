@@ -213,6 +213,13 @@ border-radius:5px;
     margin-left: auto;
     margin-right: auto;
 }
+.edit_profile_component .info textarea{
+    width:70%;
+}
+.edit_profile_component .favorite{
+    width:fit-content;
+    margin:0 auto;
+}
 
 /*follow_follower*/
 .follow_follower_component{

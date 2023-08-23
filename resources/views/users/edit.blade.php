@@ -3,19 +3,20 @@
     <head>
         <meta charset="utf-8">
         <title>Football review</title>
+        <script src="https://kit.fontawesome.com/e881b85793.js" crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
     <body>
         <div class="edit_profile_component h-screen w-3/4 lg:w-1/2 ">
             <h1 class="text-center text-3xl">プロフィール編集</h1>
-            <div class="form  bg-white rounded-2xl">
+            <div class="form  rounded-2xl">
             <form action="/users/{{$user->id}}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="user_name">
                     <h2>{{$user->name}}</h2>
                 </div>
-                <div class="favorite flex justify-center flex-col md:flex-row items-center">
+                <div class="favorite flex justify-between flex-col md:flex-row items-center">
                      <div class="favoriteplayer mx-5">
                         <h2>favoriteplayer</h2>
                         <input type="text" name="user[favoritePlayer]" placeholder="選手名" value="{{ $user->favoritePlayer }}"/>
@@ -28,7 +29,7 @@
                 </div>
                 <br>
                 <div class="info text-center">
-                    <textarea name="user[info]" class="w-1/2 h-25" onkeyup="ShowLength(value);">{{ $user->info }}</textarea>
+                    <textarea name="user[info]" class=" h-52" onkeyup="ShowLength(value);">{{ $user->info }}</textarea>
                         <p><span id="inputlength">{{mb_strlen($user->info)}}文字</span>/300文字</p>
                 </div>
                 

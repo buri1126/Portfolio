@@ -37,8 +37,8 @@
                         @endif
                     </div>
                     <div class="follow_follower flex justify-start">
-                        <a href="{{route('follow',['user'=>$user->id])}}">フォロー中{{$followcounts}}</a>
-                        <a  class="ml-2" href="{{route('follower',['user'=>$user->id])}}">フォロワー{{$followercounts}}</a>
+                        <a href="{{route('follow',['user'=>$user->id])}}" class="font-bold">フォロー中{{$followcounts}}</a>
+                        <a  class="ml-2 font-bold" href="{{route('follower',['user'=>$user->id])}}">フォロワー{{$followercounts}}</a>
                    </div>
                     <div class="user_favorite flex justify-start">
                         <p>推しチーム:{{ $user->favoriteTeam }}</p>
