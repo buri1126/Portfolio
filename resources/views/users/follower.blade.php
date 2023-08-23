@@ -33,7 +33,6 @@
                                         @if(!Auth::user()->isFollowed($follower->id))
                                             <button onclick="follow({{ $follower->id }})" id="follow{{ $follower->id }}" class="bg-white text-black hidden">フォローする</button>
                                         @else
-                                            <small>フォローされています</small>
                                             <button onclick="follow({{ $follower->id }})" id="follow{{ $follower->id }}" class="bg-white text-black hidden">フォローバック</button>
                                         @endif
                                         <button onclick="unfollow({{ $follower->id }})" id="unfollow{{ $follower->id }}" class="bg-black text-white ">フォロー中</button>
@@ -41,7 +40,6 @@
                                         @if(!Auth::user()->isFollowed($follower->id))
                                             <button onclick="follow({{ $follower->id }})" id="follow{{ $follower->id }}" class="bg-white text-black ">フォローする</button>
                                         @else
-                                            <small>フォローされています</small>
                                             <button onclick="follow({{ $follower->id }})" id="follow{{ $follower->id }}" class="bg-white text-black">フォローバック</button>
                                         @endif
                                         <button onclick="unfollow({{ $follower->id }})" id="unfollow"{{ $follower->id }} class="bg-black text-white hidden">フォロー中</button>
