@@ -73,16 +73,16 @@
                      @if(Auth::id() != $post->user->id)
                        @if (Auth::user()->isFollowing($post->user->id))
                             @if(!Auth::user()->isFollowed($post->user->id))
-                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black hidden ml-1">フォローする</button>
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black hidden ml-1 follow_button">フォローする</button>
                             @else
-                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black hidden ml-1">フォローバック</button>
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black hidden ml-1 follow_button">フォローバック</button>
                             @endif
                             <button onclick="unfollow({{ $post->user->id }})" id="unfollow" class="bg-black text-white ml-1">フォロー中</button>
                         @else
                             @if(!Auth::user()->isFollowed($post->user->id))
-                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black ml-1">フォローする</button>
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black ml-1 follow_button">フォローする</button>
                             @else
-                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black ml-1">フォローバック</button>
+                                <button onclick="follow({{ $post->user->id }})" id="follow" class="bg-white text-black ml-1 follow_button">フォローバック</button>
                             @endif
                             <button onclick="unfollow({{ $post->user->id }})" id="unfollow" class="bg-black text-white hidden ml-1">フォロー中</button>
                         @endif
