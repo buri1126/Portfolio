@@ -3,26 +3,21 @@
     <head>
         <meta charset="utf-8">
         <title>Football review</title>
+        <script src="https://kit.fontawesome.com/e881b85793.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{ asset('/css/style.css')  }}">
     </head>
     <x-app-layout>
     <body>
         <div class="create_component h-screen w-3/4 lg:w-1/2">
-            <div class="form  bg-white rounded-2xl mt-24">
+            <div class="form rounded-2xl mt-24 p-1">
                 <form action="/posts" method="POST" name="post" id="post" enctype="multipart/form-data">
                     @csrf
                         <div class="title">
                             <h2>Title</h2>
-                            <input type="text" class="w-1/2" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
+                            <input type="text" class="w-1/2 title_form" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
                             <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
                         </div>
-                        <div class="body">
-                            <h2>Body</h2>
-                            <textarea name="post[body]" placeholder="今日の試合もお疲れ様です" class="w-full h-72" onkeyup="ShowLength(value);">{{ old('post.body') }}</textarea>
-                            <p><span id="inputlength">0文字</span>/4000文字</p>
-                            <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
-                        </div>
-                        <div class="create_option flex justify-around mb-7 flex-col md:flex-row items-center">
+                        <div class="create_option flex flex-col md:flex-row items-start">
                             <div class="category">
                                 <h2>Category</h2>
                                 <select name="post[category_id]">
@@ -33,13 +28,20 @@
                             </div>
                             <div class="team">
                                 <h2>Team</h2>
-                                <select name="teams_array[]">
+                                <select name="teams_array[]" class="ml-2">
                                     @foreach($teams as $team)
                                         <option value="{{ $team->id }}">{{ $team->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
+                        <div class="body">
+                            <h2>Body</h2>
+                            <textarea name="post[body]" placeholder="今日の試合もお疲れ様です" class="w-full h-72" onkeyup="ShowLength(value);">{{ old('post.body') }}</textarea>
+                            <p><span id="inputlength">0文字</span>/4000文字</p>
+                            <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
+                        </div>
+                        
                         <div class="image text-center ml-12">
                             <input type="file" name="files[]"  multiple>
                         </div>

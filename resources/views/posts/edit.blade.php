@@ -9,7 +9,7 @@
     <body>
         <div class="edit_component h-screen w-3/4 lg:w-1/2 mt-16">
             <h1 class="title text-center text-3xl">投稿編集</h1>
-            <div class="form  bg-white rounded-2xl">
+            <div class="form  rounded-2xl">
             <form action="/posts/{{ $post->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -17,12 +17,7 @@
                     <h2>タイトル</h2>
                     <input type='text' class="w-1/2" name='post[title]' value="{{ $post->title }}">
                 </div>
-                <div class='content_body'>
-                    <h2>本文</h2>
-                    <textarea type='text' class="w-full h-72"name='post[body]' onkeyup="ShowLength(value);">{{ $post->body }}</textarea>
-                        <p><span id="inputlength">{{mb_strlen($post->body)}}文字</span>/4000文字</p>
-                </div>
-                <div class="edit_option flex flex-col md:flex-row items-center justify-evenly">
+                <div class="edit_option flex flex-col md:flex-row items-start">
                     <div class="category">
                         <h2>Category</h2>
                         <select name="post[category_id]">
@@ -37,7 +32,7 @@
                     </div>
                     <div class="team">
                         <h2>Team</h2>
-                        <select name="teams_array[]">
+                        <select name="teams_array[]" class="ml-2">
                             @foreach($teams as $team)
                                 @foreach($post->teams as $team_selected)
                                     @if($team_selected->id===$team->id)
@@ -49,6 +44,11 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
+                <div class='content_body'>
+                    <h2>本文</h2>
+                    <textarea type='text' class="w-full h-72"name='post[body]' onkeyup="ShowLength(value);">{{ $post->body }}</textarea>
+                        <p><span id="inputlength">{{mb_strlen($post->body)}}文字</span>/4000文字</p>
                 </div>
                 <div class="image text-center ml-12">
                     <input type="file" name="files[]"  multiple>
