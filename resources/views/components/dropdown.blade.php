@@ -3,7 +3,7 @@
 @php
 switch ($align) {
     case 'left':
-        $alignmentClasses = 'origin-top-left left-0';
+        $alignmentClasses = 'origin-top-left right-0.5';
         break;
     case 'top':
         $alignmentClasses = 'origin-top';
