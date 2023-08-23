@@ -123,20 +123,37 @@
                 <div class="comment_content w-1/2 ">
                     @foreach($comments as $comment)
                         <div class="comment bg-white my-8">
+                            <div class="flex flex-row justify-between">
                             <div class="comment_info text-left flex flex-col">
                                 <a href="/users/{{$post->user->id}}"><i class="fa-regular fa-user"></i>{{$comment->user->name}}</a>
                                 <small class="text-xs">{{$comment->created_at}}</small>
                             </div>
+                             @if($comment->user->id===Auth::id())
+                                <x-dropdown align="left" width="48">
+                                    <x-slot name="trigger">
+                                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                </svg>
+                                        </button>
+                                    </x-slot>
+                
+                                    <x-slot name="content">
+                                        <form action="/posts/comments/{{ $comment->id }}" id="form_{{ $comment->id }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <x-dropdown-link onclick="deleteComment({{ $comment->id }})" class="hover:text-red-600">
+                                                    <p>delete</p>
+                                                </x-dropdown-link>
+                                        </form>
+                                    </x-slot>
+                                </x-dropdown>
+                            @endif
+                            </div>
                             <div class="comment_body">
                                  <p class="text-left break-words">{!!nl2br(e($comment->body))!!}</p>
                             </div>
-                            @if($comment->user->id===Auth::id())
-                                <form action="/posts/comments/{{$comment->id}}" id="form_{{ $comment->id }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" onclick="deleteComment({{ $comment->id }})" class="delete bg-red-600 text-white text-center">delete</button> 
-                                </form>
-                            @endif
+                           
                         </div>    
                     @endforeach
                 </div>
@@ -220,7 +237,7 @@ function follow(userId) {
         function deleteComment(id) {
             'use strict'
           
-            if (confirm('削除すると復元で��ません。\n本当に削除しますか？')) {
+            if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
                 document.getElementById(`form_${id}`).submit();
             }
         }
