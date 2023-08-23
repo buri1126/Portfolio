@@ -92,11 +92,104 @@
                 <div class="rightbar lg:w-4/12 lg:block hidden h-5/6 text-left overflow-y-scroll pt-8">
                     <div class='standings text-center mb-10 pb-10 bg-white'>
                         <h1 class="text-center">standings</h1>
-                        
+                        <table class="inline">
+                            <thead>
+                                <tr class="border border-gray-300 border-solid">
+                                <th class="border border-gray-300 border-solid">順位</th>
+                                <th class="border border-gray-300 border-solid">クラブ</th>
+                                <th class="border border-gray-300 border-solid">試合</th>
+                                <th class="border border-gray-300 border-solid">勝</th>
+                                <th class="border border-gray-300 border-solid">分</th>
+                                <th class="border border-gray-300 border-solid">負</th>
+                                <th class="border border-gray-300 border-solid">+/-</th>
+                                <th class="border border-gray-300 border-solid">差</th>
+                                <th class="border border-gray-300 border-solid">Pts</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--class="border border-gray-300 border-solid"-->
+                                @foreach($standings["response"][0]["league"]["standings"][0] as $standing)
+                                <tr>
+                                    <td class="border border-gray-300 border-solid">{{$standing['rank']}}</td>
+                                    <td class="border border-gray-300 border-solid"><img src="{{$standing['team']['logo']}}" class="w-2/12 inline">{{$standing['team']['name']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['played']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['win']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['draw']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['lose']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['all']['goals']['for']}}/{{$standing['all']['goals']['against']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['goalsDiff']}}</td>
+                                    <td class="border border-gray-300 border-solid">{{$standing['points']}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     <div class='fixtures text-center mt-10 pb-10 bg-white'>
                         <h1 class="text-center">fixtures</h1>
-                        
+                        <table class="inline">
+                            <thead>
+                                <tr class="border border-gray-300 border-solid">
+                                <th class="border border-gray-300 border-solid">日付</th>
+                                <th class="border border-gray-300 border-solid">節</th>
+                                <th class="border border-gray-300 border-solid">ホーム</th>
+                                <th class="border border-gray-300 border-solid">vs</th>
+                                <th class="border border-gray-300 border-solid">アウェイ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    @if($fixturedatas)
+                                   @foreach($fixturedatas as $fixture)
+                                        <tr>
+                                            <td class="border border-gray-300 border-solid">{{substr($fixture['fixture']['date'],0,10)}}<br>{{substr($fixture['fixture']['date'],11,5)}}</td>
+                                            <td class="border border-gray-300 border-solid">{{substr($fixture['league']['round'],17,2)}}</td>
+                                            @if($fixture['teams']['home']['winner']===true)
+                                                <td class="border border-gray-300 border-solid bg-white text-black">
+                                                    <img src="{{$fixture['teams']['home']['logo']}}" class="inline w-1/5">
+                                                    {{$fixture['teams']['home']['name']}}
+                                                    <span class="ml-2">{{$fixture['goals']['home']}}</span>
+                                                </td>
+                                            @elseif($fixture['teams']['home']['winner']===false)
+                                                <td class="border border-gray-300 border-solid bg-black text-white">
+                                                    <img src="{{$fixture['teams']['home']['logo']}}" class="inline w-1/5">
+                                                    {{$fixture['teams']['home']['name']}}
+                                                    <span class="ml-2">{{$fixture['goals']['home']}}</span>
+                                                </td>
+                                            @else
+                                                <td class="border border-gray-300 border-solid">
+                                                    <img src="{{$fixture['teams']['home']['logo']}}" class="inline w-1/5">
+                                                    {{$fixture['teams']['home']['name']}}
+                                                    <span class="ml-2">{{$fixture['goals']['home']}}</span>
+                                                </td>
+                                            @endif
+                                            <td class="border border-gray-300 border-solid">vs</td>
+                                            @if($fixture['teams']['away']['winner']===true)
+                                                <td class="border border-gray-300 border-solid bg-white text-black">
+                                                    <span class="mr-2">{{$fixture['goals']['away']}}</span>
+                                                    {{$fixture['teams']['away']['name']}}
+                                                    <img src="{{$fixture['teams']['away']['logo']}}" class="inline w-1/5">
+                                                </td>
+                                            @elseif($fixture['teams']['away']['winner']===false)
+                                                <td class="border border-gray-300 border-solid bg-black text-white">
+                                                    <span class="mr-2">{{$fixture['goals']['away']}}</span>
+                                                    {{$fixture['teams']['away']['name']}}
+                                                    <img src="{{$fixture['teams']['away']['logo']}}" class="inline w-1/5">
+                                                </td>
+                                            @else
+                                                <td class="border border-gray-300 border-solid">
+                                                    <span class="mr-2">{{$fixture['goals']['away']}}</span>
+                                                    {{$fixture['teams']['away']['name']}}
+                                                    <img src="{{$fixture['teams']['away']['logo']}}" class="inline w-1/5">
+                                                </td>
+                                            @endif
+                                        </tr>
+                                   @endforeach
+                                @else
+                                <p>今日の試合はありません</p>
+                                @endif    
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                  </div>
             </div>
