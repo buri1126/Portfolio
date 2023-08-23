@@ -37,6 +37,7 @@
                     
                 </div>
                 <div class="flex justify-between">
+                    
                     <div class="category_team">
                     <a class="category" href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                         @foreach($post->teams as $team)   
@@ -44,18 +45,28 @@
                         @endforeach
                     </div>
                 <!--投稿者専用機能-->
-                <div class="post_option flex ">
-                        @if($post->user->id===$Auth)
-                            <a href="/posts/{{ $post->id }}/edit"><button class="edit bg-white hover:bg-blue-600 text-blue-600 hover:text-white text-center">edit</button></a>
-                            <div>
-                            <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+                <x-dropdown align="left" width="48">
+                    <x-slot name="trigger">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                         <x-dropdown-link href="/posts/{{$post->id}}/edit" class="hover:text-blue-600">
+                           <p>edit</p>
+                        </x-dropdown-link>
+                        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" onclick="deletePost({{ $post->id }})" class="delete bg-white hover:bg-red-600 text-red-600 hover:text-white ml-4 text-center">delete</button> 
-                            </form>
-                            </div>
-                        @endif
-                    </div>
+                                <x-dropdown-link onclick="deletePost({{ $post->id }})" class="hover:text-red-600">
+                                    <p>delete</p>
+                                </x-dropdown-link>
+                        </form>
+                    </x-slot>
+                </x-dropdown>
                 </div>
                 <div class="user flex m-1">
                     <a href="/users/{{$post->user->id}}"><i class="fa-solid fa-user"></i>{{ $post->user->name }}</a>
@@ -209,7 +220,7 @@ function follow(userId) {
         function deleteComment(id) {
             'use strict'
           
-            if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+            if (confirm('削除すると復元で��ません。\n本当に削除しますか？')) {
                 document.getElementById(`form_${id}`).submit();
             }
         }
