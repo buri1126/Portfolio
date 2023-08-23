@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('index') }}">
-                        <p class="text-white">Football Review</p>
+                        <p class="text-white font-selif italic">Football Review</p>
                         <!--<x-application-logo class="block h-9 w-auto fill-current text-gray-800" />-->
                     </a>
                 </div>
