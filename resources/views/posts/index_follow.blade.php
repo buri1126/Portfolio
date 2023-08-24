@@ -33,7 +33,7 @@
                             @foreach($teams as $team)
                                 @if($team->id===1)
                                 @else
-                                    <a href="/teams/{{$team->id}}/follow" class="team flex flex-col w-3/5 bg-white break-words">{{$team->name}}</a>
+                                    <a href="/teams/{{$team->id}}/follow" class="team flex flex-col w-3/5 bg-white break-words rounded-xl">{{$team->name}}</a>
                                  @endif
                             @endforeach
                         </div>

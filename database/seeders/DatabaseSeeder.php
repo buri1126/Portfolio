@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
                 TeamSeeder::class,
                 //Favorite_teamSeeder::class,
                 Post_teamSeeder::class,
-                
+                LikeSeeder::class,
         ]);
         
     }
