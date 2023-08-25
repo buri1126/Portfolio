@@ -81,4 +81,5 @@ class Post extends Model
 
         return $convert_text;
     }
+    
 }
