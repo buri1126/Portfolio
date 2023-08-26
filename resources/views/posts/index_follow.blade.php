@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="rightbar lg:w-4/12 h-11/12 lg:block hidden  text-left overflow-y-scroll pt-8">
-                    <div class='like_ranking_section text-center mb-10 pb-10 rounded-xl w-full'>
+                    <div class='like_ranking_section text-center mb-10 pb-10 rounded-xl overflow-y-scroll w-full'>
                         <p class="like_title"><span>いいねランキング</span></p>
                         <div class="flex flex-col">
                             <table class="like_ranking  rounded-xl">
@@ -137,7 +137,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class='comment_ranking_section text-center mt-10 pb-10 rounded-xl w-full'>
+                    <div class='comment_ranking_section text-center mt-10 pb-10 rounded-xl overflow-y-scroll w-full'>
                         <p class="comment_title"><span>コメントランキング</span></p>
                         <table class="comment_ranking">
                             @foreach($comments_ranking as $comment_rank)
