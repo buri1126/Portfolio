@@ -65,6 +65,7 @@
                                     @foreach($post->teams as $team)   
                                         <a href="/teams/{{$team->id}}" class="team ">{{ $team->name }}</a>
                                     @endforeach
+                                    <br>
                                     <a href="/users/{{$post->user->id}}" class="user"><i class="fa-solid fa-user"></i>{{ $post->user->name }}</a>
                                     <small>{{ substr($post->created_at,0,16)}}</small>
                                     <div class="body_preview">

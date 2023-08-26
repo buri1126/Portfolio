@@ -13,7 +13,7 @@
             <div class="profile_component h-screen w-3/4 md:w-1/2 mt-16">
                 <div class="profile  w-9/12">
                     <div class="flex flex-row justify-between">
-                        <h2 class="user_name text-center text-xl">{{$user->name}}</h2>
+                        <h2 class="user_name text-center text-3xl">{{$user->name}}</h2>
                         @if($user->id===$Auth)
                             <div class="edit_info text-center mr-2 mt-1">
                                 <a href="/users/{{$user->id}}/edit" class="info_link"><button class="bg-green-700 text-white"><i class="fa-solid fa-user-pen"></i></button></a>
@@ -52,11 +52,11 @@
                          <p class="ml-2">推し選手:{{$user->favoritePlayer}}</p>
                     </div>
                     <hr>
-                    <div class="user_info w-1/2">
+                    <div class="user_info">
                         <p class="text-left break-words">{!! nl2br($introduction) !!}</p>
                     </div>
                 </div>
-                <div class='posts overflow-y-scroll h-3/4 w-3/4'>
+                <div class='posts overflow-y-scroll w-3/4 pb-4'>
                     @if($postscount===0)
                         <p class="text-center">投稿はありません</p>
                     @else
@@ -65,7 +65,7 @@
                     @foreach($posts as $post)
                         <div class='post text-left bg-white rounded-xl hover:scale-110'>
                             <div class="ml-8">
-                                <a href="/posts/{{ $post->id }}" class="title">{{ $post->title }}</a>
+                                <a href="/posts/{{ $post->id }}" class="title text-3xl">{{ $post->title }}</a>
                                 <br>
                                 <div class="post_info">
                                     <a href="/categories/{{ $post->category->id }}" class="category">{{ $post->category->name }}</a>
@@ -73,17 +73,19 @@
                                         <a href="/teams/{{$team->id}}" class="team">{{ $team->name }}</a>
                                     @endforeach
                                 </div>
-                                <small>{{ $post->created_at}}</small>
+                                <small>{{ substr($post->created_at,0,16)}}</small>
+                                <div class="body_preview">
+                                        <small>{{mb_substr($post->body,0,30)}}</small>
+                                    </div>
                                 <div class="flex ">
                                     <p><span class="fa-solid fa-heart" style="color: #ff0000;"></span>{{$post->likes->count()}}</p>
                                     <p class="ml-4"><span class="fa-regular fa-comment"></span>{{$post->comments->count()}}</p>
                                 </div>
                             </div>
                         </div>
-                        <hr>
                     @endforeach
                  </div>
-                  <div class="footer text-center">
+                <div class="footer text-center">
                     <a href="{{ url($prevUrl) }}">戻る</a>
                 </div>
             </div>

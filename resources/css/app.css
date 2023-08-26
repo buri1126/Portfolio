@@ -31,7 +31,7 @@ body{
     bottom:40px;
 }
 }
-    .component .posts,.profile_component .posts{
+    .component .posts.profile_component .posts{
         margin: 0 auto;
     }
  .posts{
@@ -216,12 +216,12 @@ body{
     border-bottom:1px solid black;
     background-color: rgb(243 244 246 );
 }
-.create_component select, .edit_component select{
+.create_component select, .edit_component select,.edit_profile_component .favorite input{
     background-color: lightblue;
     border:1px solid white;
     border-radius:10px;
 }
-.create_component .body textarea, .edit_component .content_body textarea{ 
+.create_component .body textarea, .edit_component .content_body textarea,.edit_profile_component textarea{ 
     background-color: lightblue;
     border:1px solid white ;
     border-radius:10px;
@@ -274,14 +274,16 @@ body{
 .profile_component .user_name{
     margin:auto 0;
 }
+.profile_component .posts{
+        margin: 0 auto;
+        height:fit-content;
+        max-height: 75%;
+    }
 .profile_component .edit_info button{
     padding:5px 10px;
     border-radius:5px;
 } 
-.edit_profile_component .user_name{
-    text-align: center;
-    font-size: 30px;
-}
+
 .follow_notificate{
     background-color: lightblue;
     padding: 5px 0;
@@ -302,11 +304,10 @@ border-radius:5px;
     margin-right: auto;
 }
 .edit_profile_component .info textarea{
-    width:70%;
+    width:100%;
 }
 .edit_profile_component .favorite{
     width:fit-content;
-    margin:0 auto;
 }
 
 /*follow_follower*/
