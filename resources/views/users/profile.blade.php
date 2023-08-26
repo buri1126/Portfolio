@@ -11,7 +11,7 @@
     <x-app-layout>
         <body>
             <div class="profile_component h-screen w-3/4 md:w-1/2 mt-16">
-                <div class="profile bg-white w-9/12">
+                <div class="profile  w-9/12">
                     <div class="flex flex-row justify-between">
                         <h2 class="user_name text-center text-xl">{{$user->name}}</h2>
                         @if($user->id===$Auth)
@@ -19,31 +19,30 @@
                                 <a href="/users/{{$user->id}}/edit" class="info_link"><button class="bg-green-700 text-white"><i class="fa-solid fa-user-pen"></i></button></a>
                             </div>
                         @else    
-                                @if(Auth::id() != $user->id)
-                                    <div class="follow_user text-center mr-4">
-                                        @if (Auth::user()->isFollowing($user->id))
-                                            @if(!Auth::user()->isFollowed($user->id))
-                                                <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black hidden  follow_button">フォローする</button>
-                                            @else
-                                                <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black hidden follow_button">フォローバック</button>
-                                            @endif
-                                                <button onclick="unfollow({{ $user->id }})" id="unfollow" class="bg-black text-white ">フォロー中</button>
+                            @if(Auth::id() != $user->id)
+                                <div class="follow_user text-center mr-4">
+                                    @if (Auth::user()->isFollowing($user->id))
+                                        @if(!Auth::user()->isFollowed($user->id))
+                                            <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black hidden  follow_button">フォローする</button>
                                         @else
-                                            @if(!Auth::user()->isFollowed($user->id))
-                                                <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black border follow_button">フォローする</button>
-                                            @else
-                                                <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black border follow_button">フォローバック</button>
-                                            @endif
-                                            <button onclick="unfollow({{ $user->id }})" id="unfollow" class="bg-black text-white hidden">フォロー中</button>
+                                            <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black hidden follow_button">フォローバック</button>
                                         @endif
-                                    </div>    
-                                @endif
+                                            <button onclick="unfollow({{ $user->id }})" id="unfollow" class="bg-black text-white ">フォロー中</button>
+                                    @else
+                                        @if(!Auth::user()->isFollowed($user->id))
+                                            <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black border follow_button">フォローする</button>
+                                        @else
+                                            <button onclick="follow({{ $user->id }})" id="follow" class="bg-white text-black border follow_button">フォローバック</button>
+                                        @endif
+                                        <button onclick="unfollow({{ $user->id }})" id="unfollow" class="bg-black text-white hidden">フォロー中</button>
+                                    @endif
+                                </div>    
+                            @endif
                          @endif
                     </div>
                     @if(Auth::user()->isFollowed($user->id))
                     <small class="follow_notificate">フォローされています</small>
                     @endif
-                    
                     <div class="follow_follower flex justify-start">
                         <a href="{{route('follow',['user'=>$user->id])}}">フォロー中{{$followcounts}}</a>
                         <a  class="ml-2" href="{{route('follower',['user'=>$user->id])}}">フォロワー<span class="follower_counter">{{$followercounts}}</span></a>
@@ -56,15 +55,13 @@
                     <div class="user_info w-1/2">
                         <p class="text-left break-words">{!! nl2br($introduction) !!}</p>
                     </div>
-                  
                 </div>
                 <div class='posts overflow-y-scroll h-3/4 w-3/4'>
                     @if($postscount===0)
-                    <p class="text-center">投稿はありません</p>
+                        <p class="text-center">投稿はありません</p>
                     @else
-                    <p class="text-center">{{$postscount}}件の投稿があります</p>
+                        <p class="text-center">{{$postscount}}件の投稿があります</p>
                     @endif
-                    <hr>
                     @foreach($posts as $post)
                         <div class='post text-left bg-white rounded-xl hover:scale-110'>
                             <div class="ml-8">

@@ -7,15 +7,15 @@
     </head>
     <x-app-layout>
     <body>
-        <div class="edit_component h-screen w-3/4 lg:w-1/2 mt-16">
-            <h1 class="title text-center text-3xl">投稿編集</h1>
-            <div class="form  rounded-2xl">
+        <div class="edit_component h-screen w-3/4 lg:w-1/2">
+            <div class="form  rounded-2xl mt-24 p-1">
             <form action="/posts/{{ $post->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class='content_title'>
-                    <h2>タイトル</h2>
-                    <input type='text' class="w-1/2" name='post[title]' value="{{ $post->title }}">
+                    <h2 class="text-2xl">タイトル</h2>
+                    <input type='text' class="w-1/2 text-4xl" name='post[title]' onkeyup="ShowLength_title(value);" value="{{ $post->title }}">
+                    <p><span id="inputlength_title">{{mb_strlen($post->title)}}文字</span>/100文字</p>
                 </div>
                 <div class="edit_option flex flex-col md:flex-row items-start">
                     <div class="category">
@@ -46,9 +46,9 @@
                     </div>
                 </div>
                 <div class='content_body'>
-                    <h2>本文</h2>
-                    <textarea type='text' class="w-full h-72"name='post[body]' onkeyup="ShowLength(value);">{{ $post->body }}</textarea>
-                        <p><span id="inputlength">{{mb_strlen($post->body)}}文字</span>/4000文字</p>
+                    <h2 class="text-xl">本文</h2>
+                    <textarea type='text' class="w-full h-72 text-2xl"name='post[body]' onkeyup="ShowLength_body(value);">{{ $post->body }}</textarea>
+                        <p><span id="inputlength_body">{{mb_strlen($post->body)}}文字</span>/4000文字</p>
                 </div>
                 <div class="image text-center ml-12">
                     <input type="file" name="files[]"  multiple>
@@ -65,8 +65,11 @@
     </body>
     </x-app-layout>
     <script>
-        function ShowLength( str ) {
-           document.getElementById("inputlength").innerHTML = str.length + "文字";
+        function ShowLength_title( str ) {
+           document.getElementById("inputlength_title").innerHTML = str.length + "文字";
+        }
+        function ShowLength_body( str ) {
+           document.getElementById("inputlength_body").innerHTML = str.length + "文字";
         }
     </script>
 </html>
