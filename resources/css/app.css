@@ -216,12 +216,12 @@ body{
     border-bottom:1px solid black;
     background-color: rgb(243 244 246 );
 }
-.create_component select{
+.create_component select, .edit_component select{
     background-color: lightblue;
     border:1px solid white;
     border-radius:10px;
 }
-.create_component .body textarea{
+.create_component .body textarea, .edit_component .content_body textarea{ 
     background-color: lightblue;
     border:1px solid white ;
     border-radius:10px;

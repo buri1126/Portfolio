@@ -85,7 +85,7 @@ class PostController extends Controller
         return view('posts.show')->with(['prevUrl'=>$prevUrl,'introduction'=>$introduction,'post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth,'user'=>$user]);
     }
     public function like(Request $request)
-{
+    {
     $user_id = Auth::user()->id; 
     $post_id = $request->post_id;
     $already_liked = Like::where('user_id', $user_id)->where('post_id', $post_id)->first(); //3.
@@ -110,7 +110,6 @@ class PostController extends Controller
         $prevUrl = url()->previous();
         return view('posts.create')->with(['prevUrl'=>$prevUrl,'categories' => $category->get(),'teams' => $team->get()]);
     }
-    
     public function store(PostRequest $request, Post $post)
     {
        
@@ -136,12 +135,10 @@ class PostController extends Controller
         // DD($post);
         return redirect('/posts/' . $post->id);
     }
-    
     public function edit(Post $post,Category $category,Team $team)
     {
         return view('posts.edit')->with(['post' => $post,'categories' => $category->get(),'teams' => $team->get()]);
     }
-    
     public function update(PostRequest $request, Post $post)
     {
         $input_post = $request['post'];
@@ -168,8 +165,6 @@ class PostController extends Controller
         }
         return redirect('/posts/' . $post->id);
     }
-    
-
     public function delete(Post $post,Comment $comment)
     {
         // DD($post);
