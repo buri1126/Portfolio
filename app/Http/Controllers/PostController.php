@@ -75,11 +75,13 @@ class PostController extends Controller
     } 
     public function show(Post $post ,Image $image,Comment $comment,User $user)
     {
+        // dd(empty($comment));
+          $prevUrl = url()->previous();
         $Auth=Auth::id();
         $introduction = Post::convertLink($post->body);
         $image_get=Image::where('post_id','=',$post->id)->get();
         $comment=Comment::Where('post_id','=',$post->id)->get();
-        return view('posts.show')->with(['introduction'=>$introduction,'post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth,'user'=>$user]);
+        return view('posts.show')->with(['prevUrl'=>$prevUrl,'introduction'=>$introduction,'post' => $post,'images'=>$image_get,'comments'=>$comment,'Auth'=>$Auth,'user'=>$user]);
     }
     public function like(Request $request)
 {

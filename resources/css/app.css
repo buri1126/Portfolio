@@ -179,15 +179,23 @@ body{
 .show_component .user a{
     padding:5px 0;
 }
+.show_component .user small{
+    margin:auto 0;
+}
 .show_component .user button{
     padding:5px 10px;
     border-radius:5px;
+}
+.post_content{
+    min-height: 150px
 }
 .comment{
     border-radius:10px;
 }
 .comment_content{
     margin: 0 auto;
+    height:fit-content;
+    max-height:256px;
 }
 .comment_body{
     margin:0 auto;
