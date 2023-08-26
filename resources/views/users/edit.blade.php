@@ -8,33 +8,31 @@
     <x-app-layout>
     <body>
         <div class="edit_profile_component h-screen w-3/4 lg:w-1/2 ">
-            <h1 class="text-center text-3xl">プロフィール編集</h1>
-            <div class="form  rounded-2xl">
+            <div class="form  rounded-2xl mt-24">
             <form action="/users/{{$user->id}}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="user_name">
-                    <h2>{{$user->name}}</h2>
+                <div class="user_name text-left">
+                    <h2 class="text-3xl">{{$user->name}}</h2>
                 </div>
-                <div class="favorite flex justify-between flex-col md:flex-row items-center">
-                     <div class="favoriteplayer mx-5">
-                        <h2>favoriteplayer</h2>
-                        <input type="text" name="user[favoritePlayer]" placeholder="選手名" value="{{ $user->favoritePlayer }}"/>
-                    </div>
-                    <div class="favoriteteam mx-5">
+                <div class="favorite flex justify-start flex-col md:flex-row items-center">
+                     <div class="favoriteteam">
                         <h2>favorite team</h2>
-                        <input type="text" name="user[favoriteTeam]" placeholder="チーム名" value="{{ $user->favoriteTeam }}"/>
+                        <input type="text" name="user[favoriteTeam]" placeholder="チーム名" autocomplete="off" value="{{ $user->favoriteTeam }}"/>
                     </div>
-                   
+                     <div class="favoriteplayer ml-3">
+                        <h2>favoriteplayer</h2>
+                        <input type="text" name="user[favoritePlayer]" placeholder="選手名" autocomplete="off" value="{{ $user->favoritePlayer }}"/>
+                    </div>
                 </div>
                 <br>
-                <div class="info text-center">
-                    <textarea name="user[info]" class=" h-52" onkeyup="ShowLength(value);">{{ $user->info }}</textarea>
+                <div class="info">
+                    <textarea name="user[info]" class=" h-52 text-2xl" onkeyup="ShowLength(value);">{{ $user->info }}</textarea>
                         <p><span id="inputlength">{{mb_strlen($user->info)}}文字</span>/300文字</p>
                 </div>
                 
                 <div class="save_profile text-center">
-                    <input type="submit" class="bg-green-700 text-white" value="保存"/>
+                    <input type="submit" class="bg-green-700 text-white" value="編集"/>
                 </div>
             </form>
             </div>
