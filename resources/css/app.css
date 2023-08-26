@@ -11,6 +11,26 @@ body{
 }
 
 /*index*/
+.create_button{
+   
+    border-radius: 100px;
+    background-color: PaleGreen;
+    position:fixed;
+    right: 5%;
+    bottom:40px;
+}
+.create_button i{
+     padding:25px;
+}
+@media(min-width:1024px){
+    .create_button{
+    border-radius: 100px;
+    background-color: PaleGreen;
+    position:fixed;
+    right: 35%;
+    bottom:40px;
+}
+}
     .component .posts,.profile_component .posts{
         margin: 0 auto;
     }
@@ -44,16 +64,39 @@ body{
   border-radius: 50%;
   background: #fff;
  }
+ .serch{
+     margin:10px auto 0;
+     width:50%;
+     max-width: 300px;
+ }
+ .serch_form{
+     background-color: lightblue;
+     border:1px solid white;
+    border-radius: 15px;
+ }
+ .serch_form:hover{
+     outline: 3px solid white;
+  outline-offset: -3px;
+
+ }
+ .serch *{
+     margin:auto 0;
+ }
  .serch input{
+     border:none;
+     background: none !important;
      border-radius: 15px;
  }
- .serch_button{
-     padding:5px 10px;
-     border-radius:5px;
-     background-color: white;
-     border:1px solid black;
-     
+ .serch input:focus{
+     --tw-ring-shadow:none
  }
+ /*.serch_button{*/
+ /*    padding:5px 10px;*/
+ /*    border-radius:5px;*/
+ /*    background-color: white;*/
+ /*    border:1px solid black;*/
+     
+ /*}*/
  .index .posts{
      height:90%;
  }
@@ -88,6 +131,10 @@ body{
 }
 .like_ranking,.comment_ranking{
     margin:0 auto;
+}
+.mypost{
+    outline: 3px solid yellow;
+  outline-offset: -3px;
 }
 /*show,edit_post*/
 .swiper-container {
