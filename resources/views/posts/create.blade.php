@@ -13,9 +13,12 @@
                 <form action="/posts" method="POST" name="post" id="post" enctype="multipart/form-data">
                     @csrf
                         <div class="title">
-                            <h2>Title</h2>
-                            <input type="text" class="w-1/2 title_form" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
-                            <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
+                            <h2 class="text-2xl">タイトル</h2>
+                            <input type="text" class="w-1/2 title_form text-4xl" name="post[title]" placeholder="タイトル" onkeyup="ShowLength_title(value);" value="{{ old('post.title') }}" autocomplete="off"/>
+                            <p><span id="inputlength_title">0文字</span>/100文字</p>
+                            @if($errors->first('post.title'))
+                            <p class="title__error" style="color:red">タイトルを書きましょう</p>
+                            @endif
                         </div>
                         <div class="create_option flex flex-col md:flex-row items-start">
                             <div class="category">
@@ -36,12 +39,13 @@
                             </div>
                         </div>
                         <div class="body">
-                            <h2>Body</h2>
-                            <textarea name="post[body]" placeholder="今日の試合もお疲れ様です" class="w-full h-72" onkeyup="ShowLength(value);">{{ old('post.body') }}</textarea>
-                            <p><span id="inputlength">0文字</span>/4000文字</p>
-                            <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
+                            <h2 class="text-xl">本文</h2>
+                            <textarea name="post[body]" placeholder="今日の試合もお疲れ様です" class="w-full h-72 text-2xl" onkeyup="ShowLength_body(value);">{{ old('post.body') }}</textarea>
+                            <p><span id="inputlength_body">0文字</span>/4000文字</p>
+                            @if($errors->first('post.body'))
+                            <p class="body__error" style="color:red">本文を書きましょう</p>
+                            @endif
                         </div>
-                        
                         <div class="image text-center ml-12">
                             <input type="file" name="files[]"  multiple>
                         </div>
@@ -67,9 +71,11 @@
             cloneObj.appendTo('#post');
            console.log(cloneObj);
         }
-        
-        function ShowLength( str ) {
-           document.getElementById("inputlength").innerHTML = str.length + "文字";
+        function ShowLength_title( str ) {
+           document.getElementById("inputlength_title").innerHTML = str.length + "文字";
+        }
+        function ShowLength_body( str ) {
+           document.getElementById("inputlength_body").innerHTML = str.length + "文字";
         }
     </script>
 </html>

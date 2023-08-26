@@ -131,6 +131,10 @@ body{
 }
 .like_ranking,.comment_ranking{
     margin:0 auto;
+    
+}
+.like_ranking_section,.comment_ranking_section{
+    height:350px;
 }
 .mypost{
     outline: 3px solid yellow;
@@ -186,9 +190,6 @@ body{
     padding:5px 10px;
     border-radius:5px;
 }
-.post_content{
-    min-height: 150px
-}
 .comment{
     border-radius:10px;
 }
@@ -214,6 +215,16 @@ body{
     border:none;
     border-bottom:1px solid black;
     background-color: rgb(243 244 246 );
+}
+.create_component select{
+    background-color: lightblue;
+    border:1px solid white;
+    border-radius:10px;
+}
+.create_component .body textarea{
+    background-color: lightblue;
+    border:1px solid white ;
+    border-radius:10px;
 }
 .create_component .title input:focus{
     --tw-ring-shadow:none;

@@ -151,6 +151,9 @@
                     @csrf
                     <div class="comment_form">
                         <textarea name="comment[body]" class="w-1/2" placeholder="筆者と意見を交換しましょう"></textarea>
+                        @if($errors->first('comment.body'))
+                        <p class="title__error" style="color:red">コメントの内容を書きましょう</p>
+                        @endif
                         <br>
                         <button class="comment_button hover:bg-green-600 hover:text-white bg-white text-green-600"><input class="inline" type="submit" value="コメントする"/></button>
                     </div>

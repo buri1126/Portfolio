@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Team;
@@ -26,12 +27,12 @@ class PostController extends Controller
         ->select('posts.id','posts.title','posts.user_id','posts.created_at',DB::raw('COUNT(*) as like_sum, RANK() OVER(ORDER BY COUNT(*) DESC) as like_sum_rank'))
         ->join('likes', 'posts.id', 'likes.post_id')
         ->groupBy('posts.id','posts.title','posts.user_id','posts.created_at')->orderBy('like_sum_rank')
-        ->get(10);
+        ->get();
         $comments_ranking =Post::query()
         ->select('posts.id','posts.title','posts.user_id','posts.created_at',DB::raw('COUNT(*) as comment_sum, RANK() OVER(ORDER BY COUNT(*) DESC) as comment_sum_rank'))
         ->join('comments', 'posts.id', 'comments.post_id')
         ->groupBy('posts.id','posts.title','posts.user_id','posts.created_at')->orderBy('comment_sum_rank')
-        ->get(10);
+        ->get();
         //dd($likes_ranking);
         $keyword = $request->input('keyword');
         $query =Post::query();
@@ -124,7 +125,7 @@ class PostController extends Controller
             $post_images=$request->file('files');
             foreach($post_images as $post_image){
                 // DD($post_image);
-                $image_url=Cloudinary::upload($post_image->getRealPath(),['folder'=>'assets','width'=>1024,'height'=>640,'crop'=>'pad'])->getSecurePath();
+                $image_url=Cloudinary::upload($post_image->getRealPath(),['folder'=>'assets','width'=>1024, "quality" => "auto",'height'=>640,'crop'=>'pad'])->getSecurePath();
                 $image=New Image();
                 $image->post_id=$post->id;
                 $image->image_url=$image_url;
@@ -156,7 +157,7 @@ class PostController extends Controller
                     $image_delete->delete();
                 }
             foreach($post_images as $post_image){
-                $image_url=Cloudinary::upload($post_image->getRealPath(),['folder'=>'assets','width'=>1024,'height'=>640,'crop'=>'pad'])->getSecurePath();
+                $image_url=Cloudinary::upload($post_image->getRealPath(),['folder'=>'assets','width'=>1024,'height'=>640, "quality" => "auto",'crop'=>'pad'])->getSecurePath();
                     $image=New Image();
                     $image->post_id=$post->id;
                     $image->image_url=$image_url;
