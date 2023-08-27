@@ -173,4 +173,20 @@ class PostController extends Controller
         $comment_delete->delete();
         return redirect('/');
     }
+    public function ranking_index(Post $post,Team $team,Category $category){
+         $likes_ranking = Post::query()
+        ->select('posts.id','posts.title','posts.user_id','posts.created_at',DB::raw('COUNT(*) as like_sum, RANK() OVER(ORDER BY COUNT(*) DESC) as like_sum_rank'))
+        ->join('likes', 'posts.id', 'likes.post_id')
+        ->groupBy('posts.id','posts.title','posts.user_id','posts.created_at')->orderBy('like_sum_rank')
+        ->get();
+        $comments_ranking =Post::query()
+        ->select('posts.id','posts.title','posts.user_id','posts.created_at',DB::raw('COUNT(*) as comment_sum, RANK() OVER(ORDER BY COUNT(*) DESC) as comment_sum_rank'))
+        ->join('comments', 'posts.id', 'comments.post_id')
+        ->groupBy('posts.id','posts.title','posts.user_id','posts.created_at')->orderBy('comment_sum_rank')
+        ->get();
+        $prevUrl = url()->previous();
+        
+        return view('ranking')->with(['prevUrl'=>$prevUrl,'comments_ranking'=>$comments_ranking,'likes_ranking'=>$likes_ranking]);  
+
+    }
 }
