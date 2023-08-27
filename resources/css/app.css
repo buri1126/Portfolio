@@ -343,9 +343,18 @@ border-radius:5px;
 }
 .league_component .standings,.league_component .fixtures{
     padding:0 20px 10px;
-    border-radius:5px;
-    background-color:white;
+    border-radius:15px;
+  
+    margin-left: auto;
+    margin-right: auto;
 }
+.league_component img{
+    width:25px;
+}
+.league_component table{
+    background-color: lightblue;
+}
+
  .follow_button{
      outline: 1px solid black;
   outline-offset: -1px;
@@ -389,7 +398,7 @@ border-radius:5px;
   position: relative;
   display: block;
 }
-.comment_title {
+.comment_title,.standings_title,.fixtures_title {
   line-height: 60px;
   position: relative;
   height: 60px;
@@ -401,7 +410,7 @@ border-radius:5px;
 }
 
 .comment_title:before,
-.comment_title:after {
+.comment_title:after,.standings_title:before,.fixtures_title:before,.standings_title:after,.fixtures_title:after {
   position: absolute;
   top: 0;
   display: block;
@@ -410,19 +419,19 @@ border-radius:5px;
   border: 30px solid RoyalBlue;
 }
 
-.comment_title:before {
+.comment_title:before,.standings_title:before,.fixtures_title:before {
   left: -40px;
   border-left-width: 15px;
   border-left-color: transparent;
 }
 
-.comment_title:after {
+.comment_title:after,.standings_title:after,.fixtures_title:after {
   right: -40px;
   border-right-width: 15px;
   border-right-color: transparent;
 }
 
-.comment_title span {
+.comment_title span,.standings_title span,.fixtures_title span{
   position: relative;
   display: block;
 }
