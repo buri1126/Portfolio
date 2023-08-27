@@ -129,12 +129,15 @@ body{
 .rank *{
     margin:auto 0;
 }
+.ranking_table{
+    height:440px;
+}
 .like_ranking,.comment_ranking{
     margin:0 auto;
     
 }
 .like_ranking_section,.comment_ranking_section{
-    height:350px;
+    height:fit-content;
 }
 .mypost{
     outline: 3px solid yellow;
@@ -319,6 +322,9 @@ border-radius:5px;
 .follow_follower_component button{
     padding:5px 10px;
     border-radius:5px;
+    height:fit-content;
+    margin-top:auto;
+    margin-bottom:auto;
 }
 .follow_follower_component .follows,.follow_follower_component .followers{
     margin: 0 auto;
@@ -327,6 +333,7 @@ border-radius:5px;
    margin: 10px auto;
     padding: 10px 0;
     border-radius:5px;
+    width:350px;
 }
 .follow_follower_component .follow:hover,.follow_follower_component .follower:hover{
       box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);

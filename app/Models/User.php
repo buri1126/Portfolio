@@ -111,10 +111,6 @@ class User extends Authenticatable
     {
          return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
-    
-    
-    
-    
     public function store($userId)
     {
         Auth::user()->follows()->attach($userId);

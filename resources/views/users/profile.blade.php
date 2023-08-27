@@ -53,7 +53,7 @@
                     </div>
                     <hr>
                     <div class="user_info">
-                        <p class="text-left break-words">{!! nl2br($introduction) !!}</p>
+                        <p class="text-left break-words">{!! nl2br($user->info) !!}</p>
                     </div>
                 </div>
                 <div class='posts overflow-y-scroll w-3/4 pb-4'>

@@ -25,8 +25,7 @@ class UserController extends Controller
         //dd($followers);
         $postscount=$user->getByUser()->count();
         $prevUrl = url()->previous();
-        $introduction = User::convertLink($user->info);
-        return view('users.profile')->with(['introduction'=>$introduction,'prevUrl'=>$prevUrl,'posts' => $user->getByUser(),'postscount'=>$postscount,'user'=>$user,'Auth'=>$Auth,'followcounts'=>$follow_count,'followercounts'=>$followed_count,'follows'=>$follows,'followers'=>$followers]);
+        return view('users.profile')->with(['prevUrl'=>$prevUrl,'posts' => $user->getByUser(),'postscount'=>$postscount,'user'=>$user,'Auth'=>$Auth,'followcounts'=>$follow_count,'followercounts'=>$followed_count,'follows'=>$follows,'followers'=>$followers]);
         
     }
    public function edit(Team $team,Post $post,User $user) 
@@ -37,7 +36,10 @@ class UserController extends Controller
         
         $input = $request['user'];
         // dd($input);
-        $user->fill($input)->save();
+        $user->fill($input);
+        $introduction = User::convertLink($request['user.info']);
+        $user->info=$introduction;
+        $user->save();
         return redirect('/users/' . $user->id);
     }
     public function follow(User $user,Follower $follower){
@@ -53,7 +55,7 @@ class UserController extends Controller
         $follows=$user->follows()->get();
         $follower_count = $user->followers()->count();
         $followers=$user->followers()->get();
-        
+       
         return view('users.follower')->with(['follow_count'=>$follow_count,'follows'=>$follows,'follower_count'=>$follower_count,'followers'=>$followers,'user'=>$user]);
     }
     
