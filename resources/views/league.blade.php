@@ -10,16 +10,12 @@
     </head>
     <x-app-layout>
         <body>
-            <div class="league_component flex flex-col w-11/12 md:w-1/2 mt-16 h-screen">
-                <div class='standings text-center  w-full mb-10'>
-                    <h1 class="text-center">standings</h1>
-                    <p>現在の順位</p>
-                    
+            <div class="league_component flex flex-col w-11/12 md:w-4/6 mt-16 h-screen">
+                <div class='standings text-center  w-3/4 mb-10'>
+                    <p class="text-3xl standings_title"><span>現在の順位</span></p>
                 </div>
-                <div class='fixtures text-center w-full'>
-                    <h1 class="text-center">fixtures</h1>
-                    <p>今月の試合日程</p>
-                    
+                <div class='fixtures text-center w-3/4'>
+                    <p class="text-3xl fixtures_title"><span>今月の試合日程</span></p>
                 </div>
                 <div class="footer text-center">
                      <a href="{{ url($prevUrl) }}">戻る</a>
