@@ -22,6 +22,9 @@
                      <x-nav-link :href="route('league')" :active="request()->routeIs('league')" class="text-white">
                         {{ __('League') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('ranking')" :active="request()->routeIs('ranking')" class="text-white">
+                        {{ __('Ranking') }}
+                    </x-nav-link>
                 </div>
             </div>
             

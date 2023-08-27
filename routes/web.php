@@ -36,6 +36,7 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function()
     Route::post('/posts', 'store')->name('store');
     Route::get('/posts/create', 'create')->name('create');
     Route::post('/like', 'like')->name('posts.like');
+    Route::get('/posts/ranking','ranking_index')->name('ranking');
     Route::get('/posts/like/{id}','like')->name('like');
     Route::get('/posts/unlike/{id}','unlike')->name('unlike');
     Route::get('/posts/{post}', 'show')->name('show');
