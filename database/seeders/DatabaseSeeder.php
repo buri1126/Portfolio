@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
                 //Favorite_teamSeeder::class,
                 Post_teamSeeder::class,
                 LikeSeeder::class,
+                FollowerSeeder::class,
         ]);
         
     }

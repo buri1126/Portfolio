@@ -65,7 +65,7 @@
                     @foreach($posts as $post)
                         <div class='post text-left bg-white rounded-xl hover:scale-110'>
                             <div class="ml-8">
-                                <a href="/posts/{{ $post->id }}" class="title text-3xl">{{ $post->title }}</a>
+                                <a href="/posts/{{ $post->id }}" class="title text-3xl break-words">{{ $post->title }}</a>
                                 <br>
                                 <div class="post_info">
                                     <a href="/categories/{{ $post->category->id }}" class="category">{{ $post->category->name }}</a>

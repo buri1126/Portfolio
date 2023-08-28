@@ -438,3 +438,11 @@ border-radius:5px;
 .ranking_component{
     margin:0 auto;
 }
+.mypost,.userpost{
+    width:200px;
+}
+@media(min-width:1280px){
+    .mypost,.userpost{
+    width:300px;
+    }
+}

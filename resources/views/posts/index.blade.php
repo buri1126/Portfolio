@@ -59,7 +59,7 @@
                             <div class='post text-left bg-white rounded-xl hover:scale-110'>
                                 <div class="ml-8">
                                     <div class="title">
-                                    <a href="/posts/{{ $post->id }}" class="text-3xl">{{ $post->title }}</a>
+                                    <a href="/posts/{{ $post->id }}" class="text-3xl break-words">{{ $post->title }}</a>
                                     </div>
                                     <a href="/categories/{{ $post->category->id }}" class="category " >{{ $post->category->name }}</a>
                                     @foreach($post->teams as $team)   
@@ -102,26 +102,26 @@
                                             </td>
                                             <td class="bg-red-300">
                                                 @if(Auth::id()===$like_rank->user_id)
-                                                    <div class="mypost flex flex-col rank_post_info bg-white m-3 rounded-xl hover:scale-110">
-                                                        <div class="like_rank flex ml-2">
-                                                            <a href="/posts/{{$like_rank->id}}" class="text-3xl">{{$like_rank->title}}</a>
-                                                            <p><span class="fa-solid fa-heart" style="color: #ff0000;"></span>{{$like_rank->like_sum}}</p>
+                                                    <div class="mypost flex flex-col rank_post_info bg-white m-3 rounded-xl px-3 hover:scale-110">
+                                                        <div class="like_rank  ml-2 text-left">
+                                                            <a href="/posts/{{$like_rank->id}}" class="text-3xl text-left break-words">{{$like_rank->title}}</a>
                                                         </div>
-                                                        <div class="like_rank_info flex ml-2">
-                                                            <p><i class="fa-solid fa-user"></i>{{$like_rank->user->name}}</p>
-                                                            <small class="break-words">{{$like_rank->created_at}}</small>
+                                                        <div class="like_rank_info flex flex-col ml-2">
+                                                            <p class="text-left"><i class="fa-solid fa-user"></i>{{$like_rank->user->name}}</p>
+                                                            <small class="break-words text-left">{{$like_rank->created_at}}</small>
                                                         </div>
+                                                            <p class="text-left ml-2"><span class="fa-solid fa-heart" style="color: #ff0000;"></span>{{$like_rank->like_sum}}</p>
                                                     </div>
                                                 @else
-                                                    <div class="flex flex-col rank_post_info bg-white m-3 rounded-xl hover:scale-110">
-                                                        <div class="like_rank flex ml-2">
-                                                            <a href="/posts/{{$like_rank->id}}" class="text-3xl">{{$like_rank->title}}</a>
-                                                            <p><span class="fa-solid fa-heart" style="color: #ff0000;"></span>{{$like_rank->like_sum}}</p>
+                                                    <div class="userpost flex flex-col rank_post_info bg-white m-3 rounded-xl px-3 hover:scale-110">
+                                                        <div class="like_rank  ml-2 text-left" >
+                                                            <a href="/posts/{{$like_rank->id}}" class="text-3xl text-left break-words">{{$like_rank->title}}</a>
                                                         </div>
-                                                        <div class="like_rank_info flex ml-2">
-                                                            <p><i class="fa-solid fa-user"></i>{{$like_rank->user->name}}</p>
-                                                            <small class="break-words">{{$like_rank->created_at}}</small>
+                                                        <div class="like_rank_info flex flex-col ml-2">
+                                                            <p class="text-left"><i class="fa-solid fa-user"></i>{{$like_rank->user->name}}</p>
+                                                            <small class="break-words text-left">{{$like_rank->created_at}}</small>
                                                         </div>
+                                                            <p class="text-left ml-2"><span class="fa-solid fa-heart" style="color: #ff0000;"></span>{{$like_rank->like_sum}}</p>
                                                     </div>
                                                 @endif
                                             </td>
@@ -148,31 +148,30 @@
                                                         <i class="fa-solid fa-medal" style="color: brown;"></i>
                                                     @endif
                                                     <p>{{$comment_rank->comment_sum_rank}}位</p>
-        
                                                     </div>
                                                 </td>
                                                 <td class="bg-blue-300">
                                                     @if(Auth::id()===$comment_rank->user_id)
-                                                        <div class="mypost flex flex-col rank_post_info bg-white m-3 rounded-xl hover:scale-110">
-                                                            <div class="comment_rank ml-2 flex">
-                                                                <a href="/posts/{{$comment_rank->id}}" class="text-3xl">{{$comment_rank->title}}</a>
-                                                                <p><span class="fa-regular fa-comment"></span>{{$comment_rank->comment_sum}}</p>
+                                                        <div class="mypost flex flex-col rank_post_info bg-white m-3 px-3 rounded-xl hover:scale-110">
+                                                            <div class="comment_rank ml-2 text-left">
+                                                                <a href="/posts/{{$comment_rank->id}}" class="text-3xl text-left break-words">{{$comment_rank->title}}</a>
                                                             </div>
-                                                            <div class="comment_rank_info ml-2 flex">
-                                                                <p><i class="fa-solid fa-user"></i>{{$comment_rank->user->name}}</p>
-                                                                <small class="break-words">{{$comment_rank->created_at}}</small>
+                                                            <div class="comment_rank_info ml-2 flex flex-col">
+                                                                <p class="text-left"><i class="fa-solid fa-user"></i>{{$comment_rank->user->name}}</p>
+                                                                <small class="break-words text-left">{{$comment_rank->created_at}}</small>
                                                             </div>
+                                                                <p class="text-left ml-2"><span class="fa-regular fa-comment"></span>{{$comment_rank->comment_sum}}</p>
                                                         </div>
                                                     @else
-                                                        <div class="flex flex-col rank_post_info bg-white m-3 rounded-xl hover:scale-110">
-                                                            <div class="comment_rank ml-2 flex">
-                                                                <a href="/posts/{{$comment_rank->id}}" class="text-3xl">{{$comment_rank->title}}</a>
-                                                                <p><span class="fa-regular fa-comment"></span>{{$comment_rank->comment_sum}}</p>
+                                                        <div class="userpost flex flex-col rank_post_info bg-white m-3 px-3 rounded-xl hover:scale-110">
+                                                            <div class="comment_rank ml-2 text-left">
+                                                                <a href="/posts/{{$comment_rank->id}}" class="text-3xl text-left break-words">{{$comment_rank->title}}</a>
                                                             </div>
-                                                            <div class="comment_rank_info ml-2 flex">
-                                                                <p><i class="fa-solid fa-user"></i>{{$comment_rank->user->name}}</p>
-                                                                <small class="break-words">{{$comment_rank->created_at}}</small>
+                                                            <div class="comment_rank_info ml-2 flex flex-col">
+                                                                <p class="text-left"><i class="fa-solid fa-user"></i>{{$comment_rank->user->name}}</p>
+                                                                <small class="break-words text-left">{{$comment_rank->created_at}}</small>
                                                             </div>
+                                                                <p class="text-left ml-2"><span class="fa-regular fa-comment"></span>{{$comment_rank->comment_sum}}</p>
                                                         </div>
                                                     @endif
                                                 </td>

@@ -94,7 +94,7 @@ class PostSeeder extends Seeder
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
                 'category_id' => 1,
-                'user_id' => 11,
+                'user_id' => 13,
         ]);
 
     }
