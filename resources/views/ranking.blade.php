@@ -62,7 +62,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class='comment_ranking_section text-center mt-10 pb-10 rounded-xl  w-full'>
+                    <div class='comment_ranking_section text-center mb-10 pb-10 rounded-xl  w-full'>
                         <p class="comment_title"><span>コメントランキング</span></p>
                         <div class="ranking_table overflow-y-scroll flex flex-col">
                             <table class="comment_ranking">

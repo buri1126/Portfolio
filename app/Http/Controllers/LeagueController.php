@@ -28,20 +28,32 @@ class LeagueController extends Controller
     	],
     ]);
         $fixtures=json_decode($response_fixtures->getBody(),true);
-        // 日時取得
+        //日時取得
+        $date_prev=Carbon::now()->addMonth(-1)->format("Y-m");
          $date=Carbon::now()->format("Y-m");
+         $date_next=Carbon::now()->addMonth(1)->format("Y-m");
         // 繰り返し処理
         $fixturedatas=array();
+        $fixturedata_prev=array();
+        $fixturedata=array();
+        $fixturedata_next=array();
         for($i=0;$i<380;$i++){
-            $fixturedata=$fixtures['response'][$i];
+            
+            $fixture=$fixtures['response'][$i];
             $fixture_date=$fixtures['response'][$i]['fixture']['date'];
             $fixture_date_new=substr( $fixture_date,0,7);
-            if($fixture_date_new===$date){
-                array_push($fixturedatas,$fixturedata);
-            }
-            //dd( $fixturedatas);
+            
+           if($fixture_date_new===$date_prev){
+                 array_push($fixturedata_prev,$fixture);
+             }elseif($fixture_date_new===$date){
+                 array_push($fixturedata,$fixture);
+             }elseif($fixture_date_new===$date_next){
+                 array_push($fixturedata_next,$fixture);
+             }
+           
         }
+         //dd( $fixturedata_next);
         $prevUrl = url()->previous();
-        return view('league')->with(['prevUrl'=>$prevUrl,'standings'=>$standings,'fixturedatas'=>$fixturedatas]);
+        return view('league')->with(['prevUrl'=>$prevUrl,'standings'=>$standings,'fixturedata'=>$fixturedata,'fixturedata_prev'=>$fixturedata_prev,'fixturedata_next'=>$fixturedata_next]);
     }
 }
