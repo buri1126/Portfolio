@@ -54,7 +54,7 @@
                     <input type="file" name="files[]"  multiple>
                 </div>
                 <div class="update text-center ">
-                    <input type="submit" class="bg-green-700 w-1/4 text-white" value="編集する"/>
+                    <input type="submit" class="bg-green-700  text-white" value="編集する"/>
                 </div>
             </form>
             </div>

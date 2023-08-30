@@ -398,7 +398,17 @@ border-radius:5px;
   position: relative;
   display: block;
 }
-.comment_title,.standings_title,.fixtures_title {
+.comment_title{
+    line-height: 60px;
+  position: relative;
+  height: 60px;
+  margin: 2em auto 1em;
+  text-align: center;
+  color: #fff;
+  background: 	RoyalBlue;
+  width:50%;
+}
+.standings_title,.fixtures_title {
   line-height: 60px;
   position: relative;
   height: 60px;
