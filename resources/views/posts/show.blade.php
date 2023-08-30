@@ -109,7 +109,7 @@
                 </div>
             </div>
             <div class="comments text-center  border-y border-solid border-gray-300">
-                <h2 >comment</h2>
+                <h2 >コメント</h2>
                 <div class="comment_content overflow-y-scroll w-1/2 ">
                     @foreach($comments as $comment)
                         <div class="comment mb-8">
