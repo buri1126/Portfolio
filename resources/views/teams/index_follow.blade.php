@@ -6,6 +6,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('/css/style.css')  }}">
+        <script   src="https://code.jquery.com/jquery-3.7.0.min.js"   integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="   crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/e881b85793.js" crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
@@ -46,9 +47,12 @@
                     <div class="serch text-center m-5">
                         @foreach($posts as $post)
                             @foreach($post->teams as $team)
-                                <form action="/teams/{{$team->id}}" class="serch_form">
+                                <form action="/teams/{{$team->id}}" class="serch_form flex justify-between">
                                     <input type="text" name="keyword" placeholder="キーワード" class="serchword" autocomplete="off">
-                                     <button type="submit" class="serch_button p-4"><i class="fas fa-search"></i></button>
+                                    <div class="flex">
+                                        <i class="fa-solid fa-delete-left delete_word"></i>
+                                        <button type="submit" class="serch_button p-4"><i class="fas fa-search"></i></button>
+                                    </div>
                                 </form>
                             @endforeach
                         @break
@@ -70,7 +74,7 @@
                                         </div>
                                         <a href="/categories/{{ $post->category->id }}" class="category" >{{ $post->category->name }}</a>
                                         @foreach($post->teams as $team)   
-                                            <a href="/teams/{{$team->id}}" class="team">{{ $team->name }}</a>
+                                            <a href="/teams/{{$team->id}}" class="team serched">{{ $team->name }}</a>
                                         @endforeach
                                         <br>
                                         <a href="/users/{{$post->user->id}}" class="user">{{ $post->user->name }}</a>
@@ -197,4 +201,9 @@
             </div>
         </body>
     </x-app-layout>
+    <script>
+         $(".delete_word").on("click", function(){
+            $(".serchword").val('');
+          });
+    </script>
 </html>

@@ -53,6 +53,10 @@ body{
     border-radius: 50px 0 0 50px;
     background: black;
  }
+ .serched{
+     background-color: red !important;
+    
+ }
  .component .index .category:before,.component .index .team:before,.profile_component .category:before,.profile_component .team:before
  ,.show_component .category:before,.show_component .team:before{
      position: absolute;
