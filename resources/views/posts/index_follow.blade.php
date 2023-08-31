@@ -6,6 +6,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('/css/style.css')  }}">
+        <script   src="https://code.jquery.com/jquery-3.7.0.min.js"   integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="   crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/e881b85793.js" crossorigin="anonymous"></script>
     </head>
     <x-app-layout>
@@ -44,9 +45,12 @@
                         <button class="create_button hover:scale-110"><a href="/posts/create"><i class="fa-solid fa-plus"></i></a></button>
                     </div>
                     <div class="serch text-center m-5">
-                        <form action="/posts/follow" class="serch_form">
+                        <form action="/posts/follow" class="serch_form flex justify-between">
                             <input type="text" name="keyword" placeholder="キーワード" class="serchword" autocomplete="off">
-                            <button type="submit" class="serch_button p-4"><i class="fas fa-search"></i></button>
+                            <div class="flex">
+                                <i class="fa-solid fa-delete-left delete_word"></i>
+                                <button type="submit" class="serch_button p-4"><i class="fas fa-search"></i></button>
+                            </div>
                         </form>
                     </div>
                     <p>フォロー中のユーザーの投稿</p>
@@ -192,4 +196,9 @@
             </div>
         </body>
     </x-app-layout>
+    <script>
+         $(".delete_word").on("click", function(){
+            $(".serchword").val('');
+          });
+    </script>
 </html>

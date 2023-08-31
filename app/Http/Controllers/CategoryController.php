@@ -26,7 +26,7 @@ class CategoryController extends Controller
         ->get(10);
          $keyword = $request->input('keyword');
          
-        //  DD($category);
+         //DD($category->name);
         $query =Post::where('category_id','=',$category->id);
          $postscount=$query->count();
         if(!empty($keyword))

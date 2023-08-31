@@ -29,9 +29,9 @@ class LeagueController extends Controller
     // ]);
     //     $fixtures=json_decode($response_fixtures->getBody(),true);
     //     //日時取得
-    //     $date_prev=Carbon::now()->addMonth(-1)->format("Y-m");
+    //     $date_prev=Carbon::now()->addMonthNoOverflow(-1)->format("Y-m");
     //      $date=Carbon::now()->format("Y-m");
-    //      $date_next=Carbon::now()->addMonth(1)->format("Y-m");
+    //      $date_next=Carbon::now()->addMonthNoOverflow()->format("Y-m");
     //     // 繰り返し処理
     //     $fixturedatas=array();
     //     $fixturedata_prev=array();
