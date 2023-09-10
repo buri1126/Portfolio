@@ -64,12 +64,12 @@ class User extends Authenticatable
     }
      public function followers()
     {
-        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id')->withTimestamps();
     }
     // フォロー→フォロワー
     public function follows()
     {
-        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id')->withTimestamps();
     }
     public function follow($user_id)
    {
@@ -106,7 +106,6 @@ class User extends Authenticatable
 
         return $convert_text;
     }
-    
      public function getByUser(int $limit_count = 5)
     {
          return $this->posts()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);

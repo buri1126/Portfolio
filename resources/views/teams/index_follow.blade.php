@@ -12,7 +12,7 @@
     <x-app-layout>
         <body>
             <div class="component flex mt-16 h-screen">
-                <div class="leftbar  lg:w-2/12 w-3/12 h-11/12 overflow-y-scroll text-left pt-8">
+                <div class="leftbar  lg:w-2/12 w-3/12 h-screen overflow-y-scroll text-left pt-8">
                     <div class="post_select text-center mt-5">
                         <a href="/" class="flex flex-col w-3/5 bg-white break-words rounded-xl">home</a>
                         <a href="/teams/{{$team->id}}" class="flex flex-col w-3/5 bg-white break-words rounded-xl">all</a>
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="index lg:w-6/12 w-9/12 text-center border-r border-l border-gray-300 border-solid">
+                <div class="index lg:w-6/12 w-9/12 h-screen text-center border-r border-l border-gray-300 border-solid">
                     <div>
                         <button class="create_button hover:scale-110"><a href="/posts/create"><i class="fa-solid fa-plus"></i></a></button>
                     </div>
@@ -92,11 +92,8 @@
                             @endif
                         @endforeach
                     </div>
-                    <div class="footer text-center">
-                        <a href="#" onclick="history.back(); return false;">戻る</a>
-                    </div>
                 </div>
-                <div class="rightbar lg:w-4/12 h-11/12 lg:block hidden  text-left overflow-y-scroll pt-8">
+                <div class="rightbar lg:w-4/12 h-screen lg:block hidden  text-left overflow-y-scroll pt-8">
                     <div class='like_ranking_section text-center mb-10 pb-10 rounded-xl overflow-y-scroll w-full'>
                         <p class="like_title"><span>いいねランキング</span></p>
                         <div class="ranking_table flex flex-col ">

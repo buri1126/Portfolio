@@ -160,8 +160,9 @@
                 </form>
             </div>
             <div class="footer text-center mt-3">
-                <a href="/">ホームに戻る</a>
-                 <a href="/users/{{$post->user->id}}">アカウントに戻る</a>
+                <button><a href="/">ホームに戻る</a></button>
+                <br>
+                <button><a href="/users/{{$post->user->id}}">アカウントに戻る</a></button>
             </div>
         </div>
     </body>

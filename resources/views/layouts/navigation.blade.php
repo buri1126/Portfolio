@@ -16,7 +16,7 @@
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')" class="text-white">
                         {{ __('Timeline') }}
                     </x-nav-link>
-                     <x-nav-link :href="route('index_follow')" :active="request()->routeIs('index_following')" class="text-white">
+                     <x-nav-link :href="route('index_follow')" :active="request()->routeIs('index_follow')" class="text-white">
                         {{ __('Following') }}
                     </x-nav-link>
                      <x-nav-link :href="route('league')" :active="request()->routeIs('league')" class="text-white">

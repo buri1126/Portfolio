@@ -29,7 +29,8 @@ class UserController extends Controller
         
     }
    public function edit(Team $team,Post $post,User $user) 
-    {        return view('users.edit')->with(['post' => $post,'user'=>$user]);
+    {        
+        return view('users.edit')->with(['post' => $post,'user'=>$user]);
     }
     public function update(UserRequest $request, User $user)
     {
@@ -44,7 +45,7 @@ class UserController extends Controller
     }
     public function follow(User $user,Follower $follower){
         $follow_count = $user->follows()->count();
-        $follows=$user->follows()->get();
+        $follows=$user->follows()->orderBy('created_at','DESC')->get();
         $follower_count = $user->followers()->count();
         $followers=$user->followers()->get();
         
@@ -54,8 +55,8 @@ class UserController extends Controller
         $follow_count = $user->follows()->count();
         $follows=$user->follows()->get();
         $follower_count = $user->followers()->count();
-        $followers=$user->followers()->get();
-       
+        $followers=$user->followers()->orderBy('created_at','DESC')->get();
+       //dd($followers);
         return view('users.follower')->with(['follow_count'=>$follow_count,'follows'=>$follows,'follower_count'=>$follower_count,'followers'=>$followers,'user'=>$user]);
     }
     

@@ -37,7 +37,7 @@
             </form>
             </div>
             <div class="footer text-center">
-            <a href="/users/{{$user->id}}" >戻る</a>
+            <button><a href="/users/{{$user->id}}" >戻る</a></button>
         </div>
         </div>
         
