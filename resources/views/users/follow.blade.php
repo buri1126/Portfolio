@@ -11,11 +11,13 @@
         <body>
             <div class="follow_follower_component h-screen w-3/4 md:w-1/2 border-x border-solid border-gray">
                 <div class="follows w-full overflow-y-scroll py-3">
+                    
                     @if(Auth::id()===$user->id)
-                    <p class="text-center follow_count">あなたは<span class="follow_counter">{{$follow_count}}</span>人をフォローしています</p>
+                    <p class="text-center follow_count"><a href="/users/{{$user->id}}">あなた</a>は<span class="follow_counter">{{$follow_count}}</span>人をフォローしています</p>
                     @else
-                    <p class="text-center">{{$user->name}}は{{$follow_count}}人をフォローしています</p>
+                    <p class="text-center"><a href="/users/{{$user->id}}">{{$user->name}}</a>は{{$follow_count}}人をフォローしています</p>
                     @endif
+                    <a href="/users/{{$user->id}}/follower" class="text-center block">フォロワーを見る</a>
                     <div class="list">
                         @foreach($follows as $follow)
                         <div class="follow flex flex-col border border-black border-solid text-left bg-white hover:scale-110">
@@ -53,17 +55,17 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="footer text-center">
-                        <a href="{{route('profile',['user'=>Auth::id()])}}">戻る</a>
-                    </div>
                 </div>
+                <div class="footer text-center">
+                        <button><a href="{{route('profile',['user'=>$user->id])}}">戻る</a></button>
+                    </div>
             </div>
         </body>
 
     </x-app-layout>
     <script>
-        function follow(userId) {
-            let user_id=userId;
+    function follow(userId) {
+        let user_id=userId;
     $.ajax({
       // これがないと419エラーが出ます
       headers: { "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") },
@@ -80,7 +82,7 @@
         console.log("fail");
       });
   }  
-  function unfollow(userId) {
+    function unfollow(userId) {
       let user_id=userId;
     $.ajax({
       // これがないと419エラーが出ます

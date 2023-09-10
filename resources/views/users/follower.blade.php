@@ -12,10 +12,11 @@
             <div class="follow_follower_component h-screen w-3/4 md:w-1/2">
                 <div class="followers overflow-y-scroll w-full py-3">
                     @if(Auth::id()===$user->id)
-                    <p class="text-center follow_count">あなたは{{$follower_count}}人にフォローされています</p>
+                    <p class="text-center follow_count"><a href="/users/{{$user->id}}">あなた</a>は{{$follower_count}}人にフォローされています</p>
                     @else
-                    <p class="text-center follow_count">{{$user->name}}は{{$follower_count}}人にフォローされています</p>
+                    <p class="text-center follow_count"><a href="/users/{{$user->id}}">{{$user->name}}</a>は{{$follower_count}}人にフォローされています</p>
                     @endif
+                    <a href="/users/{{$user->id}}/follow" class="text-center block">フォロー中を見る</a>
                     <div class="list">
                         @foreach($followers as $follower)
                         <div class="follower border border-black border-solid  bg-white w-3/4 md:w-1/2 hover:scale-110">
@@ -58,7 +59,7 @@
                 </div>
         
                 <div class="footer text-center">
-                    <a href="{{route('profile',['user'=>Auth::id()])}}">戻る</a>
+                    <button><a href="{{route('profile',['user'=>$user->id])}}">戻る</a></button>
                 </div>
             </div>
         </body>

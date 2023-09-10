@@ -59,7 +59,7 @@
             </form>
             </div>
              <div class="footer text-center">
-                <a href="/posts/{{$post->id}}">戻る</a>
+                <button><a href="/posts/{{$post->id}}">戻る</a></button>
             </div>
         </div>
     </body>

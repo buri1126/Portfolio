@@ -74,10 +74,11 @@ class PostController extends Controller
        //dd($postscount);
         return view('posts.index_follow')->with(['comments_ranking'=>$comments_ranking,'likes_ranking'=>$likes_ranking,'posts' => $follow_posts,'postscount'=>$postscount,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get()]);
     } 
-    public function show(Post $post ,Image $image,Comment $comment,User $user)
+    public function show( Request $request,Post $post ,Image $image,Comment $comment,User $user)
     {
         // dd(empty($comment));
           $prevUrl = url()->previous();
+          //dd($request);
         $Auth=Auth::id();
         $introduction = Post::convertLink($post->body);
         $image_get=Image::where('post_id','=',$post->id)->get();
