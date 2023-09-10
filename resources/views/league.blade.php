@@ -263,7 +263,7 @@
             </table>
         </div>
         <div class="footer text-center">
-            <a href="{{ url($prevUrl) }}">戻る</a>
+            <button><a href="{{ url($prevUrl) }}">戻る</a></button>
         </div>
     </div>
 </body>

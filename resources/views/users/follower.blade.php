@@ -9,7 +9,7 @@
     </head>
     <x-app-layout>
         <body>
-            <div class="follow_follower_component h-screen w-3/4 md:w-1/2">
+            <div class="follow_follower_component h-screen w-3/4 md:w-1/2 border-x border-solid border-gray">
                 <div class="followers overflow-y-scroll w-full py-3">
                     @if(Auth::id()===$user->id)
                     <p class="text-center follow_count"><a href="/users/{{$user->id}}">あなた</a>は{{$follower_count}}人にフォローされています</p>
