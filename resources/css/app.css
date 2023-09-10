@@ -342,6 +342,7 @@ border-radius:5px;
 }
 .follow_follower_component .follows,.follow_follower_component .followers{
     margin: 0 auto;
+    height:90vh;
 }
 .follow_follower_component .follow,.follow_follower_component .follower{
    margin: 10px auto;
