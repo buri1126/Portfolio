@@ -143,8 +143,13 @@ body{
 .rank *{
     margin:auto 0;
 }
-.ranking_table{
-    height:440px;
+.component .ranking_table{
+    height:fit-content;
+    max-height:395.5px;
+}
+.ranking_component .ranking_table{
+     height:fit-content;
+    max-height:525px;
 }
 .like_ranking,.comment_ranking{
     margin:0 auto;
@@ -400,7 +405,7 @@ border-radius:5px;
   border: 30px solid #fa4141;
 }
 
-.like_title:before {
+.ranking_component .like_title:before {
   left: -40px;
   border-left-width: 15px;
   border-left-color: transparent;
@@ -447,7 +452,7 @@ border-radius:5px;
   border: 30px solid RoyalBlue;
 }
 
-.comment_title:before,.standings_title:before,.fixtures_title:before {
+.ranking_component .comment_title:before,.standings_title:before,.fixtures_title:before {
   left: -40px;
   border-left-width: 15px;
   border-left-color: transparent;
@@ -476,4 +481,7 @@ border-radius:5px;
 }
 .fixtures button{
     margin:auto 0;
+}
+.ranking_frase{
+    margin:0 auto;
 }

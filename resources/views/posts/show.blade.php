@@ -159,10 +159,9 @@
                     </div>
                 </form>
             </div>
-            <div class="footer text-center mt-3">
+            <div class="footer text-center mt-3 text-center">
                 <button><a href="/">ホームに戻る</a></button>
-                <br>
-                <button><a href="/users/{{$post->user->id}}">アカウントに戻る</a></button>
+                <button class="ml-3"><a href="/users/{{$post->user->id}}">アカウントに戻る</a></button>
             </div>
         </div>
     </body>
