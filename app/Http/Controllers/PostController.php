@@ -46,7 +46,6 @@ class PostController extends Controller
         $post=$query->orderBy('created_at','desc')->get();
         //フォロー中
         
-        
         return view('posts.index')->with(['comments_ranking'=>$comments_ranking,'likes_ranking'=>$likes_ranking,'posts' => $post,'postscount'=>$postscount,'keyword',$keyword,'teams'=>$team->get(),'categories'=>$category->get()]);  
     }
     public function index_follow(Post $post,Request $request,Team $team,Category $category)

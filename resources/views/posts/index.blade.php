@@ -85,10 +85,11 @@
                     </div>
                 </div>
                 <div class="rightbar lg:w-4/12 h-screen lg:block hidden  text-left overflow-y-scroll pt-8">
-                    <div class='like_ranking_section text-center mb-10 pb-10 rounded-xl overflow-y-scroll w-full'>
+                    <div class='like_ranking_section text-center mb-10 pb-10 rounded-xl w-full'>
                         <p class="like_title"><span>いいねランキング</span></p>
-                        <div class="ranking_table flex flex-col ">
-                            <table class="like_ranking  rounded-xl">
+                        <div class="ranking_table overflow-y-scroll flex flex-col ">
+                            @if(isset($likes_ranking[0]))
+                                <table class="like_ranking  rounded-xl">
                                 @foreach($likes_ranking as $like_rank)
                                     <tbody>
                                         <tr class="border-2 border-solid border-white ">
@@ -133,56 +134,63 @@
                                     </tbody>
                                 @endforeach
                             </table>
+                            @else
+                                <p class="ranking_frase px-3 py-5 text-center bg-white w-3/4">ランクインする投稿はありません</p>
+                            @endif
                         </div>
                     </div>
-                    <div class='comment_ranking_section text-center mt-10 pb-10 rounded-xl overflow-y-scroll w-full'>
+                    <div class='comment_ranking_section text-center mt-10 pb-10 rounded-xl  w-full'>
                         <p class="comment_title"><span>コメントランキング</span></p>
-                        <div class="ranking_table">
-                            <table class="comment_ranking">
-                                @foreach($comments_ranking as $comment_rank)
-                                        <tbody >
-                                           <tr class="border-2 border-solid border-white ">
-                                                <td class="bg-blue-300  px-3">
-                                                    <div class="flex mt-3">
-                                                    @if($comment_rank->comment_sum_rank===1)
-                                                        <i class="fa-solid fa-medal" style="color: gold;"></i>
-                                                    @elseif($comment_rank->comment_sum_rank===2)
-                                                        <i class="fa-solid fa-medal" style="color: #d6d6d6;"></i>
-                                                    @elseif($comment_rank->comment_sum_rank===3)
-                                                        <i class="fa-solid fa-medal" style="color: brown;"></i>
-                                                    @endif
-                                                    <p>{{$comment_rank->comment_sum_rank}}位</p>
-                                                    </div>
-                                                </td>
-                                                <td class="bg-blue-300">
-                                                    @if(Auth::id()===$comment_rank->user_id)
-                                                        <div class="mypost flex flex-col rank_post_info bg-white m-3 px-3 rounded-xl hover:scale-110">
-                                                            <div class="comment_rank ml-2 text-left">
-                                                                <a href="/posts/{{$comment_rank->id}}" class="text-3xl text-left break-words">{{$comment_rank->title}}</a>
-                                                            </div>
-                                                            <div class="comment_rank_info ml-2 flex flex-col">
-                                                                <p class="text-left"><i class="fa-solid fa-user"></i>{{$comment_rank->user->name}}</p>
-                                                                <small class="break-words text-left">{{$comment_rank->created_at}}</small>
-                                                            </div>
-                                                                <p class="text-left ml-2"><span class="fa-regular fa-comment"></span>{{$comment_rank->comment_sum}}</p>
+                        <div class="ranking_table overflow-y-scroll flex flex-col">
+                            @if(isset($comments_ranking[0]))
+                                <table class="comment_ranking">
+                                    @foreach($comments_ranking as $comment_rank)
+                                            <tbody >
+                                               <tr class="border-2 border-solid border-white ">
+                                                    <td class="bg-blue-300  px-3">
+                                                        <div class="flex mt-3">
+                                                        @if($comment_rank->comment_sum_rank===1)
+                                                            <i class="fa-solid fa-medal" style="color: gold;"></i>
+                                                        @elseif($comment_rank->comment_sum_rank===2)
+                                                            <i class="fa-solid fa-medal" style="color: #d6d6d6;"></i>
+                                                        @elseif($comment_rank->comment_sum_rank===3)
+                                                            <i class="fa-solid fa-medal" style="color: brown;"></i>
+                                                        @endif
+                                                        <p>{{$comment_rank->comment_sum_rank}}位</p>
                                                         </div>
-                                                    @else
-                                                        <div class="userpost flex flex-col rank_post_info bg-white m-3 px-3 rounded-xl hover:scale-110">
-                                                            <div class="comment_rank ml-2 text-left">
-                                                                <a href="/posts/{{$comment_rank->id}}" class="text-3xl text-left break-words">{{$comment_rank->title}}</a>
+                                                    </td>
+                                                    <td class="bg-blue-300">
+                                                        @if(Auth::id()===$comment_rank->user_id)
+                                                            <div class="mypost flex flex-col rank_post_info bg-white m-3 px-3 rounded-xl hover:scale-110">
+                                                                <div class="comment_rank ml-2 text-left">
+                                                                    <a href="/posts/{{$comment_rank->id}}" class="text-3xl text-left break-words">{{$comment_rank->title}}</a>
+                                                                </div>
+                                                                <div class="comment_rank_info ml-2 flex flex-col">
+                                                                    <p class="text-left"><i class="fa-solid fa-user"></i>{{$comment_rank->user->name}}</p>
+                                                                    <small class="break-words text-left">{{$comment_rank->created_at}}</small>
+                                                                </div>
+                                                                    <p class="text-left ml-2"><span class="fa-regular fa-comment"></span>{{$comment_rank->comment_sum}}</p>
                                                             </div>
-                                                            <div class="comment_rank_info ml-2 flex flex-col">
-                                                                <p class="text-left"><i class="fa-solid fa-user"></i>{{$comment_rank->user->name}}</p>
-                                                                <small class="break-words text-left">{{$comment_rank->created_at}}</small>
+                                                        @else
+                                                            <div class="userpost flex flex-col rank_post_info bg-white m-3 px-3 rounded-xl hover:scale-110">
+                                                                <div class="comment_rank ml-2 text-left">
+                                                                    <a href="/posts/{{$comment_rank->id}}" class="text-3xl text-left break-words">{{$comment_rank->title}}</a>
+                                                                </div>
+                                                                <div class="comment_rank_info ml-2 flex flex-col">
+                                                                    <p class="text-left"><i class="fa-solid fa-user"></i>{{$comment_rank->user->name}}</p>
+                                                                    <small class="break-words text-left">{{$comment_rank->created_at}}</small>
+                                                                </div>
+                                                                    <p class="text-left ml-2"><span class="fa-regular fa-comment"></span>{{$comment_rank->comment_sum}}</p>
                                                             </div>
-                                                                <p class="text-left ml-2"><span class="fa-regular fa-comment"></span>{{$comment_rank->comment_sum}}</p>
-                                                        </div>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                @endforeach
-                            </table>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                    @endforeach
+                                 </table>
+                            @else
+                                <p class="ranking_frase px-3 py-5 text-center bg-white w-3/4">ランクインする投稿はありません</p>
+                            @endif
                         </div>
                  </div>
             </div>

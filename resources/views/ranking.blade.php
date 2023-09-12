@@ -15,7 +15,8 @@
                     <div class='like_ranking_section text-center mb-10 pb-10 rounded-xl  w-full'>
                         <p class="like_title"><span>いいねランキング</span></p>
                         <div class="ranking_table flex flex-col overflow-y-scroll">
-                            <table class="like_ranking  rounded-xl">
+                            @if(isset($likes_ranking[0]))
+                                <table class="like_ranking  rounded-xl">
                                 @foreach($likes_ranking as $like_rank)
                                     <tbody>
                                         <tr class="border-2 border-solid border-white ">
@@ -60,12 +61,16 @@
                                     </tbody>
                                 @endforeach
                             </table>
+                            @else
+                                <p class="ranking_frase px-3 py-5 text-center bg-white w-3/4">ランクインする投稿はありません</p>
+                            @endif
                         </div>
                     </div>
                     <div class='comment_ranking_section text-center mb-10 pb-10 rounded-xl  w-full'>
                         <p class="comment_title"><span>コメントランキング</span></p>
                         <div class="ranking_table overflow-y-scroll flex flex-col">
-                            <table class="comment_ranking">
+                             @if(isset($comments_ranking[0]))
+                                <table class="comment_ranking">
                                 @foreach($comments_ranking as $comment_rank)
                                         <tbody >
                                            <tr class="border-2 border-solid border-white ">
@@ -110,6 +115,9 @@
                                         </tbody>
                                 @endforeach
                             </table>
+                            @else
+                                <p class="ranking_frase px-3 py-5 text-center bg-white w-3/4">ランクインする投稿はありません</p>
+                            @endif
                         </div>
                  </div>
                 </div>
