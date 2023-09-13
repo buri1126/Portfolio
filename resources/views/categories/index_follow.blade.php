@@ -59,7 +59,7 @@
                     <p>フォロー中のユーザーの投稿</p>
                     <div class='posts w-3/4 overflow-y-scroll h-4/5'>
                          @if($postscount===0)
-                            <p>投稿がありません</p>
+                            <p class="posts_count_info p-4 bg-white">投稿がありません</p>
                         @else
                             <p>{{$postscount}}件の投稿があります</p>
                         @endif

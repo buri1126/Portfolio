@@ -88,11 +88,11 @@
             <x-responsive-nav-link :href="route('index')" :active="request()->routeIs('dashboard')">
                 {{ __('Timeline') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('profile',['user'=>Auth::id()])" :active="request()->routeIs('dashboard')">
-                {{ __('Account') }}
-            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('league')" :active="request()->routeIs('dashboard')">
                 {{ __('League') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ranking')" :active="request()->routeIs('dashboard')">
+                {{ __('Ranking') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('create')" :active="request()->routeIs('dashboard')">
                 {{ __('Create') }}
