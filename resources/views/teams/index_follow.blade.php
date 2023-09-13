@@ -19,7 +19,7 @@
                         <a href="/teams/{{$team->id}}/follow" class="flex flex-col w-3/5 bg-white break-words rounded-xl">following</a>
                     </div>
                     <div class='category_index text-center mt-5'>
-                        <p class="border-b border-gray-300 border-solid">categories</p>
+                        <p class="text-xl">categories</p>
                         @foreach($categories as $category)
                             @if($category->id===1)
                             @else
@@ -29,7 +29,7 @@
                     </div>
                     <br>
                      <div class="team_index text-center mt-5">
-                        <p class="border-b border-gray-300 border-solid">teams</p>
+                        <p class="text-xl">teams</p>
                         <div class="teams">
                             @foreach($teams as $team)
                                 @if($team->id===1)
