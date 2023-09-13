@@ -53,7 +53,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class='posts w-3/4 overflow-y-scroll '>
+                    <div class='posts w-3/4 overflow-y-scroll'>
                         @if($postscount===0)
                             <p>投稿がありません</p>
                         @else

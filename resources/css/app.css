@@ -485,3 +485,8 @@ border-radius:5px;
 .ranking_frase{
     margin:0 auto;
 }
+.posts_count_info{
+    position: relative;
+    top:35%;
+    margin:auto 0;
+}
