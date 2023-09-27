@@ -44,9 +44,9 @@
                     <div>
                         <button class="create_button hover:scale-110"><a href="/posts/create"><i class="fa-solid fa-plus"></i></a></button>
                     </div>
-                    <div class="serch text-center">
+                    <div class="serch text-center w-fit">
                         @foreach($posts as $post)
-                        <form action="/categories/{{$post->category->id}}" class="serch_form flex justify-between">
+                        <form action="/categories/{{$post->category->id}}" class="serch_form w-fit flex justify-between">
                             <input type="text" name="keyword" placeholder="キーワード" class="serchword" autocomplete="off">
                             <div class="flex">
                                 <i class="fa-solid fa-delete-left delete_word"></i>

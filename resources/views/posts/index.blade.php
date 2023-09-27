@@ -44,8 +44,8 @@
                     <div>
                         <button class="create_button hover:scale-110"><a href="/posts/create"><i class="fa-solid fa-plus"></i></a></button>
                     </div>
-                    <div class="serch text-center ">
-                        <form action="/" class="serch_form flex justify-between">
+                    <div class="serch text-center w-fit">
+                        <form action="/" class="serch_form flex w-fit justify-between">
                             <input type="text" name="keyword" placeholder="キーワード" class="serchword" value="{{request('keyword')}}" autocomplete = "off">
                             <div class="flex">
                                 <i class="fa-solid fa-delete-left delete_word"></i>
@@ -53,7 +53,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class='posts w-3/4 overflow-y-scroll'>
+                    <div class='posts w-3/4 overflow-y-scroll rounded'>
                         @if($postscount===0)
                             <p>投稿がありません</p>
                         @else

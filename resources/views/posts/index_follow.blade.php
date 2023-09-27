@@ -44,8 +44,8 @@
                     <div>
                         <button class="create_button hover:scale-110"><a href="/posts/create"><i class="fa-solid fa-plus"></i></a></button>
                     </div>
-                    <div class="serch text-center m-5">
-                        <form action="/posts/follow" class="serch_form flex justify-between">
+                    <div class="serch text-center m-5 w-fit">
+                        <form action="/posts/follow" class="serch_form flex w-fit justify-between">
                             <input type="text" name="keyword" placeholder="キーワード" class="serchword" autocomplete="off">
                             <div class="flex">
                                 <i class="fa-solid fa-delete-left delete_word"></i>

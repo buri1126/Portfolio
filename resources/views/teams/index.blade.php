@@ -44,10 +44,10 @@
                 <div>
                     <button class="create_button hover:scale-110"><a href="/posts/create"><i class="fa-solid fa-plus"></i></a></button>
                 </div>
-                <div class="serch text-center m-5">
+                <div class="serch text-center w-fit m-5">
                    @foreach($posts as $post)
                         @foreach($post->teams as $team)
-                            <form action="/teams/{{$team->id}}" class="serch_form flex justify-between">
+                            <form action="/teams/{{$team->id}}" class="serch_form flex w-fit justify-between">
                                 <input type="text" name="keyword" placeholder="キーワード" class="serchword" autocomplete="off">
                                 <div class="flex">
                                     <i class="fa-solid fa-delete-left delete_word"></i>
