@@ -15,7 +15,7 @@ class LeagueController extends Controller
         $response_standings = $client->request('GET', 'https://api-football-v1.p.rapidapi.com/v3/standings?season=2023&league=39', [
         	'headers' => [
         		'X-RapidAPI-Host' => 'api-football-v1.p.rapidapi.com',
-        		'X-RapidAPI-Key' => 'bec5700bc8msh8eebc62e717579bp173f67jsnb80be10b42c4',
+        		'X-RapidAPI-Key' =>config('services.footballdata.token'),
         	],
         ]);
         //dd($response);
@@ -24,7 +24,7 @@ class LeagueController extends Controller
       $response_fixtures = $client->request('GET', 'https://api-football-v1.p.rapidapi.com/v3/fixtures?league=39&season=2023&from=2023-08-11&to=2024-05-21', [
 	'headers' => [
 		'X-RapidAPI-Host' => 'api-football-v1.p.rapidapi.com',
-		'X-RapidAPI-Key' => 'bec5700bc8msh8eebc62e717579bp173f67jsnb80be10b42c4',
+		'X-RapidAPI-Key' => config('services.footballdata.token'),
 	],
 ]);
         $fixtures=json_decode($response_fixtures->getBody(),true);

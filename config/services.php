@@ -31,7 +31,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     
-//     'footballdata' => [
-//     'token' => env('FOOTBALLDATA_ACCESS_TOKEN')
-// ],
+    'footballdata' => [
+     'token' => env('FOOTBALL_TOKEN')
+ ],
 ];
